@@ -50,7 +50,7 @@ halign=left</panel_attributes>
     <id>UMLUseCase</id>
     <coordinates>
       <x>220</x>
-      <y>250</y>
+      <y>330</y>
       <w>120</w>
       <h>40</h>
     </coordinates>
@@ -61,7 +61,7 @@ halign=left</panel_attributes>
     <id>UMLUseCase</id>
     <coordinates>
       <x>220</x>
-      <y>340</y>
+      <y>420</y>
       <w>120</w>
       <h>40</h>
     </coordinates>
@@ -83,12 +83,12 @@ halign=left</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>90</x>
-      <y>260</y>
+      <y>280</y>
       <w>150</w>
-      <h>50</h>
+      <h>90</h>
     </coordinates>
     <panel_attributes/>
-    <additional_attributes>10.0;30.0;130.0;10.0</additional_attributes>
+    <additional_attributes>10.0;10.0;130.0;70.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -96,10 +96,10 @@ halign=left</panel_attributes>
       <x>90</x>
       <y>280</y>
       <w>150</w>
-      <h>100</h>
+      <h>180</h>
     </coordinates>
     <panel_attributes/>
-    <additional_attributes>10.0;10.0;130.0;80.0</additional_attributes>
+    <additional_attributes>10.0;10.0;130.0;160.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -210,5 +210,27 @@ halign=left</panel_attributes>
     </coordinates>
     <panel_attributes/>
     <additional_attributes>10.0;10.0;130.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>220</x>
+      <y>240</y>
+      <w>120</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>Edit MyInfo</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>90</x>
+      <y>250</y>
+      <w>150</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;40.0;130.0;10.0</additional_attributes>
   </element>
 </diagram>
