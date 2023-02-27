@@ -88,7 +88,8 @@ User</panel_attributes>
       <w>100</w>
       <h>110</h>
     </coordinates>
-    <panel_attributes>User Service</panel_attributes>
+    <panel_attributes>User Service
+fg=BLUE</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -325,26 +326,26 @@ User</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>410</x>
+      <x>400</x>
       <y>450</y>
       <w>90</w>
       <h>60</h>
     </coordinates>
     <panel_attributes>lt=.&gt;
 &lt;&lt;extends&gt;&gt;</panel_attributes>
-    <additional_attributes>20.0;10.0;60.0;40.0</additional_attributes>
+    <additional_attributes>70.0;40.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>410</x>
+      <x>400</x>
       <y>390</y>
       <w>90</w>
       <h>50</h>
     </coordinates>
     <panel_attributes>lt=.&gt;
 &lt;&lt;extends&gt;&gt;</panel_attributes>
-    <additional_attributes>20.0;30.0;60.0;10.0</additional_attributes>
+    <additional_attributes>70.0;10.0;10.0;30.0</additional_attributes>
   </element>
   <element>
     <id>UMLActor</id>
@@ -356,7 +357,8 @@ User</panel_attributes>
     </coordinates>
     <panel_attributes>Social 
 Athentication 
-Service</panel_attributes>
+Service
+fg=BLUE</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
