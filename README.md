@@ -3,6 +3,16 @@
 Simple community website written in Java
 <br><br>
 
+## Features
+* Homepage management
+* User management
+* Post management
+* Comment management
+* Dashboard for statistics
+* Social Login
+* RESTful API with OAuth2
+<br><br>
+
 ## Developement Methodology
 Waterfall Development
 <br><br>
