@@ -21,6 +21,8 @@ Waterfall Development
 * JSTL 1.2
 * BootStrap 5.3.0-alpha1
 * MyBatis 3.5.13
+* JUnit 4.13.2
+* Mockito 5.2.0
 * Maven 3.8.6
 <br><br>
 
