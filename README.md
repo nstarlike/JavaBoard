@@ -23,6 +23,7 @@ Waterfall Development
 * MyBatis 3.5.13
 * JUnit 4.13.2
 * Mockito 5.2.0
+* Jasmine 4.6.0
 * Maven 3.8.6
 <br><br>
 
