@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1.0">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>80</x>
+      <y>50</y>
+      <w>260</w>
+      <h>200</h>
+    </coordinates>
+    <panel_attributes>User
+--
+-id: Long
+-loginId: String
+-password: String
+-name: String
+-email: String
+-created: String
+-lastLogged: String
+--
++getters and setters
++toString(): String
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>80</x>
+      <y>290</y>
+      <w>290</w>
+      <h>170</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+UserDao
+--
++readAll(): List&lt;User&gt;
++readById(id: Long): User
++readByLoginId(loginId: String): User
++readByEmail(email: String): User
++create(user: User) int
++update(user: User): int
++delete(id: Long): int</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>80</x>
+      <y>510</y>
+      <w>290</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;repository&gt;&gt;
+UserRepository
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>210</x>
+      <y>450</y>
+      <w>30</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>540</x>
+      <y>80</y>
+      <w>290</w>
+      <h>170</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+UserService
+--
++getAll(): List&lt;User&gt;
++getById(id: Long): User
++getByLoginId(loginId: String): User
++getByEmail(email: String): User
++create(user: User): int
++update(user: User): int
++delete(id: Long): int</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>540</x>
+      <y>310</y>
+      <w>290</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;service&gt;&gt;
+UserServiceImpl
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>670</x>
+      <y>240</y>
+      <w>30</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>540</x>
+      <y>490</y>
+      <w>340</w>
+      <h>170</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;controller&gt;&gt;
+UserController
+--
++list(params: Map&lt;String, String&gt;): String
++view(params: Map&lt;String, Stringi&gt;): String
++register(params: Map&lt;String, String&gt;): String
++registerProc(params: Map&lt;String, String&gt;): String
++update(params: Map&lt;String, String&gt;): String
++updateProc(params: Map&lt;String, String&gt;): String
++deleteProc(params: Map&lt;String, String&gt;): String</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>670</x>
+      <y>410</y>
+      <w>40</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>m1=1
+m2=1</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>360</x>
+      <y>350</y>
+      <w>200</w>
+      <h>230</h>
+    </coordinates>
+    <panel_attributes>m1=1
+m2=1</panel_attributes>
+    <additional_attributes>180.0;10.0;10.0;210.0</additional_attributes>
+  </element>
+</diagram>
