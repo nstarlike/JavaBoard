@@ -32,7 +32,7 @@
 SiteSettingDao
 --
 +readAll(): List&lt;SiteSetting&gt;
-+read(key: String): SiteSetting
++readByKey(key: String): SiteSetting
 +updateAll(settings: List&lt;SiteSetting&gt;): int</panel_attributes>
     <additional_attributes/>
   </element>
@@ -48,7 +48,7 @@ SiteSettingDao
 SiteSettingRepository
 --
 +readAll(): List&lt;SiteSetting&gt;
-+read(key: String): SiteSetting
++readByKey(key: String): SiteSetting
 +updateAll(settings: List&lt;SiteSetting&gt;): int</panel_attributes>
     <additional_attributes/>
   </element>
@@ -117,8 +117,8 @@ SiteSettingServiceImpl
     <panel_attributes>&lt;&lt;controller&gt;&gt;
 SiteSettingController
 --
-+viewAll(): String
-+updateAll(settings: Map&lt;String, String&gt;): String</panel_attributes>
++view(): String
++update(settings: Map&lt;String, String&gt;): String</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
