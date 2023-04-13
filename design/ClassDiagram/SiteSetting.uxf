@@ -5,7 +5,7 @@
     <id>UMLClass</id>
     <coordinates>
       <x>81</x>
-      <y>81</y>
+      <y>63</y>
       <w>234</w>
       <h>126</h>
     </coordinates>
@@ -24,7 +24,7 @@
     <id>UMLClass</id>
     <coordinates>
       <x>54</x>
-      <y>279</y>
+      <y>261</y>
       <w>261</w>
       <h>99</h>
     </coordinates>
@@ -40,23 +40,21 @@ SiteSettingDao
     <id>UMLClass</id>
     <coordinates>
       <x>54</x>
-      <y>441</y>
+      <y>423</y>
       <w>261</w>
       <h>99</h>
     </coordinates>
     <panel_attributes>&lt;&lt;repository&gt;&gt;
 SiteSettingRepository
 --
-+readAll(): List&lt;SiteSetting&gt;
-+readByKey(key: String): SiteSetting
-+updateAll(settings: List&lt;SiteSetting&gt;): int</panel_attributes>
+</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>171</x>
-      <y>369</y>
+      <y>351</y>
       <w>27</w>
       <h>90</h>
     </coordinates>
@@ -67,7 +65,7 @@ SiteSettingRepository
     <id>UMLClass</id>
     <coordinates>
       <x>468</x>
-      <y>72</y>
+      <y>54</y>
       <w>261</w>
       <h>99</h>
     </coordinates>
@@ -83,23 +81,21 @@ SiteSettingService
     <id>UMLClass</id>
     <coordinates>
       <x>468</x>
-      <y>234</y>
+      <y>216</y>
       <w>261</w>
       <h>99</h>
     </coordinates>
     <panel_attributes>&lt;&lt;service&gt;&gt;
 SiteSettingServiceImpl
 --
-+getAll(): List&lt;SiteSetting&gt;
-+getByKey(key: String): SiteSetting
-+updateAll(settings: List&lt;SiteSetting&gt;): int</panel_attributes>
+</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>585</x>
-      <y>162</y>
+      <y>144</y>
       <w>27</w>
       <h>90</h>
     </coordinates>
@@ -110,7 +106,7 @@ SiteSettingServiceImpl
     <id>UMLClass</id>
     <coordinates>
       <x>468</x>
-      <y>441</y>
+      <y>423</y>
       <w>288</w>
       <h>90</h>
     </coordinates>
@@ -125,7 +121,7 @@ SiteSettingController
     <id>Relation</id>
     <coordinates>
       <x>585</x>
-      <y>324</y>
+      <y>306</y>
       <w>36</w>
       <h>135</h>
     </coordinates>
@@ -137,7 +133,7 @@ m2=1</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>306</x>
-      <y>270</y>
+      <y>252</y>
       <w>180</w>
       <h>234</h>
     </coordinates>
