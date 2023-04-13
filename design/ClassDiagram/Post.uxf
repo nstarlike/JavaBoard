@@ -119,8 +119,8 @@ PostServiceImpl
     <coordinates>
       <x>540</x>
       <y>490</y>
-      <w>320</w>
-      <h>150</h>
+      <w>350</w>
+      <h>170</h>
     </coordinates>
     <panel_attributes>&lt;&lt;controller&gt;&gt;
 PostController
