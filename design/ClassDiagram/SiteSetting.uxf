@@ -113,7 +113,7 @@ SiteSettingServiceImpl
     <panel_attributes>&lt;&lt;controller&gt;&gt;
 SiteSettingController
 --
-+view(): String
++list(): String
 +update(settings: Map&lt;String, String&gt;): String</panel_attributes>
     <additional_attributes/>
   </element>
