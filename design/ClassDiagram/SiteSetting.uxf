@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1.0">
+  <zoom_level>9</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>54</x>
+      <y>45</y>
+      <w>234</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>SiteSetting
+--
+-key: String
+-value: String
+-active: boolean
+--
++SiteSettings(key: String, value: String)
++getKey(): String
++setValue(value: String)
++getValue(): String
++setActive(active: boolean)
++getActive(): boolean
++toString(): String
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>54</x>
+      <y>279</y>
+      <w>261</w>
+      <h>99</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+SiteSettingDao
+--
++readAll(): List&lt;SiteSetting&gt;
++read(key: String): SiteSetting
++updateAll(settings: List&lt;SiteSetting&gt;): int</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>54</x>
+      <y>441</y>
+      <w>261</w>
+      <h>99</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;repository&gt;&gt;
+SiteSettingRepository
+--
++readAll(): List&lt;SiteSetting&gt;
++read(key: String): SiteSetting
++updateAll(settings: List&lt;SiteSetting&gt;): int</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>171</x>
+      <y>369</y>
+      <w>27</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>468</x>
+      <y>72</y>
+      <w>261</w>
+      <h>99</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+SiteSettingService
+--
++getAll(): List&lt;SiteSetting&gt;
++getByKey(key: String): SiteSetting
++updateAll(settings: List&lt;SiteSetting&gt;): int</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>468</x>
+      <y>234</y>
+      <w>261</w>
+      <h>99</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;service&gt;&gt;
+SiteSettingServiceImpl
+--
++getAll(): List&lt;SiteSetting&gt;
++getByKey(key: String): SiteSetting
++updateAll(settings: List&lt;SiteSetting&gt;): int</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>585</x>
+      <y>162</y>
+      <w>27</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>468</x>
+      <y>441</y>
+      <w>288</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;controller&gt;&gt;
+SiteSettingController
+--
++viewAll(): String
++updateAll(settings: Map&lt;String, String&gt;): String</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>585</x>
+      <y>324</y>
+      <w>36</w>
+      <h>135</h>
+    </coordinates>
+    <panel_attributes>m1=1
+m2=1</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;130.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>306</x>
+      <y>270</y>
+      <w>180</w>
+      <h>234</h>
+    </coordinates>
+    <panel_attributes>m1=1
+m2=1</panel_attributes>
+    <additional_attributes>180.0;10.0;10.0;240.0</additional_attributes>
+  </element>
+</diagram>
