@@ -4,10 +4,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>54</x>
-      <y>45</y>
+      <x>72</x>
+      <y>72</y>
       <w>234</w>
-      <h>180</h>
+      <h>135</h>
     </coordinates>
     <panel_attributes>SiteSetting
 --
@@ -16,11 +16,7 @@
 -active: boolean
 --
 +SiteSettings(key: String, value: String)
-+getKey(): String
-+setValue(value: String)
-+getValue(): String
-+setActive(active: boolean)
-+getActive(): boolean
++getters and setters
 +toString(): String
 </panel_attributes>
     <additional_attributes/>
