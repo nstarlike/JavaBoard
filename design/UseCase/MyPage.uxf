@@ -15,12 +15,13 @@
   <element>
     <id>UMLActor</id>
     <coordinates>
-      <x>20</x>
+      <x>0</x>
       <y>130</y>
-      <w>60</w>
-      <h>110</h>
+      <w>100</w>
+      <h>120</h>
     </coordinates>
-    <panel_attributes>User</panel_attributes>
+    <panel_attributes>Authenticated
+User</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
