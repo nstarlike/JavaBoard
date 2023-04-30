@@ -1,0 +1,98 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="B84244C7-E13B-3CC6-7327-BC5C06A56842" name="post">
+<createdBy>starlight</createdBy>
+<createdTime>2023-04-30 09:55:40 UTC</createdTime>
+<generatorID>6E7C70A3-C867-7662-E925-73EB6D91EFA3</generatorID>
+<ownerDesignName>erd</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="post_id" id="64EEF636-686F-AF4D-F8AD-DB80839AD82B">
+<createdBy>starlight</createdBy>
+<createdTime>2023-04-30 09:55:40 UTC</createdTime>
+<generatorID>56CD39A8-1031-BA68-C7D3-682D14771A4F</generatorID>
+<ownerDesignName>erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="writer_id" id="73DB4797-E8B5-2039-216C-F302EE7D37F8">
+<createdBy>starlight</createdBy>
+<createdTime>2023-04-30 09:55:40 UTC</createdTime>
+<generatorID>3103E5DB-16C4-BE9A-110B-D6B8B233E1D0</generatorID>
+<ownerDesignName>erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="90764333-43FC-37F7-E6DF-1E66A9B27355" referredColumn="97E5285F-375B-D63C-D0A1-A972A1D2D7DF"/>
+</associations>
+</Column>
+<Column name="title" id="F953E1DB-7DF6-3B5C-2AC5-D7C21DA20D33">
+<createdBy>starlight</createdBy>
+<createdTime>2023-04-30 09:55:40 UTC</createdTime>
+<generatorID>18058E15-9059-7BD5-7B12-50A63C78AD9D</generatorID>
+<ownerDesignName>erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="content" id="C5ADB7B4-4DDF-E04B-7DB9-EA7B893EB74A">
+<createdBy>starlight</createdBy>
+<createdTime>2023-04-30 09:55:40 UTC</createdTime>
+<generatorID>DA6E94FC-76ED-1C04-5109-C382B760F3F1</generatorID>
+<ownerDesignName>erd</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT028</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="written" id="0B6CB3A5-EC1A-4F6D-E193-03068F2361AB">
+<createdBy>starlight</createdBy>
+<createdTime>2023-04-30 09:55:40 UTC</createdTime>
+<generatorID>7ED262D5-9059-2750-8091-C469E1FAF302</generatorID>
+<ownerDesignName>erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<dataTypeSize>19</dataTypeSize>
+<ownDataTypeParameters>19,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="D9DA2DCA-E85C-6C59-F5A6-CCC8D6C8FAA4" name="post_PK">
+<createdBy>starlight</createdBy>
+<createdTime>2023-04-30 09:55:40 UTC</createdTime>
+<generatorID>D52ACD76-AACB-C43C-4E86-162926D772F7</generatorID>
+<ownerDesignName>erd</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="64EEF636-686F-AF4D-F8AD-DB80839AD82B"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="71ED17B1-E60A-AE9B-7289-36D0E10EDCED" name="post_users_FK">
+<createdBy>starlight</createdBy>
+<createdTime>2023-04-30 09:55:40 UTC</createdTime>
+<generatorID>51638E4D-1521-7900-755F-86CD7AAF7469</generatorID>
+<ownerDesignName>erd</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="73DB4797-E8B5-2039-216C-F302EE7D37F8"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

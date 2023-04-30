@@ -1,0 +1,86 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="1D0FD8C1-FC54-27CE-3938-8E1AE893F625" name="comment">
+<createdBy>starlight</createdBy>
+<createdTime>2023-04-30 09:55:40 UTC</createdTime>
+<generatorID>204AD041-B85B-14A3-4732-31DEB23F8DB0</generatorID>
+<ownerDesignName>erd</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="comment_id" id="E4A6CC94-8328-6F3F-EBE4-88AC26C91437">
+<createdBy>starlight</createdBy>
+<createdTime>2023-04-30 09:55:40 UTC</createdTime>
+<generatorID>E719B04B-EDC3-B004-F6DB-8A3D79365735</generatorID>
+<ownerDesignName>erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="post_id" id="6835C6C6-1745-B240-C4F1-4F2F95E1685D">
+<createdBy>starlight</createdBy>
+<createdTime>2023-04-30 09:55:40 UTC</createdTime>
+<generatorID>BEF9A671-C800-7A36-5859-0FA6BE8D5461</generatorID>
+<ownerDesignName>erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="CE4CC4F2-DC0A-648A-D9B6-1738CD6090CE" referredColumn="64EEF636-686F-AF4D-F8AD-DB80839AD82B"/>
+</associations>
+</Column>
+<Column name="comment" id="80903D50-2F20-2CC1-7AC5-97CAF1513EA0">
+<createdBy>starlight</createdBy>
+<createdTime>2023-04-30 09:55:40 UTC</createdTime>
+<generatorID>52C9B48C-4C32-21DC-FF49-F338B8AB4533</generatorID>
+<ownerDesignName>erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255</dataTypeSize>
+<ownDataTypeParameters>255,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="written" id="BC77D776-7A80-B292-37C5-12D30327EE1A">
+<createdBy>starlight</createdBy>
+<createdTime>2023-04-30 09:55:40 UTC</createdTime>
+<generatorID>BDAE2AAD-53B8-0AC4-8783-34285D1EA57D</generatorID>
+<ownerDesignName>erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<dataTypeSize>19</dataTypeSize>
+<ownDataTypeParameters>19,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="C5E589E8-447E-4EB3-7DB4-E06519D5B3D1" name="comment_PK">
+<createdBy>starlight</createdBy>
+<createdTime>2023-04-30 09:55:40 UTC</createdTime>
+<generatorID>91F714F7-F3C7-5509-EC3F-4F55AA7D5424</generatorID>
+<ownerDesignName>erd</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="E4A6CC94-8328-6F3F-EBE4-88AC26C91437"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="480AA164-1671-4661-BB07-E1DE4DBA38EA" name="comment_post_FK">
+<createdBy>starlight</createdBy>
+<createdTime>2023-04-30 09:55:40 UTC</createdTime>
+<generatorID>4B5F0723-27B4-ECEC-C1B8-45E37CDDC7F5</generatorID>
+<ownerDesignName>erd</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="6835C6C6-1745-B240-C4F1-4F2F95E1685D"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

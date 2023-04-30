@@ -1,0 +1,96 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="97BC1A24-1568-C824-CAF6-F9BA287E6883" name="users">
+<createdBy>starlight</createdBy>
+<createdTime>2023-04-30 09:55:40 UTC</createdTime>
+<generatorID>582AB969-8D95-0E4A-C7C5-5E6198092E7E</generatorID>
+<ownerDesignName>erd</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="user_id" id="97E5285F-375B-D63C-D0A1-A972A1D2D7DF">
+<createdBy>starlight</createdBy>
+<createdTime>2023-04-30 09:55:40 UTC</createdTime>
+<generatorID>A40B5BDC-0915-7AD8-AB87-6CCD5613DEF4</generatorID>
+<ownerDesignName>erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="login_id" id="E24BC29F-E0C0-E31A-7A82-DD4633A63999">
+<createdBy>starlight</createdBy>
+<createdTime>2023-04-30 09:55:40 UTC</createdTime>
+<generatorID>7E4C7255-297A-953F-9F35-CF8643C66FE3</generatorID>
+<ownerDesignName>erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="password" id="B523A0C6-1402-B610-1E3B-482776014B2E">
+<createdBy>starlight</createdBy>
+<createdTime>2023-04-30 09:55:40 UTC</createdTime>
+<generatorID>FF0A62DA-8790-2F49-BBA7-91F5992358AB</generatorID>
+<ownerDesignName>erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="name" id="B3377729-4532-4034-C585-9F67F18DE428">
+<createdBy>starlight</createdBy>
+<createdTime>2023-04-30 09:55:40 UTC</createdTime>
+<generatorID>63F9D0F6-846C-978D-6FC5-0684A8B63DFC</generatorID>
+<ownerDesignName>erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="email" id="5D9FEDB8-8854-C9DC-F5CA-853903F386A6">
+<createdBy>starlight</createdBy>
+<createdTime>2023-04-30 09:55:40 UTC</createdTime>
+<generatorID>2729EFBA-A99B-5443-5814-E4B903F36F73</generatorID>
+<ownerDesignName>erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="registered" id="FA314B47-6894-D2A1-7197-6B86AF5BE08F">
+<createdBy>starlight</createdBy>
+<createdTime>2023-04-30 09:55:40 UTC</createdTime>
+<generatorID>C6776344-E067-F712-27F6-90E078DA3BF1</generatorID>
+<ownerDesignName>erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>19</dataTypeSize>
+<ownDataTypeParameters>19,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="D365E9D9-7591-3BFE-20C0-C09C910E799B" name="users_PK">
+<createdBy>starlight</createdBy>
+<createdTime>2023-04-30 09:55:40 UTC</createdTime>
+<generatorID>C4C1419E-911B-2622-DDE9-3C4E0D35ED86</generatorID>
+<ownerDesignName>erd</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="97E5285F-375B-D63C-D0A1-A972A1D2D7DF"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
