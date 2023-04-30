@@ -1,0 +1,103 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="582AB969-8D95-0E4A-C7C5-5E6198092E7E" name="사용자">
+<createdBy>starlight</createdBy>
+<createdTime>2023-04-30 09:06:08 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<engineerTo>
+<item key="9996ACFC-1C4A-DBA6-0082-124EBC7272FF" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="사용자ID" id="A40B5BDC-0915-7AD8-AB87-6CCD5613DEF4">
+<createdBy>starlight</createdBy>
+<createdTime>2023-04-30 09:06:35 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<engineerTo>
+<item key="9996ACFC-1C4A-DBA6-0082-124EBC7272FF" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="로그인ID" id="7E4C7255-297A-953F-9F35-CF8643C66FE3">
+<createdBy>starlight</createdBy>
+<createdTime>2023-04-30 09:07:12 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<engineerTo>
+<item key="9996ACFC-1C4A-DBA6-0082-124EBC7272FF" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>0</use>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="비밀번호" id="FF0A62DA-8790-2F49-BBA7-91F5992358AB">
+<createdBy>starlight</createdBy>
+<createdTime>2023-04-30 09:07:27 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<engineerTo>
+<item key="9996ACFC-1C4A-DBA6-0082-124EBC7272FF" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>0</use>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="이름" id="63F9D0F6-846C-978D-6FC5-0684A8B63DFC">
+<createdBy>starlight</createdBy>
+<createdTime>2023-04-30 09:07:35 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<engineerTo>
+<item key="9996ACFC-1C4A-DBA6-0082-124EBC7272FF" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>0</use>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="이메일" id="2729EFBA-A99B-5443-5814-E4B903F36F73">
+<createdBy>starlight</createdBy>
+<createdTime>2023-04-30 09:07:41 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<engineerTo>
+<item key="9996ACFC-1C4A-DBA6-0082-124EBC7272FF" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>0</use>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="등록일시" id="C6776344-E067-F712-27F6-90E078DA3BF1">
+<createdBy>starlight</createdBy>
+<createdTime>2023-04-30 09:07:47 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<engineerTo>
+<item key="9996ACFC-1C4A-DBA6-0082-124EBC7272FF" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="C4C1419E-911B-2622-DDE9-3C4E0D35ED86" name="users PK">
+<createdBy>starlight</createdBy>
+<createdTime>2023-04-30 09:07:03 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<engineerTo>
+<item key="9996ACFC-1C4A-DBA6-0082-124EBC7272FF" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>A40B5BDC-0915-7AD8-AB87-6CCD5613DEF4</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

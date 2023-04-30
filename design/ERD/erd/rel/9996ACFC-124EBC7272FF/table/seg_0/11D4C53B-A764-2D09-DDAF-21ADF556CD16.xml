@@ -1,0 +1,64 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="11D4C53B-A764-2D09-DDAF-21ADF556CD16" name="user_authority">
+<createdBy>starlight</createdBy>
+<createdTime>2023-04-30 09:55:40 UTC</createdTime>
+<generatorID>6132FE40-8DDA-74A5-5339-6290FAF84518</generatorID>
+<ownerDesignName>erd</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="user_id" id="47955CF7-4D0F-9DA4-068F-57E177BA129D">
+<createdBy>starlight</createdBy>
+<createdTime>2023-04-30 09:55:40 UTC</createdTime>
+<generatorID>BC14B464-AC5B-A4FC-0548-5A16CFF86964</generatorID>
+<ownerDesignName>erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="F7D0B374-6E75-B952-7BB1-253580EF3FC9" referredColumn="97E5285F-375B-D63C-D0A1-A972A1D2D7DF"/>
+</associations>
+</Column>
+<Column name="authority" id="EB7172B3-5D2F-8EA4-4445-7B86081D9312">
+<createdBy>starlight</createdBy>
+<createdTime>2023-04-30 09:55:40 UTC</createdTime>
+<generatorID>85F683D3-92EA-A284-6B16-032A0FC555AF</generatorID>
+<ownerDesignName>erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="847C46BB-7BCF-B345-F54F-5E212142F053" name="user_authority_PK">
+<createdBy>starlight</createdBy>
+<createdTime>2023-04-30 09:55:40 UTC</createdTime>
+<generatorID>E8D7DDD5-007C-8C7C-93CC-F3B23BFA924D</generatorID>
+<ownerDesignName>erd</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="47955CF7-4D0F-9DA4-068F-57E177BA129D"/>
+<colUsage columnID="EB7172B3-5D2F-8EA4-4445-7B86081D9312"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="3CB74FB1-17D9-A8FC-1B94-894982F3F4F3" name="user_authority_users_FK">
+<createdBy>starlight</createdBy>
+<createdTime>2023-04-30 09:55:40 UTC</createdTime>
+<generatorID>35FCA2C2-FEEB-0D4A-100A-CF57627460A7</generatorID>
+<ownerDesignName>erd</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="47955CF7-4D0F-9DA4-068F-57E177BA129D"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
