@@ -1,9 +1,7 @@
-<%@ include file="common/header.jsp" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 
-<section>
-	<h3>Home page</h3>
-	<article>
-		fsfdsfsf
-	</article>
-</section>
-<%@ include file="common/footer.jsp" %>
+<%@ include file="common/header.jsp"%>
+
+
+<%@ include file="common/footer.jsp"%>
