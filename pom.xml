@@ -46,6 +46,16 @@
 		<artifactId>jakarta.servlet.jsp.jstl</artifactId>
 		<version>2.0.0</version>
 	</dependency>
+	<dependency>
+		<groupId>org.apache.commons</groupId>
+		<artifactId>commons-dbcp2</artifactId>
+		<version>2.9.0</version>
+	</dependency>
+	<dependency>
+		<groupId>org.mybatis</groupId>
+		<artifactId>mybatis-spring</artifactId>
+		<version>3.0.1</version>
+	</dependency>
 	
 	<dependency>
 		<groupId>org.springframework</groupId>
