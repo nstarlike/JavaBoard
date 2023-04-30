@@ -1,0 +1,58 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="0738D5DD-D873-A976-2049-E0AEBD7567BF" name="사이트설정">
+<createdBy>starlight</createdBy>
+<createdTime>2023-04-30 09:15:20 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<engineerTo>
+<item key="9996ACFC-1C4A-DBA6-0082-124EBC7272FF" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="설정키" id="127CF7EC-C91B-5687-A5AA-C43D1C4F997C">
+<createdBy>starlight</createdBy>
+<createdTime>2023-04-30 09:15:33 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<engineerTo>
+<item key="9996ACFC-1C4A-DBA6-0082-124EBC7272FF" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>0</use>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="설정값" id="85C827BE-7E75-9758-0FAA-C4187A9A6F39">
+<createdBy>starlight</createdBy>
+<createdTime>2023-04-30 09:16:05 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<engineerTo>
+<item key="9996ACFC-1C4A-DBA6-0082-124EBC7272FF" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>0</use>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="3B0B38C1-F989-BE0F-3C55-FC6C2C24F1A5" name="sitesetting PK">
+<createdBy>starlight</createdBy>
+<createdTime>2023-04-30 09:15:46 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<engineerTo>
+<item key="9996ACFC-1C4A-DBA6-0082-124EBC7272FF" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>127CF7EC-C91B-5687-A5AA-C43D1C4F997C</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>
