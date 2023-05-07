@@ -4,4 +4,35 @@
 	<select id="readAll" resultType="User">
 	SELECT * FROM USERS
 	</select>
+	
+	<select id="readByUserId" resultType="User">
+	SELECT * FROM USERS
+	WHERE user_id = #{userId}
+	</select>
+	
+	<select id="readByLoginId" resultType="User">
+	SELECT * FROM USERS
+	WHERE login_id = #{loginId}
+	</select>
+	
+	<select id="readByEmail" resultType="User">
+	SELECT * FROM USERS
+	WHERE email = #{email}
+	</select>
+	
+	<insert id="create" parameterType="User">
+	INSERT INTO USERS(user_id, login_id, password, name, email, created)
+	VALUES(#{userId}, #{loginId}, #{password}, #{name}, #{email}, TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'))
+	</insert>
+	
+	<update id="update" parameterType="User">
+	UPDATE USERS
+		<set>
+			<if test="user.loginId != null">login_id = #{user.loginId},</if>
+			<if test="user.password != null">password = #{user.password},</if>
+			<if test="user.name != null">name = #{user.name},</if>
+			<if test="user.email != null">email = #{user.email},</if>
+		</set>
+	WHERE user_id = #{user.userId}
+	</update>
 </mapper>
