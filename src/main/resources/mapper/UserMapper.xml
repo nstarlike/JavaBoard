@@ -35,4 +35,8 @@
 		</set>
 	WHERE user_id = #{user.userId}
 	</update>
+	
+	<delete id="delete" parameterType="int">
+	DELETE FROM USERS WHERE user_id = #{userId}
+	</delete>
 </mapper>
