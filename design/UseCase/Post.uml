@@ -96,4 +96,21 @@
     <ownedEnd xmi:type="uml:Property" xmi:id="_dRX3c-2UEe2fAM1-AEqhLw" name="delete post" type="_-9trsO2TEe2fAM1-AEqhLw" association="_dRX3cO2UEe2fAM1-AEqhLw"/>
     <ownedEnd xmi:type="uml:Property" xmi:id="_dRX3dO2UEe2fAM1-AEqhLw" name="admin" type="_r8s44O2TEe2fAM1-AEqhLw" association="_dRX3cO2UEe2fAM1-AEqhLw"/>
   </packagedElement>
+  <packagedElement xmi:type="uml:UseCase" xmi:id="_YCIV8O2VEe2fAM1-AEqhLw" name="Write post">
+    <include xmi:type="uml:Include" xmi:id="_bX9pUO2VEe2fAM1-AEqhLw" addition="_DHCRgO2UEe2fAM1-AEqhLw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_eQtYEO2VEe2fAM1-AEqhLw" memberEnd="_eQt_Ie2VEe2fAM1-AEqhLw _eQt_Iu2VEe2fAM1-AEqhLw">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_eQtYEe2VEe2fAM1-AEqhLw" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_eQt_IO2VEe2fAM1-AEqhLw" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_eQt_Ie2VEe2fAM1-AEqhLw" name="write post" type="_YCIV8O2VEe2fAM1-AEqhLw" association="_eQtYEO2VEe2fAM1-AEqhLw"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_eQt_Iu2VEe2fAM1-AEqhLw" name="authenticated user" type="_ordxoO2TEe2fAM1-AEqhLw" association="_eQtYEO2VEe2fAM1-AEqhLw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_fqoYYO2VEe2fAM1-AEqhLw" memberEnd="_fqo_ce2VEe2fAM1-AEqhLw _fqo_cu2VEe2fAM1-AEqhLw">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_fqoYYe2VEe2fAM1-AEqhLw" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_fqo_cO2VEe2fAM1-AEqhLw" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_fqo_ce2VEe2fAM1-AEqhLw" name="write post" type="_YCIV8O2VEe2fAM1-AEqhLw" association="_fqoYYO2VEe2fAM1-AEqhLw"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_fqo_cu2VEe2fAM1-AEqhLw" name="admin" type="_r8s44O2TEe2fAM1-AEqhLw" association="_fqoYYO2VEe2fAM1-AEqhLw"/>
+  </packagedElement>
 </uml:Model>
