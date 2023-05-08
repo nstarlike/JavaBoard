@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_HEEAYO2XEe2fAM1-AEqhLw" name="Statistics">
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_HESp4O2XEe2fAM1-AEqhLw">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Actor" xmi:id="_sR-BcO2XEe2fAM1-AEqhLw" name="Admin"/>
+  <packagedElement xmi:type="uml:UseCase" xmi:id="_tVtWYO2XEe2fAM1-AEqhLw" name="View user access count">
+    <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_X24A0e2YEe2fAM1-AEqhLw" name="ExtensionPoint1"/>
+    <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_pJRVse2YEe2fAM1-AEqhLw" name="ExtensionPoint2"/>
+    <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_5YKJse2ZEe2fAM1-AEqhLw" name="ExtensionPoint3"/>
+    <include xmi:type="uml:Include" xmi:id="_ps0AQO2bEe2fAM1-AEqhLw" addition="_12AcIO2aEe2fAM1-AEqhLw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:UseCase" xmi:id="_xzkBwO2XEe2fAM1-AEqhLw" name="View written post count">
+    <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_pYqxsO2aEe2fAM1-AEqhLw" name="ExtensionPoint1"/>
+    <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_ApX4EO2bEe2fAM1-AEqhLw" name="ExtensionPoint2"/>
+    <include xmi:type="uml:Include" xmi:id="_1VnPYO2bEe2fAM1-AEqhLw" addition="_12AcIO2aEe2fAM1-AEqhLw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:UseCase" xmi:id="_12ZlEO2XEe2fAM1-AEqhLw" name="View written comment count">
+    <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_ySJT0O2aEe2fAM1-AEqhLw" name="ExtensionPoint1"/>
+    <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_H-nnUO2bEe2fAM1-AEqhLw" name="ExtensionPoint2"/>
+    <include xmi:type="uml:Include" xmi:id="_2JN2kO2bEe2fAM1-AEqhLw" addition="_12AcIO2aEe2fAM1-AEqhLw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:UseCase" xmi:id="_3frQAO2XEe2fAM1-AEqhLw" name="View registered user count">
+    <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_V8tvUe2aEe2fAM1-AEqhLw" name="ExtensionPoint1"/>
+    <include xmi:type="uml:Include" xmi:id="_zij9YO2bEe2fAM1-AEqhLw" addition="_12AcIO2aEe2fAM1-AEqhLw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:UseCase" xmi:id="_9NtJ0O2XEe2fAM1-AEqhLw" name="View post view count">
+    <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_awEwoe2aEe2fAM1-AEqhLw" name="ExtensionPoint1"/>
+    <include xmi:type="uml:Include" xmi:id="_0WyPoO2bEe2fAM1-AEqhLw" addition="_12AcIO2aEe2fAM1-AEqhLw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:UseCase" xmi:id="_IS7x0O2YEe2fAM1-AEqhLw" name="Aggregate by date">
+    <extend xmi:type="uml:Extend" xmi:id="_X24A0O2YEe2fAM1-AEqhLw" extendedCase="_tVtWYO2XEe2fAM1-AEqhLw" extensionLocation="_X24A0e2YEe2fAM1-AEqhLw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:UseCase" xmi:id="_unD0EO2YEe2fAM1-AEqhLw" name="Aggregate by user">
+    <extend xmi:type="uml:Extend" xmi:id="_5YKJsO2ZEe2fAM1-AEqhLw" extendedCase="_tVtWYO2XEe2fAM1-AEqhLw" extensionLocation="_5YKJse2ZEe2fAM1-AEqhLw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_9giUUO2ZEe2fAM1-AEqhLw" memberEnd="_9gi7Yu2ZEe2fAM1-AEqhLw _9gi7Y-2ZEe2fAM1-AEqhLw">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_9gi7YO2ZEe2fAM1-AEqhLw" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_9gi7Ye2ZEe2fAM1-AEqhLw" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_9gi7Yu2ZEe2fAM1-AEqhLw" name="view user access count" type="_tVtWYO2XEe2fAM1-AEqhLw" association="_9giUUO2ZEe2fAM1-AEqhLw"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_9gi7Y-2ZEe2fAM1-AEqhLw" name="admin" type="_sR-BcO2XEe2fAM1-AEqhLw" association="_9giUUO2ZEe2fAM1-AEqhLw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_-lntEO2ZEe2fAM1-AEqhLw" memberEnd="_-loUIu2ZEe2fAM1-AEqhLw _-loUI-2ZEe2fAM1-AEqhLw">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_-loUIO2ZEe2fAM1-AEqhLw" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_-loUIe2ZEe2fAM1-AEqhLw" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_-loUIu2ZEe2fAM1-AEqhLw" name="view registered user count" type="_3frQAO2XEe2fAM1-AEqhLw" association="_-lntEO2ZEe2fAM1-AEqhLw"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_-loUI-2ZEe2fAM1-AEqhLw" name="admin" type="_sR-BcO2XEe2fAM1-AEqhLw" association="_-lntEO2ZEe2fAM1-AEqhLw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_BM_X8O2aEe2fAM1-AEqhLw" memberEnd="_BM__Au2aEe2fAM1-AEqhLw _BM__A-2aEe2fAM1-AEqhLw">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_BM__AO2aEe2fAM1-AEqhLw" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_BM__Ae2aEe2fAM1-AEqhLw" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_BM__Au2aEe2fAM1-AEqhLw" name="admin" type="_sR-BcO2XEe2fAM1-AEqhLw" association="_BM_X8O2aEe2fAM1-AEqhLw"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_BM__A-2aEe2fAM1-AEqhLw" name="view post view count" type="_9NtJ0O2XEe2fAM1-AEqhLw" association="_BM_X8O2aEe2fAM1-AEqhLw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_CajXQO2aEe2fAM1-AEqhLw" memberEnd="_CajXQ-2aEe2fAM1-AEqhLw _Caj-UO2aEe2fAM1-AEqhLw">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_CajXQe2aEe2fAM1-AEqhLw" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_CajXQu2aEe2fAM1-AEqhLw" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_CajXQ-2aEe2fAM1-AEqhLw" name="admin" type="_sR-BcO2XEe2fAM1-AEqhLw" association="_CajXQO2aEe2fAM1-AEqhLw"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_Caj-UO2aEe2fAM1-AEqhLw" name="view written post count" type="_xzkBwO2XEe2fAM1-AEqhLw" association="_CajXQO2aEe2fAM1-AEqhLw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_Dr4cQO2aEe2fAM1-AEqhLw" memberEnd="_Dr5DUu2aEe2fAM1-AEqhLw _Dr5DU-2aEe2fAM1-AEqhLw">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Dr5DUO2aEe2fAM1-AEqhLw" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_Dr5DUe2aEe2fAM1-AEqhLw" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_Dr5DUu2aEe2fAM1-AEqhLw" name="admin" type="_sR-BcO2XEe2fAM1-AEqhLw" association="_Dr4cQO2aEe2fAM1-AEqhLw"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_Dr5DU-2aEe2fAM1-AEqhLw" name="view written comment count" type="_12ZlEO2XEe2fAM1-AEqhLw" association="_Dr4cQO2aEe2fAM1-AEqhLw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:UseCase" xmi:id="_GLYkkO2aEe2fAM1-AEqhLw" name="Aggregate by date">
+    <extend xmi:type="uml:Extend" xmi:id="_V8tvUO2aEe2fAM1-AEqhLw" extendedCase="_3frQAO2XEe2fAM1-AEqhLw" extensionLocation="_V8tvUe2aEe2fAM1-AEqhLw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:UseCase" xmi:id="_R0f8wO2aEe2fAM1-AEqhLw" name="Aggregate by date">
+    <extend xmi:type="uml:Extend" xmi:id="_awEwoO2aEe2fAM1-AEqhLw" extendedCase="_9NtJ0O2XEe2fAM1-AEqhLw" extensionLocation="_awEwoe2aEe2fAM1-AEqhLw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:UseCase" xmi:id="_h56hIO2aEe2fAM1-AEqhLw" name="Aggregate by date">
+    <extend xmi:type="uml:Extend" xmi:id="_pYqKoO2aEe2fAM1-AEqhLw" extendedCase="_xzkBwO2XEe2fAM1-AEqhLw" extensionLocation="_pYqxsO2aEe2fAM1-AEqhLw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:UseCase" xmi:id="_tp7ykO2aEe2fAM1-AEqhLw" name="Aggregate by date">
+    <extend xmi:type="uml:Extend" xmi:id="_ySIswO2aEe2fAM1-AEqhLw" extendedCase="_12ZlEO2XEe2fAM1-AEqhLw" extensionLocation="_ySJT0O2aEe2fAM1-AEqhLw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:UseCase" xmi:id="_12AcIO2aEe2fAM1-AEqhLw" name="Authentication"/>
+  <packagedElement xmi:type="uml:Actor" xmi:id="_3TmbgO2aEe2fAM1-AEqhLw" name="Statistics Service"/>
+  <packagedElement xmi:type="uml:UseCase" xmi:id="_990QwO2aEe2fAM1-AEqhLw" name="Aggregate by user">
+    <extend xmi:type="uml:Extend" xmi:id="_ApXRAO2bEe2fAM1-AEqhLw" extendedCase="_xzkBwO2XEe2fAM1-AEqhLw" extensionLocation="_ApX4EO2bEe2fAM1-AEqhLw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:UseCase" xmi:id="_ES4VYO2bEe2fAM1-AEqhLw" name="Aggregate by user">
+    <extend xmi:type="uml:Extend" xmi:id="_H-nAQO2bEe2fAM1-AEqhLw" extendedCase="_12ZlEO2XEe2fAM1-AEqhLw" extensionLocation="_H-nnUO2bEe2fAM1-AEqhLw"/>
+  </packagedElement>
+</uml:Model>
