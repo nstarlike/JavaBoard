@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_9V_x4O2REe2fAM1-AEqhLw" name="Post">
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_9WQQkO2REe2fAM1-AEqhLw">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Actor" xmi:id="_nkeUYO2TEe2fAM1-AEqhLw" name="User"/>
+  <packagedElement xmi:type="uml:Actor" xmi:id="_ordxoO2TEe2fAM1-AEqhLw" name="Authenticated User">
+    <generalization xmi:type="uml:Generalization" xmi:id="_1iV9cO2TEe2fAM1-AEqhLw" general="_nkeUYO2TEe2fAM1-AEqhLw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Actor" xmi:id="_qzl7wO2TEe2fAM1-AEqhLw" name="New user">
+    <generalization xmi:type="uml:Generalization" xmi:id="_zQE_4O2TEe2fAM1-AEqhLw" general="_nkeUYO2TEe2fAM1-AEqhLw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Actor" xmi:id="_r8s44O2TEe2fAM1-AEqhLw" name="Admin"/>
+  <packagedElement xmi:type="uml:UseCase" xmi:id="_6NOYMO2TEe2fAM1-AEqhLw" name="List posts">
+    <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_JkRase2UEe2fAM1-AEqhLw" name="ExtensionPoint1"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:UseCase" xmi:id="_7JwR4O2TEe2fAM1-AEqhLw" name="Search posts">
+    <extend xmi:type="uml:Extend" xmi:id="_JkRasO2UEe2fAM1-AEqhLw" extendedCase="_6NOYMO2TEe2fAM1-AEqhLw" extensionLocation="_JkRase2UEe2fAM1-AEqhLw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:UseCase" xmi:id="_73jzEO2TEe2fAM1-AEqhLw" name="View post"/>
+  <packagedElement xmi:type="uml:UseCase" xmi:id="_-BwZwO2TEe2fAM1-AEqhLw" name="Edit post">
+    <include xmi:type="uml:Include" xmi:id="_hRHqgO2UEe2fAM1-AEqhLw" addition="_DHCRgO2UEe2fAM1-AEqhLw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:UseCase" xmi:id="_-9trsO2TEe2fAM1-AEqhLw" name="Delete post">
+    <include xmi:type="uml:Include" xmi:id="_iHwXkO2UEe2fAM1-AEqhLw" addition="_DHCRgO2UEe2fAM1-AEqhLw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:UseCase" xmi:id="_DHCRgO2UEe2fAM1-AEqhLw" name="Authentication"/>
+  <packagedElement xmi:type="uml:Actor" xmi:id="_D51AYO2UEe2fAM1-AEqhLw" name="Post Service"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_RGen4O2UEe2fAM1-AEqhLw" memberEnd="_RGen4-2UEe2fAM1-AEqhLw _RGfO8O2UEe2fAM1-AEqhLw">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_RGen4e2UEe2fAM1-AEqhLw" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_RGen4u2UEe2fAM1-AEqhLw" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_RGen4-2UEe2fAM1-AEqhLw" name="list posts" type="_6NOYMO2TEe2fAM1-AEqhLw" association="_RGen4O2UEe2fAM1-AEqhLw"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_RGfO8O2UEe2fAM1-AEqhLw" name="new user" type="_qzl7wO2TEe2fAM1-AEqhLw" association="_RGen4O2UEe2fAM1-AEqhLw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_TYDo8O2UEe2fAM1-AEqhLw" memberEnd="_TYDo8-2UEe2fAM1-AEqhLw _TYDo9O2UEe2fAM1-AEqhLw">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_TYDo8e2UEe2fAM1-AEqhLw" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_TYDo8u2UEe2fAM1-AEqhLw" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_TYDo8-2UEe2fAM1-AEqhLw" name="list posts" type="_6NOYMO2TEe2fAM1-AEqhLw" association="_TYDo8O2UEe2fAM1-AEqhLw"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_TYDo9O2UEe2fAM1-AEqhLw" name="authenticated user" type="_ordxoO2TEe2fAM1-AEqhLw" association="_TYDo8O2UEe2fAM1-AEqhLw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_Uc7mUO2UEe2fAM1-AEqhLw" memberEnd="_Uc7mU-2UEe2fAM1-AEqhLw _Uc7mVO2UEe2fAM1-AEqhLw">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Uc7mUe2UEe2fAM1-AEqhLw" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_Uc7mUu2UEe2fAM1-AEqhLw" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_Uc7mU-2UEe2fAM1-AEqhLw" name="list posts" type="_6NOYMO2TEe2fAM1-AEqhLw" association="_Uc7mUO2UEe2fAM1-AEqhLw"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_Uc7mVO2UEe2fAM1-AEqhLw" name="admin" type="_r8s44O2TEe2fAM1-AEqhLw" association="_Uc7mUO2UEe2fAM1-AEqhLw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_VwSroO2UEe2fAM1-AEqhLw" memberEnd="_VwTSsu2UEe2fAM1-AEqhLw _VwTSs-2UEe2fAM1-AEqhLw">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_VwTSsO2UEe2fAM1-AEqhLw" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_VwTSse2UEe2fAM1-AEqhLw" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_VwTSsu2UEe2fAM1-AEqhLw" name="view post" type="_73jzEO2TEe2fAM1-AEqhLw" association="_VwSroO2UEe2fAM1-AEqhLw"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_VwTSs-2UEe2fAM1-AEqhLw" name="new user" type="_qzl7wO2TEe2fAM1-AEqhLw" association="_VwSroO2UEe2fAM1-AEqhLw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_XSeQEO2UEe2fAM1-AEqhLw" memberEnd="_XSe3Iu2UEe2fAM1-AEqhLw _XSe3I-2UEe2fAM1-AEqhLw">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_XSe3IO2UEe2fAM1-AEqhLw" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_XSe3Ie2UEe2fAM1-AEqhLw" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_XSe3Iu2UEe2fAM1-AEqhLw" name="view post" type="_73jzEO2TEe2fAM1-AEqhLw" association="_XSeQEO2UEe2fAM1-AEqhLw"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_XSe3I-2UEe2fAM1-AEqhLw" name="authenticated user" type="_ordxoO2TEe2fAM1-AEqhLw" association="_XSeQEO2UEe2fAM1-AEqhLw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_Yo-wAO2UEe2fAM1-AEqhLw" memberEnd="_Yo_XEu2UEe2fAM1-AEqhLw _Yo_XE-2UEe2fAM1-AEqhLw">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Yo_XEO2UEe2fAM1-AEqhLw" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_Yo_XEe2UEe2fAM1-AEqhLw" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_Yo_XEu2UEe2fAM1-AEqhLw" name="edit post" type="_-BwZwO2TEe2fAM1-AEqhLw" association="_Yo-wAO2UEe2fAM1-AEqhLw"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_Yo_XE-2UEe2fAM1-AEqhLw" name="authenticated user" type="_ordxoO2TEe2fAM1-AEqhLw" association="_Yo-wAO2UEe2fAM1-AEqhLw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_aUmkUO2UEe2fAM1-AEqhLw" memberEnd="_aUmkU-2UEe2fAM1-AEqhLw _aUmkVO2UEe2fAM1-AEqhLw">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_aUmkUe2UEe2fAM1-AEqhLw" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_aUmkUu2UEe2fAM1-AEqhLw" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_aUmkU-2UEe2fAM1-AEqhLw" name="delete post" type="_-9trsO2TEe2fAM1-AEqhLw" association="_aUmkUO2UEe2fAM1-AEqhLw"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_aUmkVO2UEe2fAM1-AEqhLw" name="authenticated user" type="_ordxoO2TEe2fAM1-AEqhLw" association="_aUmkUO2UEe2fAM1-AEqhLw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_bYN9cO2UEe2fAM1-AEqhLw" memberEnd="_bYN9c-2UEe2fAM1-AEqhLw _bYN9dO2UEe2fAM1-AEqhLw">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_bYN9ce2UEe2fAM1-AEqhLw" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_bYN9cu2UEe2fAM1-AEqhLw" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_bYN9c-2UEe2fAM1-AEqhLw" name="view post" type="_73jzEO2TEe2fAM1-AEqhLw" association="_bYN9cO2UEe2fAM1-AEqhLw"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_bYN9dO2UEe2fAM1-AEqhLw" name="admin" type="_r8s44O2TEe2fAM1-AEqhLw" association="_bYN9cO2UEe2fAM1-AEqhLw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_cY0e0O2UEe2fAM1-AEqhLw" memberEnd="_cY1F4O2UEe2fAM1-AEqhLw _cY1F4e2UEe2fAM1-AEqhLw">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_cY0e0e2UEe2fAM1-AEqhLw" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_cY0e0u2UEe2fAM1-AEqhLw" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_cY1F4O2UEe2fAM1-AEqhLw" name="edit post" type="_-BwZwO2TEe2fAM1-AEqhLw" association="_cY0e0O2UEe2fAM1-AEqhLw"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_cY1F4e2UEe2fAM1-AEqhLw" name="admin" type="_r8s44O2TEe2fAM1-AEqhLw" association="_cY0e0O2UEe2fAM1-AEqhLw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_dRX3cO2UEe2fAM1-AEqhLw" memberEnd="_dRX3c-2UEe2fAM1-AEqhLw _dRX3dO2UEe2fAM1-AEqhLw">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_dRX3ce2UEe2fAM1-AEqhLw" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_dRX3cu2UEe2fAM1-AEqhLw" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_dRX3c-2UEe2fAM1-AEqhLw" name="delete post" type="_-9trsO2TEe2fAM1-AEqhLw" association="_dRX3cO2UEe2fAM1-AEqhLw"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_dRX3dO2UEe2fAM1-AEqhLw" name="admin" type="_r8s44O2TEe2fAM1-AEqhLw" association="_dRX3cO2UEe2fAM1-AEqhLw"/>
+  </packagedElement>
+</uml:Model>
