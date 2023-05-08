@@ -29,6 +29,11 @@
 		<artifactId>spring-webmvc</artifactId>
 		<version>${org.springframework.version}</version>
 	</dependency>
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-jdbc</artifactId>
+		<version>${org.springframework.version}</version>
+	</dependency>
 	
 	<dependency>
 		<groupId>javax.servlet</groupId>
@@ -45,6 +50,11 @@
 		<groupId>org.glassfish.web</groupId>
 		<artifactId>jakarta.servlet.jsp.jstl</artifactId>
 		<version>2.0.0</version>
+	</dependency>
+	<dependency>
+		<groupId>com.oracle.database.jdbc</groupId>
+		<artifactId>ojdbc10</artifactId>
+		<version>19.18.0.0</version>
 	</dependency>
 	<dependency>
 		<groupId>org.apache.commons</groupId>
@@ -69,9 +79,9 @@
 		<scope>test</scope>
 	</dependency>
 	<dependency>
-		<groupId>junit</groupId>
-		<artifactId>junit</artifactId>
-		<version>4.13.2</version>
+		<groupId>org.junit.jupiter</groupId>
+		<artifactId>junit-jupiter</artifactId>
+		<version>5.6.0</version>
 		<scope>test</scope>
 	</dependency>
 </dependencies>
