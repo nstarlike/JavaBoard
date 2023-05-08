@@ -22,7 +22,7 @@ public class UserRepository implements UserDao {
 	}
 
 	@Override
-	public User readByUserId(String userId) {
+	public User readByUserId(Long userId) {
 		return sqlSession.selectOne(MAPPER + "readByUserId");
 	}
 

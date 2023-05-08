@@ -6,7 +6,7 @@ import nstarlike.jcw.model.User;
 
 public interface UserDao {
 	public List<User> readAll();
-	public User readByUserId(String userId);
+	public User readByUserId(Long userId);
 	public User readByLoginId(String loginId);
 	public User readByEmail(String email);
 	public int create(User user);
