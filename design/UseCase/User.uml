@@ -15,6 +15,7 @@
     <ownedEnd xmi:type="uml:Property" xmi:id="_gSFNMO2FEe2fAM1-AEqhLw" name="new user" type="_UEsqUO2FEe2fAM1-AEqhLw" association="_gSEmIO2FEe2fAM1-AEqhLw"/>
   </packagedElement>
   <packagedElement xmi:type="uml:UseCase" xmi:id="_sDvdYO2FEe2fAM1-AEqhLw" name="List Users">
+    <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_W32mEO2TEe2fAM1-AEqhLw" name="ExtensionPoint2"/>
     <include xmi:type="uml:Include" xmi:id="_JNEkAO2GEe2fAM1-AEqhLw" addition="_DnSnQO2GEe2fAM1-AEqhLw"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Association" xmi:id="_x_-yUO2FEe2fAM1-AEqhLw" memberEnd="_x__ZYu2FEe2fAM1-AEqhLw _x__ZY-2FEe2fAM1-AEqhLw">
@@ -55,5 +56,8 @@
     </eAnnotations>
     <ownedEnd xmi:type="uml:Property" xmi:id="_jlaww-2GEe2fAM1-AEqhLw" name="admin" type="_UEsqUO2FEe2fAM1-AEqhLw" association="_jlawwO2GEe2fAM1-AEqhLw"/>
     <ownedEnd xmi:type="uml:Property" xmi:id="_jlawxO2GEe2fAM1-AEqhLw" name="unregister user" type="_8No5IO2FEe2fAM1-AEqhLw" association="_jlawwO2GEe2fAM1-AEqhLw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:UseCase" xmi:id="_UTX3IO2TEe2fAM1-AEqhLw" name="Search Users">
+    <extend xmi:type="uml:Extend" xmi:id="_W31_AO2TEe2fAM1-AEqhLw" extendedCase="_sDvdYO2FEe2fAM1-AEqhLw" extensionLocation="_W32mEO2TEe2fAM1-AEqhLw"/>
   </packagedElement>
 </uml:Model>
