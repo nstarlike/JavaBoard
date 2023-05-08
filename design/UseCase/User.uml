@@ -35,13 +35,6 @@
   </packagedElement>
   <packagedElement xmi:type="uml:UseCase" xmi:id="_DnSnQO2GEe2fAM1-AEqhLw" name="Authentication"/>
   <packagedElement xmi:type="uml:Actor" xmi:id="_TfAt4O2GEe2fAM1-AEqhLw" name="User Service"/>
-  <packagedElement xmi:type="uml:Association" xmi:id="_a9gfwO2GEe2fAM1-AEqhLw" memberEnd="_a9gfw-2GEe2fAM1-AEqhLw _a9gfxO2GEe2fAM1-AEqhLw">
-    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_a9gfwe2GEe2fAM1-AEqhLw" source="org.eclipse.papyrus">
-      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_a9gfwu2GEe2fAM1-AEqhLw" key="nature" value="UML_Nature"/>
-    </eAnnotations>
-    <ownedEnd xmi:type="uml:Property" xmi:id="_a9gfw-2GEe2fAM1-AEqhLw" name="user service" type="_0wA0gO2GEe2fAM1-AEqhLw" association="_a9gfwO2GEe2fAM1-AEqhLw"/>
-    <ownedEnd xmi:type="uml:Property" xmi:id="_a9gfxO2GEe2fAM1-AEqhLw" name="authentication" type="_DnSnQO2GEe2fAM1-AEqhLw" association="_a9gfwO2GEe2fAM1-AEqhLw"/>
-  </packagedElement>
   <packagedElement xmi:type="uml:Association" xmi:id="_gQh4kO2GEe2fAM1-AEqhLw" memberEnd="_gQh4k-2GEe2fAM1-AEqhLw _gQifoO2GEe2fAM1-AEqhLw">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_gQh4ke2GEe2fAM1-AEqhLw" source="org.eclipse.papyrus">
       <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_gQh4ku2GEe2fAM1-AEqhLw" key="nature" value="UML_Nature"/>
@@ -63,40 +56,4 @@
     <ownedEnd xmi:type="uml:Property" xmi:id="_jlaww-2GEe2fAM1-AEqhLw" name="admin" type="_UEsqUO2FEe2fAM1-AEqhLw" association="_jlawwO2GEe2fAM1-AEqhLw"/>
     <ownedEnd xmi:type="uml:Property" xmi:id="_jlawxO2GEe2fAM1-AEqhLw" name="unregister user" type="_8No5IO2FEe2fAM1-AEqhLw" association="_jlawwO2GEe2fAM1-AEqhLw"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:Association" xmi:id="_pGRKMO2GEe2fAM1-AEqhLw" memberEnd="_pGRxQu2GEe2fAM1-AEqhLw _pGSYUO2GEe2fAM1-AEqhLw">
-    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_pGRxQO2GEe2fAM1-AEqhLw" source="org.eclipse.papyrus">
-      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_pGRxQe2GEe2fAM1-AEqhLw" key="nature" value="UML_Nature"/>
-    </eAnnotations>
-    <ownedEnd xmi:type="uml:Property" xmi:id="_pGRxQu2GEe2fAM1-AEqhLw" name="list users" type="_sDvdYO2FEe2fAM1-AEqhLw" association="_pGRKMO2GEe2fAM1-AEqhLw"/>
-    <ownedEnd xmi:type="uml:Property" xmi:id="_pGSYUO2GEe2fAM1-AEqhLw" name="user service" type="_TfAt4O2GEe2fAM1-AEqhLw" association="_pGRKMO2GEe2fAM1-AEqhLw"/>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Association" xmi:id="_qqQFcO2GEe2fAM1-AEqhLw" memberEnd="_qqQFc-2GEe2fAM1-AEqhLw _qqQFdO2GEe2fAM1-AEqhLw">
-    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_qqQFce2GEe2fAM1-AEqhLw" source="org.eclipse.papyrus">
-      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_qqQFcu2GEe2fAM1-AEqhLw" key="nature" value="UML_Nature"/>
-    </eAnnotations>
-    <ownedEnd xmi:type="uml:Property" xmi:id="_qqQFc-2GEe2fAM1-AEqhLw" name="register user" type="_CIzsgO2FEe2fAM1-AEqhLw" association="_qqQFcO2GEe2fAM1-AEqhLw"/>
-    <ownedEnd xmi:type="uml:Property" xmi:id="_qqQFdO2GEe2fAM1-AEqhLw" type="_TfAt4O2GEe2fAM1-AEqhLw" association="_qqQFcO2GEe2fAM1-AEqhLw"/>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Association" xmi:id="_uPH6YO2GEe2fAM1-AEqhLw" memberEnd="_uPH6Y-2GEe2fAM1-AEqhLw _uPH6ZO2GEe2fAM1-AEqhLw">
-    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_uPH6Ye2GEe2fAM1-AEqhLw" source="org.eclipse.papyrus">
-      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_uPH6Yu2GEe2fAM1-AEqhLw" key="nature" value="UML_Nature"/>
-    </eAnnotations>
-    <ownedEnd xmi:type="uml:Property" xmi:id="_uPH6Y-2GEe2fAM1-AEqhLw" name="user service" type="_TfAt4O2GEe2fAM1-AEqhLw" association="_uPH6YO2GEe2fAM1-AEqhLw"/>
-    <ownedEnd xmi:type="uml:Property" xmi:id="_uPH6ZO2GEe2fAM1-AEqhLw" name="view user" type="_1597oO2FEe2fAM1-AEqhLw" association="_uPH6YO2GEe2fAM1-AEqhLw"/>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Association" xmi:id="_vraSMO2GEe2fAM1-AEqhLw" memberEnd="_vra5QO2GEe2fAM1-AEqhLw _vra5Qe2GEe2fAM1-AEqhLw">
-    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_vraSMe2GEe2fAM1-AEqhLw" source="org.eclipse.papyrus">
-      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_vraSMu2GEe2fAM1-AEqhLw" key="nature" value="UML_Nature"/>
-    </eAnnotations>
-    <ownedEnd xmi:type="uml:Property" xmi:id="_vra5QO2GEe2fAM1-AEqhLw" name="user service" type="_TfAt4O2GEe2fAM1-AEqhLw" association="_vraSMO2GEe2fAM1-AEqhLw"/>
-    <ownedEnd xmi:type="uml:Property" xmi:id="_vra5Qe2GEe2fAM1-AEqhLw" name="edit user" type="_3eELoO2FEe2fAM1-AEqhLw" association="_vraSMO2GEe2fAM1-AEqhLw"/>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Association" xmi:id="_w-m_cO2GEe2fAM1-AEqhLw" memberEnd="_w-nmgu2GEe2fAM1-AEqhLw _w-nmg-2GEe2fAM1-AEqhLw">
-    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_w-nmgO2GEe2fAM1-AEqhLw" source="org.eclipse.papyrus">
-      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_w-nmge2GEe2fAM1-AEqhLw" key="nature" value="UML_Nature"/>
-    </eAnnotations>
-    <ownedEnd xmi:type="uml:Property" xmi:id="_w-nmgu2GEe2fAM1-AEqhLw" name="user service" type="_TfAt4O2GEe2fAM1-AEqhLw" association="_w-m_cO2GEe2fAM1-AEqhLw"/>
-    <ownedEnd xmi:type="uml:Property" xmi:id="_w-nmg-2GEe2fAM1-AEqhLw" name="unregister user" type="_8No5IO2FEe2fAM1-AEqhLw" association="_w-m_cO2GEe2fAM1-AEqhLw"/>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Actor" xmi:id="_0wA0gO2GEe2fAM1-AEqhLw" name="Login Service"/>
 </uml:Model>
