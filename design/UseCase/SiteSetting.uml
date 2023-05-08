@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_f118IO2QEe2fAM1-AEqhLw" name="SiteSetting">
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_f2HB4O2QEe2fAM1-AEqhLw">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Actor" xmi:id="_lK8YkO2QEe2fAM1-AEqhLw" name="Admin"/>
+  <packagedElement xmi:type="uml:UseCase" xmi:id="_mKl3sO2QEe2fAM1-AEqhLw" name="Change title">
+    <include xmi:type="uml:Include" xmi:id="_FcqzgO2REe2fAM1-AEqhLw" addition="_uVIQMO2QEe2fAM1-AEqhLw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:UseCase" xmi:id="_pC790O2QEe2fAM1-AEqhLw" name="Change address">
+    <include xmi:type="uml:Include" xmi:id="_EqxcgO2REe2fAM1-AEqhLw" addition="_uVIQMO2QEe2fAM1-AEqhLw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:UseCase" xmi:id="_qrgeIO2QEe2fAM1-AEqhLw" name="Change email">
+    <include xmi:type="uml:Include" xmi:id="_DoKwAO2REe2fAM1-AEqhLw" addition="_uVIQMO2QEe2fAM1-AEqhLw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:UseCase" xmi:id="_sroi0O2QEe2fAM1-AEqhLw" name="Change company">
+    <include xmi:type="uml:Include" xmi:id="_CzJMgO2REe2fAM1-AEqhLw" addition="_uVIQMO2QEe2fAM1-AEqhLw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:UseCase" xmi:id="_uVIQMO2QEe2fAM1-AEqhLw" name="Authentication"/>
+  <packagedElement xmi:type="uml:Actor" xmi:id="_1zrFYO2QEe2fAM1-AEqhLw" name="SiteSetting Service"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_9ADzkO2QEe2fAM1-AEqhLw" memberEnd="_9ADzk-2QEe2fAM1-AEqhLw _9AEaoO2QEe2fAM1-AEqhLw">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_9ADzke2QEe2fAM1-AEqhLw" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_9ADzku2QEe2fAM1-AEqhLw" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_9ADzk-2QEe2fAM1-AEqhLw" name="change title" type="_mKl3sO2QEe2fAM1-AEqhLw" association="_9ADzkO2QEe2fAM1-AEqhLw"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_9AEaoO2QEe2fAM1-AEqhLw" name="admin" type="_lK8YkO2QEe2fAM1-AEqhLw" association="_9ADzkO2QEe2fAM1-AEqhLw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_99j9oO2QEe2fAM1-AEqhLw" memberEnd="_99kksu2QEe2fAM1-AEqhLw _99kks-2QEe2fAM1-AEqhLw">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_99kksO2QEe2fAM1-AEqhLw" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_99kkse2QEe2fAM1-AEqhLw" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_99kksu2QEe2fAM1-AEqhLw" name="change address" type="_pC790O2QEe2fAM1-AEqhLw" association="_99j9oO2QEe2fAM1-AEqhLw"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_99kks-2QEe2fAM1-AEqhLw" name="admin" type="_lK8YkO2QEe2fAM1-AEqhLw" association="_99j9oO2QEe2fAM1-AEqhLw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_-xMaAO2QEe2fAM1-AEqhLw" memberEnd="_-xMaA-2QEe2fAM1-AEqhLw _-xMaBO2QEe2fAM1-AEqhLw">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_-xMaAe2QEe2fAM1-AEqhLw" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_-xMaAu2QEe2fAM1-AEqhLw" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_-xMaA-2QEe2fAM1-AEqhLw" name="change email" type="_qrgeIO2QEe2fAM1-AEqhLw" association="_-xMaAO2QEe2fAM1-AEqhLw"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_-xMaBO2QEe2fAM1-AEqhLw" name="admin" type="_lK8YkO2QEe2fAM1-AEqhLw" association="_-xMaAO2QEe2fAM1-AEqhLw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_ADAAIO2REe2fAM1-AEqhLw" memberEnd="_ADAAI-2REe2fAM1-AEqhLw _ADAAJO2REe2fAM1-AEqhLw">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_ADAAIe2REe2fAM1-AEqhLw" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_ADAAIu2REe2fAM1-AEqhLw" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_ADAAI-2REe2fAM1-AEqhLw" name="change company" type="_sroi0O2QEe2fAM1-AEqhLw" association="_ADAAIO2REe2fAM1-AEqhLw"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_ADAAJO2REe2fAM1-AEqhLw" name="admin" type="_lK8YkO2QEe2fAM1-AEqhLw" association="_ADAAIO2REe2fAM1-AEqhLw"/>
+  </packagedElement>
+</uml:Model>
