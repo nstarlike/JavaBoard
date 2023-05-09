@@ -121,6 +121,10 @@
       <layoutConstraint xmi:type="notation:Location" xmi:id="_y0OddO2rEe2fAM1-AEqhLw" y="15"/>
     </children>
     <children xmi:type="notation:BasicCompartment" xmi:id="_y0Odde2rEe2fAM1-AEqhLw" type="Class_AttributeCompartment">
+      <children xmi:type="notation:Shape" xmi:id="_-_b6AO5DEe2t5Ypy_7zJfw" type="Property_ClassAttributeLabel">
+        <element xmi:type="uml:Property" href="User.uml#_-Lk0IO5DEe2t5Ypy_7zJfw"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_-_b6Ae5DEe2t5Ypy_7zJfw"/>
+      </children>
       <styles xmi:type="notation:TitleStyle" xmi:id="_y0Oddu2rEe2fAM1-AEqhLw"/>
       <styles xmi:type="notation:SortingStyle" xmi:id="_y0Odd-2rEe2fAM1-AEqhLw"/>
       <styles xmi:type="notation:FilteringStyle" xmi:id="_y0OdeO2rEe2fAM1-AEqhLw"/>

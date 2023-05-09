@@ -76,7 +76,9 @@
       </ownedParameter>
     </ownedOperation>
   </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_y0N2YO2rEe2fAM1-AEqhLw" name="UserRepository"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_y0N2YO2rEe2fAM1-AEqhLw" name="UserRepository">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_-Lk0IO5DEe2t5Ypy_7zJfw" name="sqlSession" visibility="private" type="_9gcMcO5DEe2t5Ypy_7zJfw"/>
+  </packagedElement>
   <packagedElement xmi:type="uml:Realization" xmi:id="_8Pk9kO2rEe2fAM1-AEqhLw" client="_y0N2YO2rEe2fAM1-AEqhLw" supplier="_RPMzIO2hEe2fAM1-AEqhLw"/>
   <packagedElement xmi:type="uml:Interface" xmi:id="_2eZzsO2sEe2fAM1-AEqhLw" name="UserService">
     <ownedOperation xmi:type="uml:Operation" xmi:id="_1gq2wO3FEe2fAM1-AEqhLw" name="getAll">
@@ -191,6 +193,7 @@
   </packagedElement>
   <packagedElement xmi:type="uml:DataType" xmi:id="_RJ-J4O4aEe2t5Ypy_7zJfw" name="Model"/>
   <packagedElement xmi:type="uml:DataType" xmi:id="_gm05cO4aEe2t5Ypy_7zJfw" name="HttpSession"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_9gcMcO5DEe2t5Ypy_7zJfw" name="SqlSessionTemplate"/>
   <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_fm-RUO2eEe2fAM1-AEqhLw">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_fnB7sO2eEe2fAM1-AEqhLw" source="http://www.eclipse.org/uml2/2.0.0/UML">
       <references xmi:type="ecore:EPackage" href="pathmap://PAPYRUS_ACTIONLANGUAGE_PROFILE/ActionLanguage-Profile.profile.uml#_Kv8EIKFXEeS_KNX0nfvIVQ"/>
