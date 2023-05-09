@@ -1,6 +1,7 @@
 package nstarlike.jcw.repository;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +18,7 @@ public class UserRepository implements UserDao {
 	private SqlSessionTemplate sqlSession;
 	
 	@Override
-	public List<User> readAll() {
+	public List<User> readAll(Map<String, String> params) {
 		return sqlSession.selectList(MAPPER + "readAll");
 	}
 
