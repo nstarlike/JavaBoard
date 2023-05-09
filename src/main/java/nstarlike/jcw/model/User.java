@@ -1,19 +1,20 @@
 package nstarlike.jcw.model;
 
 public class User {
-	private Long userId;
+	private Long id;
 	private String loginId;
 	private String password;
 	private String name;
 	private String email;
 	private String registered;
+	private String lastLogged;
 
-	public Long getUserId() {
-		return userId;
+	public Long getId() {
+		return id;
 	}
 
-	public void setUserId(Long userId) {
-		this.userId = userId;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getLoginId() {
@@ -54,6 +55,14 @@ public class User {
 
 	public void setRegistered(String registered) {
 		this.registered = registered;
+	}
+
+	public String getLastLogged() {
+		return lastLogged;
+	}
+
+	public void setLastLogged(String lastLogged) {
+		this.lastLogged = lastLogged;
 	}
 
 }
