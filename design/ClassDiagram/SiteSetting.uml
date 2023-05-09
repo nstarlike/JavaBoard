@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_CgPo8O4xEe2t5Ypy_7zJfw" name="SiteSetting">
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_CglAIO4xEe2t5Ypy_7zJfw">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Class" xmi:id="_GPbQcO4xEe2t5Ypy_7zJfw" name="Setting">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_gehakO4xEe2t5Ypy_7zJfw" name="key" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_D9afoO4zEe2t5Ypy_7zJfw" name="value" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_KHuFwO4zEe2t5Ypy_7zJfw" name="active" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+    </ownedAttribute>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_OZmKoO4zEe2t5Ypy_7zJfw" name="GettterSetters"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_T7YYMO4zEe2t5Ypy_7zJfw" name="SettingDao">
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_qAB7IO4zEe2t5Ypy_7zJfw" name="readAll">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_qAB7Ie4zEe2t5Ypy_7zJfw" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEList"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_y6tXIO4zEe2t5Ypy_7zJfw" name="readBySettingKey">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_y6tXIe4zEe2t5Ypy_7zJfw" name="key">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_y6tXIu4zEe2t5Ypy_7zJfw" type="_GPbQcO4xEe2t5Ypy_7zJfw" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_LU7DQO40Ee2t5Ypy_7zJfw" name="update">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_LU7DQe40Ee2t5Ypy_7zJfw" name="setting" type="_GPbQcO4xEe2t5Ypy_7zJfw"/>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_LU7DQu40Ee2t5Ypy_7zJfw" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_YixkoO40Ee2t5Ypy_7zJfw" name="activate">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_Yixkoe40Ee2t5Ypy_7zJfw" name="active">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_Yixkou40Ee2t5Ypy_7zJfw" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+      </ownedParameter>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_eIiTQO40Ee2t5Ypy_7zJfw" name="SettingRepository">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_w6fWYO40Ee2t5Ypy_7zJfw" name="sqlSession" visibility="private" type="_tekCEO40Ee2t5Ypy_7zJfw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Realization" xmi:id="_eIyx8O40Ee2t5Ypy_7zJfw" client="_eIiTQO40Ee2t5Ypy_7zJfw" supplier="_T7YYMO4zEe2t5Ypy_7zJfw"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_tekCEO40Ee2t5Ypy_7zJfw" name="SqlSessionTemplate"/>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_zquCUO40Ee2t5Ypy_7zJfw" name="SettingService">
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_1nSnQO41Ee2t5Ypy_7zJfw" name="listAll">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_1nSnQe41Ee2t5Ypy_7zJfw" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEList"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_9l41gO41Ee2t5Ypy_7zJfw" name="update">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_9l41ge41Ee2t5Ypy_7zJfw" name="setting" type="_GPbQcO4xEe2t5Ypy_7zJfw"/>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_9l41gu41Ee2t5Ypy_7zJfw" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_Cp7XIO42Ee2t5Ypy_7zJfw" name="activate">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_Cp7XIe42Ee2t5Ypy_7zJfw" name="setting" type="_GPbQcO4xEe2t5Ypy_7zJfw"/>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_IY9WgO42Ee2t5Ypy_7zJfw" name="SettingServiceImpl">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_NmdWIu42Ee2t5Ypy_7zJfw" name="settingDao" visibility="private" type="_T7YYMO4zEe2t5Ypy_7zJfw" association="_NmcvEO42Ee2t5Ypy_7zJfw">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_NmdWI-42Ee2t5Ypy_7zJfw"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_NmdWJO42Ee2t5Ypy_7zJfw" value="1"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Realization" xmi:id="_IZSGoO42Ee2t5Ypy_7zJfw" client="_IY9WgO42Ee2t5Ypy_7zJfw" supplier="_zquCUO40Ee2t5Ypy_7zJfw"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_NmcvEO42Ee2t5Ypy_7zJfw" memberEnd="_NmdWIu42Ee2t5Ypy_7zJfw _NmdWJe42Ee2t5Ypy_7zJfw">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_NmdWIO42Ee2t5Ypy_7zJfw" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_NmdWIe42Ee2t5Ypy_7zJfw" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_NmdWJe42Ee2t5Ypy_7zJfw" name="settingserviceimpl" type="_IY9WgO42Ee2t5Ypy_7zJfw" association="_NmcvEO42Ee2t5Ypy_7zJfw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_O-ZZcO42Ee2t5Ypy_7zJfw" name="SettingController">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_Q_w0Qu42Ee2t5Ypy_7zJfw" name="settingService" visibility="private" type="_zquCUO40Ee2t5Ypy_7zJfw" association="_Q_wNMO42Ee2t5Ypy_7zJfw">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Q_w0Q-42Ee2t5Ypy_7zJfw"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Q_w0RO42Ee2t5Ypy_7zJfw" value="1"/>
+    </ownedAttribute>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_EUnlEO47Ee2t5Ypy_7zJfw" name="listAll">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_EUnlEe47Ee2t5Ypy_7zJfw" name="model" type="_7JnOEO46Ee2t5Ypy_7zJfw"/>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_EUnlEu47Ee2t5Ypy_7zJfw" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_gZb6sO47Ee2t5Ypy_7zJfw" name="updateProc">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_gZb6se47Ee2t5Ypy_7zJfw" name="form">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EMap"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_gZb6su47Ee2t5Ypy_7zJfw" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_YCZ28O4-Ee2t5Ypy_7zJfw" name="activateProc">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_YCZ28e4-Ee2t5Ypy_7zJfw" name="key">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_YCZ28u4-Ee2t5Ypy_7zJfw" name="active">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_YCZ28-4-Ee2t5Ypy_7zJfw" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedParameter>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_Q_wNMO42Ee2t5Ypy_7zJfw" memberEnd="_Q_w0Qu42Ee2t5Ypy_7zJfw _Q_w0Re42Ee2t5Ypy_7zJfw">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Q_w0QO42Ee2t5Ypy_7zJfw" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_Q_w0Qe42Ee2t5Ypy_7zJfw" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_Q_w0Re42Ee2t5Ypy_7zJfw" name="settingcontroller" type="_O-ZZcO42Ee2t5Ypy_7zJfw" association="_Q_wNMO42Ee2t5Ypy_7zJfw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_7JnOEO46Ee2t5Ypy_7zJfw" name="Model"/>
+  <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_YQ7HAO4xEe2t5Ypy_7zJfw">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_YQ_YcO4xEe2t5Ypy_7zJfw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+      <references xmi:type="ecore:EPackage" href="pathmap://PAPYRUS_ACTIONLANGUAGE_PROFILE/ActionLanguage-Profile.profile.uml#_Kv8EIKFXEeS_KNX0nfvIVQ"/>
+    </eAnnotations>
+    <appliedProfile xmi:type="uml:Profile" href="pathmap://PAPYRUS_ACTIONLANGUAGE_PROFILE/ActionLanguage-Profile.profile.uml#ActionLanguage"/>
+  </profileApplication>
+</uml:Model>
