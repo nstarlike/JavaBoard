@@ -77,7 +77,7 @@
       </ownedParameter>
     </ownedOperation>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_J8GpcO4kEe2t5Ypy_7zJfw" name="resetPasswordProc">
-      <ownedParameter xmi:type="uml:Parameter" xmi:id="_J8Gpce4kEe2t5Ypy_7zJfw" name="form" direction="return">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_aBK1cO5ZEe2t5Ypy_7zJfw" name="form">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EMap"/>
       </ownedParameter>
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_J8Gpcu4kEe2t5Ypy_7zJfw" name="model" type="_QaX38O4lEe2t5Ypy_7zJfw"/>
