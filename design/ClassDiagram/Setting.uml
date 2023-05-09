@@ -21,7 +21,7 @@
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEList"/>
       </ownedParameter>
     </ownedOperation>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_y6tXIO4zEe2t5Ypy_7zJfw" name="readBySettingKey">
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_y6tXIO4zEe2t5Ypy_7zJfw" name="readByKey">
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_y6tXIe4zEe2t5Ypy_7zJfw" name="key">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
       </ownedParameter>
