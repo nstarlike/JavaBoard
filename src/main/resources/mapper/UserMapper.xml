@@ -1,42 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="nstarlike.jcw.mapper.UserMapper">
-	<select id="readAll" resultType="User">
-	SELECT * FROM USERS
+	<select id="readAll" parameterType="map" resultType="User">
+	SELECT * FROM users
+		<where>
+			<if test="loginId != null">AND login_id LIKE '%#{loginId}%'</if>
+			<if test="name != null">AND name LIKE '%#{name}%'</if>
+			<if test="email != null">AND email LIKE '%#{email}%'</if>
+		</where>
 	</select>
 	
-	<select id="readByUserId" resultType="User">
-	SELECT * FROM USERS
-	WHERE user_id = #{userId}
+	<select id="readById" resultType="User">
+	SELECT * FROM users
+	WHERE user_id = #{id}
 	</select>
 	
 	<select id="readByLoginId" resultType="User">
-	SELECT * FROM USERS
+	SELECT * FROM users
 	WHERE login_id = #{loginId}
 	</select>
 	
 	<select id="readByEmail" resultType="User">
-	SELECT * FROM USERS
+	SELECT * FROM users
 	WHERE email = #{email}
 	</select>
 	
 	<insert id="create" parameterType="User">
-	INSERT INTO USERS(user_id, login_id, password, name, email, created)
-	VALUES(#{userId}, #{loginId}, #{password}, #{name}, #{email}, TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'))
+	INSERT INTO users(user_id, login_id, password, name, email, created)
+	VALUES(#{id}, #{loginId}, #{password}, #{name}, #{email}, TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'))
 	</insert>
 	
 	<update id="update" parameterType="User">
-	UPDATE USERS
+	UPDATE users
 		<set>
-			<if test="user.loginId != null">login_id = #{user.loginId},</if>
-			<if test="user.password != null">password = #{user.password},</if>
-			<if test="user.name != null">name = #{user.name},</if>
-			<if test="user.email != null">email = #{user.email},</if>
+			<if test="user.loginId != null">login_id = #{loginId},</if>
+			<if test="user.password != null">password = #{password},</if>
+			<if test="user.name != null">name = #{name},</if>
+			<if test="user.email != null">email = #{email},</if>
 		</set>
-	WHERE user_id = #{user.userId}
+	WHERE user_id = #{id}
 	</update>
 	
 	<delete id="delete" parameterType="int">
-	DELETE FROM USERS WHERE user_id = #{userId}
+	DELETE FROM users WHERE user_id = #{id}
 	</delete>
 </mapper>
