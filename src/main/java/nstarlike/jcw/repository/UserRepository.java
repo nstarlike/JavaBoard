@@ -22,8 +22,8 @@ public class UserRepository implements UserDao {
 	}
 
 	@Override
-	public User readByUserId(Long userId) {
-		return sqlSession.selectOne(MAPPER + "readByUserId");
+	public User readById(Long id) {
+		return sqlSession.selectOne(MAPPER + "readById");
 	}
 
 	@Override
@@ -47,8 +47,8 @@ public class UserRepository implements UserDao {
 	}
 
 	@Override
-	public int delete(Long userId) {
-		return sqlSession.delete(MAPPER + "delete", userId);
+	public int delete(Long id) {
+		return sqlSession.delete(MAPPER + "delete", id);
 	}
 
 }
