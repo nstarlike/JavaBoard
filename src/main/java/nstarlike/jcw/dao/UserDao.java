@@ -6,10 +6,10 @@ import nstarlike.jcw.model.User;
 
 public interface UserDao {
 	public List<User> readAll();
-	public User readByUserId(Long userId);
+	public User readById(Long id);
 	public User readByLoginId(String loginId);
 	public User readByEmail(String email);
 	public int create(User user);
 	public int update(User user);
-	public int delete(Long userId);
+	public int delete(Long id);
 }
