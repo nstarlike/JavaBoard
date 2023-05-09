@@ -17,7 +17,7 @@
     <include xmi:type="uml:Include" xmi:id="_CzJMgO2REe2fAM1-AEqhLw" addition="_uVIQMO2QEe2fAM1-AEqhLw"/>
   </packagedElement>
   <packagedElement xmi:type="uml:UseCase" xmi:id="_uVIQMO2QEe2fAM1-AEqhLw" name="Authentication"/>
-  <packagedElement xmi:type="uml:Actor" xmi:id="_1zrFYO2QEe2fAM1-AEqhLw" name="SiteSetting Service"/>
+  <packagedElement xmi:type="uml:Actor" xmi:id="_1zrFYO2QEe2fAM1-AEqhLw" name="Setting Service"/>
   <packagedElement xmi:type="uml:Association" xmi:id="_9ADzkO2QEe2fAM1-AEqhLw" memberEnd="_9ADzk-2QEe2fAM1-AEqhLw _9AEaoO2QEe2fAM1-AEqhLw">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_9ADzke2QEe2fAM1-AEqhLw" source="org.eclipse.papyrus">
       <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_9ADzku2QEe2fAM1-AEqhLw" key="nature" value="UML_Nature"/>
