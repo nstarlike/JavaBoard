@@ -1,6 +1,3 @@
-Use UMLet
-* Eclipse Marketplace
-* For Stand-alone, go to <https://www.umlet.com/>
+Use Papyrus.
 
-🐛 Bug in eclipse 2022-12  
-Not showing the diagram tools: Resize eclipse windows. Tada~
+Refer to the url <https://www.eclipse.org/papyrus/>.
