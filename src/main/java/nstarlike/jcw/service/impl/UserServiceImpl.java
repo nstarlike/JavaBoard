@@ -1,9 +1,10 @@
 package nstarlike.jcw.service.impl;
 
 import java.util.List;
+import java.util.Map;
 
-import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import nstarlike.jcw.dao.UserDao;
 import nstarlike.jcw.model.User;
@@ -15,8 +16,8 @@ public class UserServiceImpl implements UserService {
 	private UserDao userDao;
 	
 	@Override
-	public List<User> getAll() {
-		return userDao.readAll();
+	public List<User> getAll(Map<String, String> params) {
+		return userDao.readAll(params);
 	}
 
 	@Override
