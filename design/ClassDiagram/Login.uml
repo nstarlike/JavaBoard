@@ -15,10 +15,10 @@
   <packagedElement xmi:type="uml:Package" xmi:id="_8HoJwO4fEe2t5Ypy_7zJfw" name="User">
     <packagedElement xmi:type="uml:Interface" xmi:id="_tIcNoO4fEe2t5Ypy_7zJfw" name="UserDetails"/>
     <packagedElement xmi:type="uml:Class" xmi:id="_1KNrsO4fEe2t5Ypy_7zJfw" name="UserDetailsImpl"/>
-    <packagedElement xmi:type="uml:Class" xmi:id="_3b1wEO4fEe2t5Ypy_7zJfw" name="UserRepository"/>
+    <packagedElement xmi:type="uml:Interface" xmi:id="_kB0u8O5BEe2t5Ypy_7zJfw" name="UserDao"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_Bl030O4gEe2t5Ypy_7zJfw" name="UserDetailsServiceImpl">
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_Hh0VIu4gEe2t5Ypy_7zJfw" name="userrepository" type="_3b1wEO4fEe2t5Ypy_7zJfw" association="_HhzuEO4gEe2t5Ypy_7zJfw">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_Hh0VIu4gEe2t5Ypy_7zJfw" name="userDao" visibility="private" type="_kB0u8O5BEe2t5Ypy_7zJfw" association="_HhzuEO4gEe2t5Ypy_7zJfw">
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Hh0VI-4gEe2t5Ypy_7zJfw"/>
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Hh0VJO4gEe2t5Ypy_7zJfw" value="1"/>
     </ownedAttribute>
@@ -30,7 +30,7 @@
     <ownedEnd xmi:type="uml:Property" xmi:id="_Hh08MO4gEe2t5Ypy_7zJfw" name="userdetailsserviceimpl" type="_Bl030O4gEe2t5Ypy_7zJfw" association="_HhzuEO4gEe2t5Ypy_7zJfw"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_MTmpIO4gEe2t5Ypy_7zJfw" name="LoginController">
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_SMB1E-4gEe2t5Ypy_7zJfw" name="userdetailsserviceimpl" type="_Bl030O4gEe2t5Ypy_7zJfw" association="_SMB1EO4gEe2t5Ypy_7zJfw">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_SMB1E-4gEe2t5Ypy_7zJfw" name="userDetailsService" visibility="private" type="_RQRM4O4fEe2t5Ypy_7zJfw" association="_SMB1EO4gEe2t5Ypy_7zJfw">
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_SMDDMO4gEe2t5Ypy_7zJfw"/>
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_SMERUO4gEe2t5Ypy_7zJfw" value="1"/>
     </ownedAttribute>
