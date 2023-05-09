@@ -20,8 +20,8 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public User getByUserId(Long userId) {
-		return userDao.readByUserId(userId);
+	public User getById(Long id) {
+		return userDao.readById(id);
 	}
 
 	@Override
@@ -45,8 +45,8 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public int delete(Long userId) {
-		return userDao.delete(userId);
+	public int delete(Long id) {
+		return userDao.delete(id);
 	}
 
 }
