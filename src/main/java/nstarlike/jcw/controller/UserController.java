@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.ui.Model;
 
 import nstarlike.jcw.model.User;
@@ -21,6 +22,9 @@ public class UserController {
 	private static final String PREFIX = "/user/";
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 	
 	@GetMapping("/mypage")
 	public String mypage(HttpSession httpSession, Model model) {
@@ -35,7 +39,7 @@ public class UserController {
 		User user = new User();
 		user.setId((long)httpSession.getAttribute(SessionConstants.USER_ID));
 		user.setLoginId((String)form.get("loginId"));
-		user.setPassword((String)form.get("password"));
+		user.setPassword(passwordEncoder.encode((String)form.get("password")));
 		user.setName((String)form.get("name"));
 		user.setEmail((String)form.get("email"));
 		
@@ -53,7 +57,7 @@ public class UserController {
 	public String registerProc(Map<String, Object> form, Model model) {
 		User user = new User();
 		user.setLoginId((String)form.get("loginId"));
-		user.setPassword((String)form.get("password"));
+		user.setPassword(passwordEncoder.encode((String)form.get("password")));
 		user.setName((String)form.get("name"));
 		user.setEmail((String)form.get("email"));
 		
