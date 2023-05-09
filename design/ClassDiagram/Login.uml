@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_01aV0O4eEe2t5Ypy_7zJfw" name="Login">
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_02AywO4eEe2t5Ypy_7zJfw">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_RQRM4O4fEe2t5Ypy_7zJfw" name="UserDetailsService">
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_YKo-AO4fEe2t5Ypy_7zJfw" name="loadUserByUsername">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_YKo-Ae4fEe2t5Ypy_7zJfw" name="username">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_n6csgO4kEe2t5Ypy_7zJfw" type="_tIcNoO4fEe2t5Ypy_7zJfw" direction="return"/>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Realization" xmi:id="_1Kf_kO4fEe2t5Ypy_7zJfw" client="_1KNrsO4fEe2t5Ypy_7zJfw" supplier="_tIcNoO4fEe2t5Ypy_7zJfw"/>
+  <packagedElement xmi:type="uml:Package" xmi:id="_8HoJwO4fEe2t5Ypy_7zJfw" name="User">
+    <packagedElement xmi:type="uml:Interface" xmi:id="_tIcNoO4fEe2t5Ypy_7zJfw" name="UserDetails"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_1KNrsO4fEe2t5Ypy_7zJfw" name="UserDetailsImpl"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_3b1wEO4fEe2t5Ypy_7zJfw" name="UserRepository"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_Bl030O4gEe2t5Ypy_7zJfw" name="UserDetailsServiceImpl">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_Hh0VIu4gEe2t5Ypy_7zJfw" name="userrepository" type="_3b1wEO4fEe2t5Ypy_7zJfw" association="_HhzuEO4gEe2t5Ypy_7zJfw">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Hh0VI-4gEe2t5Ypy_7zJfw"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Hh0VJO4gEe2t5Ypy_7zJfw" value="1"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_HhzuEO4gEe2t5Ypy_7zJfw" memberEnd="_Hh0VIu4gEe2t5Ypy_7zJfw _Hh08MO4gEe2t5Ypy_7zJfw">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Hh0VIO4gEe2t5Ypy_7zJfw" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_Hh0VIe4gEe2t5Ypy_7zJfw" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_Hh08MO4gEe2t5Ypy_7zJfw" name="userdetailsserviceimpl" type="_Bl030O4gEe2t5Ypy_7zJfw" association="_HhzuEO4gEe2t5Ypy_7zJfw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_MTmpIO4gEe2t5Ypy_7zJfw" name="LoginController">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_SMB1E-4gEe2t5Ypy_7zJfw" name="userdetailsserviceimpl" type="_Bl030O4gEe2t5Ypy_7zJfw" association="_SMB1EO4gEe2t5Ypy_7zJfw">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_SMDDMO4gEe2t5Ypy_7zJfw"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_SMERUO4gEe2t5Ypy_7zJfw" value="1"/>
+    </ownedAttribute>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_5I3nsO4hEe2t5Ypy_7zJfw" name="login">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_LxvnUO4iEe2t5Ypy_7zJfw" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_Iwk8YO4iEe2t5Ypy_7zJfw" name="loginProc">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_Iwk8Ye4iEe2t5Ypy_7zJfw" name="form">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EMap"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_Iwk8Yu4iEe2t5Ypy_7zJfw" name="model">
+        <type xmi:type="uml:DataType" href="User.uml#_RJ-J4O4aEe2t5Ypy_7zJfw"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_Iwk8Y-4iEe2t5Ypy_7zJfw" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_bgYN8O4jEe2t5Ypy_7zJfw" name="logoutProc">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_bgYN8e4jEe2t5Ypy_7zJfw" name="httpSession" type="_NCFtgO4lEe2t5Ypy_7zJfw"/>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_bgYN8u4jEe2t5Ypy_7zJfw" name="model" type="_QaX38O4lEe2t5Ypy_7zJfw"/>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_bgYN8-4jEe2t5Ypy_7zJfw" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_ltxPAO4jEe2t5Ypy_7zJfw" name="searchLoginId">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_ltxPAe4jEe2t5Ypy_7zJfw" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_zwbRcO4jEe2t5Ypy_7zJfw" name="searchLoginIdProc">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_zwbRce4jEe2t5Ypy_7zJfw" name="form">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EMap"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_zwbRcu4jEe2t5Ypy_7zJfw" name="model" type="_QaX38O4lEe2t5Ypy_7zJfw"/>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_zwbRc-4jEe2t5Ypy_7zJfw" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="__RlAcO4jEe2t5Ypy_7zJfw" name="resetPassword">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="__RlAce4jEe2t5Ypy_7zJfw" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_J8GpcO4kEe2t5Ypy_7zJfw" name="resetPasswordProc">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_J8Gpce4kEe2t5Ypy_7zJfw" name="form" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EMap"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_J8Gpcu4kEe2t5Ypy_7zJfw" name="model" type="_QaX38O4lEe2t5Ypy_7zJfw"/>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_J8Gpc-4kEe2t5Ypy_7zJfw" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedParameter>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_SMB1EO4gEe2t5Ypy_7zJfw" memberEnd="_SMB1E-4gEe2t5Ypy_7zJfw _SMFfcO4gEe2t5Ypy_7zJfw">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_SMB1Ee4gEe2t5Ypy_7zJfw" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_SMB1Eu4gEe2t5Ypy_7zJfw" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_SMFfcO4gEe2t5Ypy_7zJfw" name="logincontroller" type="_MTmpIO4gEe2t5Ypy_7zJfw" association="_SMB1EO4gEe2t5Ypy_7zJfw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Realization" xmi:id="_chxg4O4gEe2t5Ypy_7zJfw" client="_Bl030O4gEe2t5Ypy_7zJfw" supplier="_RQRM4O4fEe2t5Ypy_7zJfw"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_NCFtgO4lEe2t5Ypy_7zJfw" name="HttpSession"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_QaX38O4lEe2t5Ypy_7zJfw" name="Model"/>
+</uml:Model>
