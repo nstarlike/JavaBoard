@@ -19,22 +19,22 @@ public class UserRepository implements UserDao {
 	
 	@Override
 	public List<User> readAll(Map<String, String> params) {
-		return sqlSession.selectList(MAPPER + "readAll");
+		return sqlSession.selectList(MAPPER + "readAll", params);
 	}
 
 	@Override
 	public User readById(Long id) {
-		return sqlSession.selectOne(MAPPER + "readById");
+		return sqlSession.selectOne(MAPPER + "readById", id);
 	}
 
 	@Override
 	public User readByLoginId(String loginId) {
-		return sqlSession.selectOne(MAPPER + "readByLoginId");
+		return sqlSession.selectOne(MAPPER + "readByLoginId", loginId);
 	}
 
 	@Override
 	public User readByEmail(String email) {
-		return sqlSession.selectOne(MAPPER + "readByEmail");
+		return sqlSession.selectOne(MAPPER + "readByEmail", email);
 	}
 
 	@Override
