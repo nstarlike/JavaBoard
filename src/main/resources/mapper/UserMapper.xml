@@ -2,12 +2,21 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="nstarlike.jcw.mapper.UserMapper">
 	<select id="readAll" parameterType="map" resultType="User">
-	SELECT * FROM users
-		<where>
-			<if test="loginId != null">AND login_id LIKE '%#{loginId}%'</if>
-			<if test="name != null">AND name LIKE '%#{name}%'</if>
-			<if test="email != null">AND email LIKE '%#{email}%'</if>
-		</where>
+	SELECT * 
+	FROM (
+		SELECT /*INDEX_DESC(A USERS_PK)*/ ROWNUM AS no, A.* 
+		FROM (
+			SELECT COUNT(*) OVER() AS total, users.* 
+			FROM users
+			<where>
+				<if test="loginId != null">AND login_id LIKE '%#{loginId}%'</if>
+				<if test="name != null">AND name LIKE '%#{name}%'</if>
+				<if test="email != null">AND email LIKE '%#{email}%'</if>
+			</where>
+		) A
+		WHERE ROWNUM <![CDATA[<=]]> #{endNo}
+	)
+	WHERE no <![CDATA[=>]]> #{startNo}
 	</select>
 	
 	<select id="readById" resultType="User">
