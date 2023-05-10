@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="nstarlike.jcw.mapper.UserMapper">
-	<select id="readAll" parameterType="map" resultType="User">
+	<resultMap id="userResultMap" type="User">
+		<id property="id" column="user_id" />
+		<result property="loginId" column="login_id" />
+		<result property="password" column="password" />
+		<result property="name" column="name" />
+		<result property="email" column="email" />
+		<result property="registered" column="registered" />
+		<result property="lastLogged" column="lastLogged" />
+	</resultMap>
+	
+	<select id="readAll" parameterType="map" resultMap="userResultMap">
 	SELECT * 
 	FROM (
 		SELECT /*INDEX_DESC(A USERS_PK)*/ ROWNUM AS no, A.* 
@@ -9,48 +19,48 @@
 			SELECT COUNT(*) OVER() AS total, users.* 
 			FROM users
 			<where>
-				<if test="loginId != null">AND login_id LIKE '%#{loginId}%'</if>
-				<if test="name != null">AND name LIKE '%#{name}%'</if>
-				<if test="email != null">AND email LIKE '%#{email}%'</if>
+				<if test="loginId != null">AND login_id LIKE '%' || #{loginId} || '%'</if>
+				<if test="name != null">AND name LIKE '%' || #{name} || '%'</if>
+				<if test="email != null">AND email LIKE '%' || #{email} || '%'</if>
 			</where>
 		) A
 		WHERE ROWNUM <![CDATA[<=]]> #{endNo}
 	)
-	WHERE no <![CDATA[=>]]> #{startNo}
+	WHERE no <![CDATA[>=]]> #{startNo}
 	</select>
 	
-	<select id="readById" resultType="User">
+	<select id="readById" resultMap="userResultMap">
 	SELECT * FROM users
 	WHERE user_id = #{id}
 	</select>
 	
-	<select id="readByLoginId" resultType="User">
+	<select id="readByLoginId" resultMap="userResultMap">
 	SELECT * FROM users
 	WHERE login_id = #{loginId}
 	</select>
 	
-	<select id="readByEmail" resultType="User">
+	<select id="readByEmail" resultMap="userResultMap">
 	SELECT * FROM users
 	WHERE email = #{email}
 	</select>
 	
 	<insert id="create" parameterType="User">
-	INSERT INTO users(user_id, login_id, password, name, email, created)
-	VALUES(#{id}, #{loginId}, #{password}, #{name}, #{email}, TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'))
+	INSERT INTO users(user_id, login_id, password, name, email, registered)
+	VALUES(USERS_SEQ.NEXTVAL, #{loginId}, #{password}, #{name}, #{email}, TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'))
 	</insert>
 	
 	<update id="update" parameterType="User">
 	UPDATE users
 		<set>
-			<if test="user.loginId != null">login_id = #{loginId},</if>
-			<if test="user.password != null">password = #{password},</if>
-			<if test="user.name != null">name = #{name},</if>
-			<if test="user.email != null">email = #{email},</if>
+			<if test="loginId != null">login_id = #{loginId},</if>
+			<if test="password != null">password = #{password},</if>
+			<if test="name != null">name = #{name},</if>
+			<if test="email != null">email = #{email},</if>
 		</set>
 	WHERE user_id = #{id}
 	</update>
 	
-	<delete id="delete" parameterType="int">
+	<delete id="delete" parameterType="long">
 	DELETE FROM users WHERE user_id = #{id}
 	</delete>
 </mapper>
