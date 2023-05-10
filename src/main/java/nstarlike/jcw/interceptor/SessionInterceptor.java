@@ -10,7 +10,7 @@ public class SessionInterceptor implements HandlerInterceptor {
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception{
 		//for test
-		request.getSession().setAttribute(SessionConstants.USER_ID, "99999999");
+		request.getSession().setAttribute(SessionConstants.USER_ID, 99999999L);
 		
 		return true;
 	}
