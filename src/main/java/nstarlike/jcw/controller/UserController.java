@@ -45,7 +45,10 @@ public class UserController {
 		
 		userService.update(user);
 		
-		return PREFIX + "updateProc";
+		model.addAttribute("alert", "Updated.");
+		model.addAttribute("replace", "mypage");
+		
+		return "common/proc";
 	}
 	
 	@GetMapping("/register")
@@ -63,7 +66,10 @@ public class UserController {
 		
 		userService.create(user);
 		
-		return PREFIX + "registerProc";
+		model.addAttribute("alert", "Registered.");
+		model.addAttribute("replace", "/login");
+		
+		return "common/proc";
 	}
 	
 	@PostMapping("/unregisterProc")
@@ -72,6 +78,9 @@ public class UserController {
 		
 		userService.delete(userId);
 		
-		return PREFIX + "unregisterProc";
+		model.addAttribute("alert", "Unregistered.");
+		model.addAttribute("replace", "/");
+		
+		return "common/proc";
 	}
 }
