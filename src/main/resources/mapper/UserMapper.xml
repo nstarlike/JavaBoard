@@ -52,7 +52,6 @@
 	<update id="update" parameterType="User">
 	UPDATE users
 		<set>
-			<if test="loginId != null">login_id = #{loginId},</if>
 			<if test="password != null">password = #{password},</if>
 			<if test="name != null">name = #{name},</if>
 			<if test="email != null">email = #{email},</if>

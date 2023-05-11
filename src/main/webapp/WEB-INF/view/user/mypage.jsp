@@ -2,6 +2,43 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../common/header.jsp" %>
 
-mypage.jsp
+<form id="mypage-form" method="POST" action="./updateProc">
+	<div class="form-group">
+		<label for="password">Password</label>
+		<input type="password" class="form-control" id="password" name="password" />
+	</div>
+	
+	<div class="form-group">
+		<label for="name">Name</label>
+		<input type="name" class="form-control" id="name" name="name" value="<c:out value="${user.name }" />" />
+	</div>
+	
+	<div class="form-group">
+		<label for="email">Email</label>
+		<input type="email" class="form-control" id="email" name="email" value="<c:out value="${user.email }" />" />
+	</div>
+	
+	<div class="form-group mt-3">
+		<button type="submit" class="btn btn-primary">Submit</button>
+	</div>
+</form>
+
+<script>
+$(document).ready(function(){
+	$("#mypage-form").submit(function(){
+		if($("#name").val() == ""){
+			alert("Enter your name.");
+			$("#name").focus();
+			return false;
+		}
+		
+		if($("#email").val() == ""){
+			alert("Enter your email.");
+			$("#email").focus();
+			return false;
+		}
+	});
+});
+</script>
 
 <%@ include file="../common/footer.jsp" %>

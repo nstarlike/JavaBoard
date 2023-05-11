@@ -37,10 +37,13 @@ public class UserController {
 	
 	@PostMapping("/updateProc")
 	public String updateProc(@RequestParam Map<String, String> form, HttpSession httpSession, Model model) {
+		String password = form.get("password");
+		
 		User user = new User();
 		user.setId((long)httpSession.getAttribute(SessionConstants.USER_ID));
-		user.setLoginId(form.get("loginId"));
-		user.setPassword(passwordEncoder.encode(form.get("password")));
+		if(password != null && !password.isEmpty()) {
+			user.setPassword(passwordEncoder.encode(form.get("password")));
+		}
 		user.setName(form.get("name"));
 		user.setEmail(form.get("email"));
 		
