@@ -25,7 +25,7 @@ Waterfall Development
 * CSS
 <br><br>
 
-## Tools
+## Frameworks, Libraries
 * SpringFramework 6.0.6
 * SpringSecurity 6.0.2
 * JSTL 1.2
