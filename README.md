@@ -30,11 +30,14 @@ Waterfall Development
 * SpringSecurity 6.0.2
 * JSTL 1.2
 * BootStrap 5.3.0-alpha1
-* MyBatis 3.5.13
-* JUnit 4.13.2
-* Mockito 5.2.0
+* MyBatis 3.5.11
+* Common DBCP 2.9.0
+* JUnit 5.6.0
+* Mockito 5.3.1
 * Jasmine 4.6.0
 * Maven 3.8.6
+* SLF4j 1.7.36
+* Log4j 2.20.0
 <br><br>
 
 ## Technologies
