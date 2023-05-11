@@ -20,8 +20,11 @@
 	
 	<div class="form-group mt-3">
 		<button type="submit" class="btn btn-primary">Submit</button>
+		<button type="button" class="btn btn-danger" id="unregister">Unregister</button>
 	</div>
 </form>
+
+<form id="unregister-form" class="d-none" method="POST" action="./unregisterProc"></form>
 
 <script>
 $(document).ready(function(){
@@ -36,6 +39,12 @@ $(document).ready(function(){
 			alert("Enter your email.");
 			$("#email").focus();
 			return false;
+		}
+	});
+	
+	$("#unregister").click(function(){
+		if(confirm("Are you sure to unregister.")){
+			$("#unregister-form").submit();
 		}
 	});
 });
