@@ -19,7 +19,7 @@ import nstarlike.jcw.service.UserService;
 @Controller
 @RequestMapping("/user")
 public class UserController {
-	private static final String PREFIX = "/user/";
+	private static final String PREFIX = "user/";
 	@Autowired
 	private UserService userService;
 	
