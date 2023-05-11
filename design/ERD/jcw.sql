@@ -55,3 +55,7 @@ ALTER TABLE post
 ALTER TABLE user_authority
     ADD CONSTRAINT user_authority_users_fk FOREIGN KEY ( user_id )
         REFERENCES users ( user_id );
+        
+CREATE SEQUENCE users_seq;
+CREATE SEQUENCE post_seq;
+CREATE SEQUENCE comment_seq;

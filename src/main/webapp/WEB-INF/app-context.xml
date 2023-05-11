@@ -6,9 +6,16 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd 
 	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
 	http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+	
 	<context:component-scan base-package="nstarlike.jcw" />
+	
 	<mvc:annotation-driven />
+	
 	<mvc:resources mapping="/resources/**" location="/resources/" />
+	
+	<mvc:interceptors>
+		<bean id="sessionInterceptor" class="nstarlike.jcw.interceptor.SessionInterceptor" />
+	</mvc:interceptors>
 	
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
