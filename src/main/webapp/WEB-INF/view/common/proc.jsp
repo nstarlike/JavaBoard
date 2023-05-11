@@ -12,7 +12,7 @@ alert("<c:out value="${alert}" />");
 </c:if>
 
 <c:if test="${replace != null}">
-location.replace("<c:out value="${replace}" />");
+location.replace("<c:url value="${replace}" />");
 </c:if>
 </script>
 </head>

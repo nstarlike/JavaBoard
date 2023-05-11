@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.ui.Model;
@@ -35,13 +36,13 @@ public class UserController {
 	}
 	
 	@PostMapping("/updateProc")
-	public String updateProc(Map<String, Object> form, HttpSession httpSession, Model model) {
+	public String updateProc(@RequestParam Map<String, String> form, HttpSession httpSession, Model model) {
 		User user = new User();
 		user.setId((long)httpSession.getAttribute(SessionConstants.USER_ID));
-		user.setLoginId((String)form.get("loginId"));
-		user.setPassword(passwordEncoder.encode((String)form.get("password")));
-		user.setName((String)form.get("name"));
-		user.setEmail((String)form.get("email"));
+		user.setLoginId(form.get("loginId"));
+		user.setPassword(passwordEncoder.encode(form.get("password")));
+		user.setName(form.get("name"));
+		user.setEmail(form.get("email"));
 		
 		userService.update(user);
 		
@@ -57,12 +58,12 @@ public class UserController {
 	}
 	
 	@PostMapping("/registerProc")
-	public String registerProc(Map<String, Object> form, Model model) {
+	public String registerProc(@RequestParam Map<String, String> form, Model model) {
 		User user = new User();
-		user.setLoginId((String)form.get("loginId"));
-		user.setPassword(passwordEncoder.encode((String)form.get("password")));
-		user.setName((String)form.get("name"));
-		user.setEmail((String)form.get("email"));
+		user.setLoginId(form.get("loginId"));
+		user.setPassword(passwordEncoder.encode(form.get("password")));
+		user.setName(form.get("name"));
+		user.setEmail(form.get("email"));
 		
 		userService.create(user);
 		
