@@ -11,6 +11,10 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import nstarlike.jcw.model.User;
 
 public class UserPrincipal implements UserDetails {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private User user;
 	
 	public UserPrincipal(User user) {
@@ -26,12 +30,12 @@ public class UserPrincipal implements UserDetails {
 
 	@Override
 	public String getPassword() {
-		return user.getPassword();
+		return (user != null) ? user.getPassword() : null;
 	}
 
 	@Override
 	public String getUsername() {
-		return user.getLoginId();
+		return (user != null) ? user.getLoginId() : null;
 	}
 
 	@Override
@@ -62,7 +66,7 @@ public class UserPrincipal implements UserDetails {
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		if(user != null);
-		sb.append("user=>" + user.toString() + "\n");
+		sb.append("user=>" + user + "\n");
 		sb.append("username=" + getUsername() + ", ");
 		sb.append("password=" + getPassword() + ", ");
 		sb.append("getAuthorities=" + getAuthorities() + ", ");
