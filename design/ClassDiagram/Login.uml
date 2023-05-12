@@ -13,8 +13,6 @@
   </packagedElement>
   <packagedElement xmi:type="uml:Realization" xmi:id="_1Kf_kO4fEe2t5Ypy_7zJfw" client="_1KNrsO4fEe2t5Ypy_7zJfw" supplier="_tIcNoO4fEe2t5Ypy_7zJfw"/>
   <packagedElement xmi:type="uml:Package" xmi:id="_8HoJwO4fEe2t5Ypy_7zJfw" name="User">
-    <packagedElement xmi:type="uml:Interface" xmi:id="_tIcNoO4fEe2t5Ypy_7zJfw" name="UserDetails"/>
-    <packagedElement xmi:type="uml:Class" xmi:id="_1KNrsO4fEe2t5Ypy_7zJfw" name="UserDetailsImpl"/>
     <packagedElement xmi:type="uml:Interface" xmi:id="_kB0u8O5BEe2t5Ypy_7zJfw" name="UserDao"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_Bl030O4gEe2t5Ypy_7zJfw" name="UserDetailsServiceImpl">
@@ -36,24 +34,6 @@
     </ownedAttribute>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_5I3nsO4hEe2t5Ypy_7zJfw" name="login">
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_LxvnUO4iEe2t5Ypy_7zJfw" direction="return">
-        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-      </ownedParameter>
-    </ownedOperation>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_Iwk8YO4iEe2t5Ypy_7zJfw" name="loginProc">
-      <ownedParameter xmi:type="uml:Parameter" xmi:id="_Iwk8Ye4iEe2t5Ypy_7zJfw" name="form">
-        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EMap"/>
-      </ownedParameter>
-      <ownedParameter xmi:type="uml:Parameter" xmi:id="_Iwk8Yu4iEe2t5Ypy_7zJfw" name="model">
-        <type xmi:type="uml:DataType" href="User.uml#_RJ-J4O4aEe2t5Ypy_7zJfw"/>
-      </ownedParameter>
-      <ownedParameter xmi:type="uml:Parameter" xmi:id="_Iwk8Y-4iEe2t5Ypy_7zJfw" direction="return">
-        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-      </ownedParameter>
-    </ownedOperation>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_bgYN8O4jEe2t5Ypy_7zJfw" name="logoutProc">
-      <ownedParameter xmi:type="uml:Parameter" xmi:id="_bgYN8e4jEe2t5Ypy_7zJfw" name="httpSession" type="_NCFtgO4lEe2t5Ypy_7zJfw"/>
-      <ownedParameter xmi:type="uml:Parameter" xmi:id="_bgYN8u4jEe2t5Ypy_7zJfw" name="model" type="_QaX38O4lEe2t5Ypy_7zJfw"/>
-      <ownedParameter xmi:type="uml:Parameter" xmi:id="_bgYN8-4jEe2t5Ypy_7zJfw" direction="return">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
       </ownedParameter>
     </ownedOperation>
@@ -95,4 +75,20 @@
   <packagedElement xmi:type="uml:Realization" xmi:id="_chxg4O4gEe2t5Ypy_7zJfw" client="_Bl030O4gEe2t5Ypy_7zJfw" supplier="_RQRM4O4fEe2t5Ypy_7zJfw"/>
   <packagedElement xmi:type="uml:Class" xmi:id="_NCFtgO4lEe2t5Ypy_7zJfw" name="HttpSession"/>
   <packagedElement xmi:type="uml:Class" xmi:id="_QaX38O4lEe2t5Ypy_7zJfw" name="Model"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_1KNrsO4fEe2t5Ypy_7zJfw" name="UserPrincipal">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_Qbte0PEREe2bz8MVqNXyDw" name="user" visibility="private">
+      <type xmi:type="uml:Class" href="User.uml#_Sv1cQO2dEe2fAM1-AEqhLw"/>
+    </ownedAttribute>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_T2PsAPEREe2bz8MVqNXyDw" name="getUser">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_T2PsAfEREe2bz8MVqNXyDw" direction="return">
+        <type xmi:type="uml:Class" href="User.uml#_Sv1cQO2dEe2fAM1-AEqhLw"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_Ws6-MPEREe2bz8MVqNXyDw" name="toString">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_Ws6-MfEREe2bz8MVqNXyDw" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedParameter>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_tIcNoO4fEe2t5Ypy_7zJfw" name="UserDetails"/>
 </uml:Model>
