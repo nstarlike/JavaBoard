@@ -4,6 +4,9 @@ import java.util.Map;
 
 import jakarta.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,6 +23,8 @@ import nstarlike.jcw.service.UserService;
 @Controller
 @RequestMapping("/user")
 public class UserController {
+	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
+	
 	private static final String PREFIX = "user/";
 	@Autowired
 	private UserService userService;
@@ -29,14 +34,22 @@ public class UserController {
 	
 	@GetMapping("/mypage")
 	public String mypage(HttpSession httpSession, Model model) {
+		logger.debug("start UserController.mypage()");
+		
 		long userId = (long)httpSession.getAttribute(SessionConstants.USER_ID);
 		User user = userService.getById(userId);
+		
+		logger.debug("userId=" + userId + ", user=" + user);
+		
 		model.addAttribute("user", user);
 		return PREFIX + "mypage";
 	}
 	
 	@PostMapping("/updateProc")
 	public String updateProc(@RequestParam Map<String, String> form, HttpSession httpSession, Model model) {
+		logger.debug("start UserController.updateProc()");
+		logger.debug("form=" + form);
+		
 		String password = form.get("password");
 		
 		User user = new User();
@@ -46,6 +59,8 @@ public class UserController {
 		}
 		user.setName(form.get("name"));
 		user.setEmail(form.get("email"));
+		
+		logger.debug("user=" + user);
 		
 		userService.update(user);
 		
@@ -57,16 +72,23 @@ public class UserController {
 	
 	@GetMapping("/register")
 	public String register() {
+		logger.debug("start UserController.register()");
+		
 		return PREFIX + "register";
 	}
 	
 	@PostMapping("/registerProc")
 	public String registerProc(@RequestParam Map<String, String> form, Model model) {
+		logger.debug("start UserController.registerProc()");
+		logger.debug("form=" + form);
+		
 		User user = new User();
 		user.setLoginId(form.get("loginId"));
 		user.setPassword(passwordEncoder.encode(form.get("password")));
 		user.setName(form.get("name"));
 		user.setEmail(form.get("email"));
+		
+		logger.debug("user=" + user);
 		
 		userService.create(user);
 		
@@ -78,7 +100,11 @@ public class UserController {
 	
 	@PostMapping("/unregisterProc")
 	public String unregisterProc(HttpSession httpSession, Model model) {
+		logger.debug("start UserController.unregisterProc()");
+		
 		long userId = (long)httpSession.getAttribute(SessionConstants.USER_ID);
+		
+		logger.debug("userId=" + userId);
 		
 		userService.delete(userId);
 		

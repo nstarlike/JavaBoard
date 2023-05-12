@@ -1,13 +1,9 @@
 package nstarlike.jcw.user;
 
-import static org.junit.jupiter.api.Assertions.fail;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-
-import java.util.HashMap;
-import java.util.Map;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -15,7 +11,8 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
@@ -25,7 +22,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import nstarlike.jcw.controller.UserController;
 import nstarlike.jcw.interceptor.SessionInterceptor;
-import nstarlike.jcw.model.User;
 import nstarlike.jcw.service.UserService;
 
 @ExtendWith(SpringExtension.class)
@@ -36,6 +32,8 @@ import nstarlike.jcw.service.UserService;
 })
 @Transactional
 class UserControllerTest {
+	private static final Logger logger = LoggerFactory.getLogger(UserControllerTest.class);
+	
 	private MockMvc mockMvc;
 	
 	@Mock
@@ -48,7 +46,9 @@ class UserControllerTest {
 	private UserController userController;
 	
 	@BeforeEach
-	public void before() {
+	public void beforeEach() {
+		logger.debug("start beforeEach() in UserControllerTest");
+		
 		MockitoAnnotations.openMocks(this);
 		mockMvc = MockMvcBuilders
 				.standaloneSetup(userController)
@@ -58,11 +58,15 @@ class UserControllerTest {
 	
 	@Test
 	void testMypage() throws Exception{
+		logger.debug("start testMypage() in UserControllerTest");
+		
 		mockMvc.perform(get("/user/mypage")).andExpect(status().isOk());
 	}
 
 	@Test
 	void testUpdateProc() throws Exception {
+		logger.debug("start testUpdateProc() in UserControllerTest");
+		
 		when(passwordEncoder.encode("password")).thenReturn("password");
 		
 		mockMvc.perform(post("/user/updateProc")
@@ -76,11 +80,15 @@ class UserControllerTest {
 
 	@Test
 	void testRegister() throws Exception {
+		logger.debug("start testRegister() in UserControllerTest");
+		
 		mockMvc.perform(get("/user/register")).andExpect(status().isOk());
 	}
 
 	@Test
 	void testRegisterProc() throws Exception {
+		logger.debug("start testRegisterProc() in UserControllerTest");
+		
 		when(passwordEncoder.encode("password")).thenReturn("password");
 		
 		mockMvc.perform(post("/user/registerProc")
@@ -93,6 +101,8 @@ class UserControllerTest {
 
 	@Test
 	void testUnregisterProc() throws Exception {
+		logger.debug("start testUnregisterProc() in UserControllerTest");
+		
 		when(userService.delete(2L)).thenReturn(1);
 		
 		mockMvc.perform(post("/user/unregisterProc")).andExpect(status().isOk());
