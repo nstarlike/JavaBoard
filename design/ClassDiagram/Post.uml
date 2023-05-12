@@ -26,6 +26,11 @@
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
     </ownedAttribute>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_tUW_YO5DEe2t5Ypy_7zJfw" name="GettersSetters"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_XJupEPDcEe2bz8MVqNXyDw" name="toString">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_XJupEfDcEe2bz8MVqNXyDw" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedParameter>
+    </ownedOperation>
   </packagedElement>
   <packagedElement xmi:type="uml:Interface" xmi:id="_vm9UIO5DEe2t5Ypy_7zJfw" name="PostDao">
     <ownedOperation xmi:type="uml:Operation" xmi:id="_i4uRgO5EEe2t5Ypy_7zJfw" name="create">

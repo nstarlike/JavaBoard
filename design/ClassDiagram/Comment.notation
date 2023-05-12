@@ -36,6 +36,10 @@
         <element xmi:type="uml:Operation" href="Comment.uml#_6j2BAO5aEe2t5Ypy_7zJfw"/>
         <layoutConstraint xmi:type="notation:Location" xmi:id="_7mOrE-5aEe2t5Ypy_7zJfw"/>
       </children>
+      <children xmi:type="notation:Shape" xmi:id="_L3TSkPDcEe2bz8MVqNXyDw" type="Operation_ClassOperationLabel">
+        <element xmi:type="uml:Operation" href="Comment.uml#_K6u8oPDcEe2bz8MVqNXyDw"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_L3TSkfDcEe2bz8MVqNXyDw"/>
+      </children>
       <styles xmi:type="notation:TitleStyle" xmi:id="_70XqOe5ZEe2t5Ypy_7zJfw"/>
       <styles xmi:type="notation:SortingStyle" xmi:id="_70XqOu5ZEe2t5Ypy_7zJfw"/>
       <styles xmi:type="notation:FilteringStyle" xmi:id="_70XqO-5ZEe2t5Ypy_7zJfw"/>
