@@ -64,5 +64,18 @@ public class User {
 	public void setLastLogged(String lastLogged) {
 		this.lastLogged = lastLogged;
 	}
+	
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("id=" + id + ",");
+		sb.append("loginId=" + loginId + ",");
+		sb.append("password=" + password + ",");
+		sb.append("name=" + name + ",");
+		sb.append("email=" + email + ",");
+		sb.append("registered=" + registered + ",");
+		sb.append("lastLogged=" + lastLogged + ",");
+		return sb.toString();
+	}
 
 }
