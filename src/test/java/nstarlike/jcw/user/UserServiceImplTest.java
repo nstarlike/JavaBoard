@@ -43,7 +43,7 @@ class UserServiceImplTest {
 		params.put("startNo", "0");
 		params.put("endNo", "10");
 		
-		logger.debug("params for all list=" + params.toString());
+		logger.debug("params for all list=" + params);
 		
 		list = userService.getAll(params);
 		
@@ -62,7 +62,7 @@ class UserServiceImplTest {
 		params.put("name", "name1");
 		params.put("email", "test1@naver.com");
 		
-		logger.debug("params for searched list=" + params.toString());
+		logger.debug("params for searched list=" + params);
 		
 		list = userService.getAll(params);
 		
@@ -85,7 +85,7 @@ class UserServiceImplTest {
 		
 		assertNotNull(user);
 		
-		logger.debug("user=" + user.toString());
+		logger.debug("user=" + user);
 		
 		assertTrue(user.getId() == id);
 	}
@@ -99,7 +99,7 @@ class UserServiceImplTest {
 		
 		assertNotNull(user);
 		
-		logger.debug("user=" + user.toString());
+		logger.debug("user=" + user);
 		
 		assertTrue(user.getLoginId().equals(loginId));
 	}
@@ -113,7 +113,7 @@ class UserServiceImplTest {
 		
 		assertNotNull(user);
 		
-		logger.debug("user=" + user.toString());
+		logger.debug("user=" + user);
 		
 		assertTrue(user.getEmail().equals(email));
 	}
@@ -131,7 +131,7 @@ class UserServiceImplTest {
 		user.setEmail(email);
 		user.setName("name1");
 		
-		logger.debug("user=" + user.toString());
+		logger.debug("user=" + user);
 		
 		int ret = userService.create(user);
 		
@@ -141,7 +141,7 @@ class UserServiceImplTest {
 		
 		assertNotNull(created);
 		
-		logger.debug("created user=" + created.toString());
+		logger.debug("created user=" + created);
 		
 		assertTrue(created.getEmail().equals(email));
 	}
@@ -166,7 +166,7 @@ class UserServiceImplTest {
 		
 		assertNotNull(updated);
 
-		logger.debug("updated user=" + updated.toString());
+		logger.debug("updated user=" + updated);
 		
 		assertTrue(updated.getId() == id);
 		
