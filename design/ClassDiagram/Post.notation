@@ -44,6 +44,10 @@
         <element xmi:type="uml:Operation" href="Post.uml#_tUW_YO5DEe2t5Ypy_7zJfw"/>
         <layoutConstraint xmi:type="notation:Location" xmi:id="_uxP0Je5DEe2t5Ypy_7zJfw"/>
       </children>
+      <children xmi:type="notation:Shape" xmi:id="_Y49yEPDcEe2bz8MVqNXyDw" type="Operation_ClassOperationLabel">
+        <element xmi:type="uml:Operation" href="Post.uml#_XJupEPDcEe2bz8MVqNXyDw"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_Y49yEfDcEe2bz8MVqNXyDw"/>
+      </children>
       <styles xmi:type="notation:TitleStyle" xmi:id="_CnSm--5DEe2t5Ypy_7zJfw"/>
       <styles xmi:type="notation:SortingStyle" xmi:id="_CnSm_O5DEe2t5Ypy_7zJfw"/>
       <styles xmi:type="notation:FilteringStyle" xmi:id="_CnSm_e5DEe2t5Ypy_7zJfw"/>

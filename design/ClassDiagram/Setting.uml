@@ -14,6 +14,11 @@
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
     </ownedAttribute>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_OZmKoO4zEe2t5Ypy_7zJfw" name="GettterSetters"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_e4zNkPDcEe2bz8MVqNXyDw" name="toString">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_e4zNkfDcEe2bz8MVqNXyDw" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedParameter>
+    </ownedOperation>
   </packagedElement>
   <packagedElement xmi:type="uml:Interface" xmi:id="_T7YYMO4zEe2t5Ypy_7zJfw" name="SettingDao">
     <ownedOperation xmi:type="uml:Operation" xmi:id="_qAB7IO4zEe2t5Ypy_7zJfw" name="readAll">

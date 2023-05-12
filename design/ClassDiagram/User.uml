@@ -25,8 +25,12 @@
     <ownedAttribute xmi:type="uml:Property" xmi:id="_YTGwMO2gEe2fAM1-AEqhLw" name="lastLogged" visibility="private">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
     </ownedAttribute>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_wVrvQO4rEe2t5Ypy_7zJfw" name="User"/>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_F_vREO2hEe2fAM1-AEqhLw" name="GettersSetters"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_nBWCAPDcEe2bz8MVqNXyDw" name="toString">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_nBWCAfDcEe2bz8MVqNXyDw" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedParameter>
+    </ownedOperation>
   </packagedElement>
   <packagedElement xmi:type="uml:Interface" xmi:id="_RPMzIO2hEe2fAM1-AEqhLw" name="UserDao">
     <ownedOperation xmi:type="uml:Operation" xmi:id="_A6VoEO2iEe2fAM1-AEqhLw" name="readAll">
