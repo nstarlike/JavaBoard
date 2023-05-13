@@ -65,7 +65,6 @@ public class UserPrincipal implements UserDetails {
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
-		if(user != null);
 		sb.append("user=>" + user + "\n");
 		sb.append("username=" + getUsername() + ", ");
 		sb.append("password=" + getPassword() + ", ");
