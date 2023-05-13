@@ -10,9 +10,13 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
-import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
@@ -21,7 +25,8 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
 
 import nstarlike.jcw.controller.UserController;
-import nstarlike.jcw.interceptor.SessionInterceptor;
+import nstarlike.jcw.model.User;
+import nstarlike.jcw.security.UserPrincipal;
 import nstarlike.jcw.service.UserService;
 
 @ExtendWith(SpringExtension.class)
@@ -52,8 +57,33 @@ class UserControllerTest {
 		MockitoAnnotations.openMocks(this);
 		mockMvc = MockMvcBuilders
 				.standaloneSetup(userController)
-				.addInterceptors(new SessionInterceptor())
 				.build();
+		
+		setSession();
+	}
+	
+	private void setSession() {
+		logger.debug("start UserControllerTest.setSession");
+		
+		User user = new User();
+		user.setId(2L);
+		user.setLoginId("test1");
+		user.setPassword("password");
+		user.setName("name1");
+		user.setEmail("test1@naver.com");
+		
+		UserPrincipal userPrincipal = new UserPrincipal(user);
+		
+		logger.debug("userPrincipal=" + userPrincipal);
+		
+		Authentication authentication = Mockito.mock(Authentication.class);
+		SecurityContext securityContext = Mockito.mock(SecurityContext.class);
+		when(securityContext.getAuthentication()).thenReturn(authentication);
+		SecurityContextHolder.setContext(securityContext);
+		
+		when(authentication.getPrincipal()).thenReturn(userPrincipal);
+		
+		logger.debug("authentication.getPrincipal()=" + authentication.getPrincipal());
 	}
 	
 	@Test
