@@ -20,6 +20,22 @@
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Hh0VI-4gEe2t5Ypy_7zJfw"/>
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Hh0VJO4gEe2t5Ypy_7zJfw" value="1"/>
     </ownedAttribute>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_aY2UYPF0Ee2MxfPyJdQWwg" name="searchLoginId">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_aY27cPF0Ee2MxfPyJdQWwg" name="loginId">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_aY27cfF0Ee2MxfPyJdQWwg" direction="return">
+        <type xmi:type="uml:Class" href="User.uml#_Sv1cQO2dEe2fAM1-AEqhLw"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_mJq3EPF0Ee2MxfPyJdQWwg" name="resetPassword">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_mJq3EfF0Ee2MxfPyJdQWwg" name="id">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#ELong"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_mJq3EvF0Ee2MxfPyJdQWwg" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+      </ownedParameter>
+    </ownedOperation>
   </packagedElement>
   <packagedElement xmi:type="uml:Association" xmi:id="_HhzuEO4gEe2t5Ypy_7zJfw" memberEnd="_Hh0VIu4gEe2t5Ypy_7zJfw _Hh08MO4gEe2t5Ypy_7zJfw">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Hh0VIO4gEe2t5Ypy_7zJfw" source="org.eclipse.papyrus">
@@ -27,8 +43,8 @@
     </eAnnotations>
     <ownedEnd xmi:type="uml:Property" xmi:id="_Hh08MO4gEe2t5Ypy_7zJfw" name="userdetailsserviceimpl" type="_Bl030O4gEe2t5Ypy_7zJfw" association="_HhzuEO4gEe2t5Ypy_7zJfw"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_MTmpIO4gEe2t5Ypy_7zJfw" name="LoginController">
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_SMB1E-4gEe2t5Ypy_7zJfw" name="userDetailsService" visibility="private" type="_RQRM4O4fEe2t5Ypy_7zJfw" association="_SMB1EO4gEe2t5Ypy_7zJfw">
+  <packagedElement xmi:type="uml:Class" xmi:id="_MTmpIO4gEe2t5Ypy_7zJfw" name="LoginController" visibility="package">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_SMB1E-4gEe2t5Ypy_7zJfw" name="userDetailsService" visibility="public" type="_Bl030O4gEe2t5Ypy_7zJfw" association="_SMB1EO4gEe2t5Ypy_7zJfw">
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_SMDDMO4gEe2t5Ypy_7zJfw"/>
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_SMERUO4gEe2t5Ypy_7zJfw" value="1"/>
     </ownedAttribute>
