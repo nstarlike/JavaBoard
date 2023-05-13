@@ -5,7 +5,10 @@ import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,10 +34,10 @@ public class UserController {
 	private PasswordEncoder passwordEncoder;
 	
 	@GetMapping("/mypage")
-	public String mypage(@AuthenticationPrincipal UserPrincipal userPrincipal, Model model) {
+	public String mypage(Model model) {
 		logger.debug("start UserController.mypage()");
-		logger.debug("userPrincipal=" + userPrincipal);
 		
+		UserPrincipal userPrincipal = getUserPrincipal();
 		User user = userService.getById(userPrincipal.getUser().getId());
 		
 		logger.debug("user=" + user);
@@ -44,11 +47,11 @@ public class UserController {
 	}
 	
 	@PostMapping("/updateProc")
-	public String updateProc(@RequestParam Map<String, String> form, @AuthenticationPrincipal UserPrincipal userPrincipal, Model model) {
+	public String updateProc(@RequestParam Map<String, String> form, Model model) {
 		logger.debug("start UserController.updateProc()");
 		logger.debug("form=" + form);
-		logger.debug("userPrincipal=" + userPrincipal);
 		
+		UserPrincipal userPrincipal = getUserPrincipal();
 		String password = form.get("password");
 		
 		User user = new User();
@@ -98,15 +101,32 @@ public class UserController {
 	}
 	
 	@PostMapping("/unregisterProc")
-	public String unregisterProc(@AuthenticationPrincipal UserPrincipal userPrincipal, Model model) {
+	public String unregisterProc(Model model) {
 		logger.debug("start UserController.unregisterProc()");
-		logger.debug("userPrincipal=" + userPrincipal);
 		
+		UserPrincipal userPrincipal = getUserPrincipal();
 		userService.delete(userPrincipal.getUser().getId());
 		
 		model.addAttribute("alert", "Unregistered.");
 		model.addAttribute("replace", "/");
 		
 		return "common/proc";
+	}
+	
+	private UserPrincipal getUserPrincipal() {
+		logger.debug("start UserController.getUserPrincipal");
+		
+		UserPrincipal userPrincipal = null;
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		
+		logger.debug("authentication=" + authentication);
+		
+		if(authentication != null) {
+			userPrincipal = (UserPrincipal)authentication.getPrincipal();
+		}
+		
+		logger.debug("userPrincipal=" + userPrincipal);
+		
+		return userPrincipal;
 	}
 }
