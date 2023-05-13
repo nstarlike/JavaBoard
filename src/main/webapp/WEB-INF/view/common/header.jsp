@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,7 +30,15 @@
 						viewBox="0 0 24 24">
 						<title>Search</title><circle cx="10.5" cy="10.5" r="7.5" />
 						<path d="M21 21l-5.2-5.2" /></svg>
-				</a> <a class="btn btn-sm btn-outline-secondary" href="<c:url value="/user/register" />">Sign up</a>
+				</a> 
+				<sec:authorize access="!isAuthenticated()">
+					<a class="btn btn-sm btn-outline-secondary me-1" href="<c:url value="/user/register" />">Sign up</a>
+					<a class="btn btn-sm btn-outline-secondary" href="<c:url value="/login" />">Sign in</a>
+				</sec:authorize>
+				<sec:authorize access="isAuthenticated()">
+					<a class="btn btn-sm btn-outline-secondary me-1" href="<c:url value="/user/mypage" />">My Page</a>
+					<a class="btn btn-sm btn-outline-secondary" href="<c:url value="/logout" />">Logout</a>
+				</sec:authorize>
 			</div>
 		</div>
 	</header>

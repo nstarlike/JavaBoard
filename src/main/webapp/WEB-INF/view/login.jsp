@@ -19,6 +19,10 @@
 	<div class="form-group mt-3">
 		<button type="submit" class="btn btn-primary">Login</button>
 	</div>
+	<div class="form-group mt-3">
+		<a href="<c:url value="/searchId" />" class="btn">Search ID</a>
+		<a href="<c:url value="/resetPassword" />" class="btn">Reset Password</a>
+	</div>
 </form>
 
 <%@ include file="common/footer.jsp" %>

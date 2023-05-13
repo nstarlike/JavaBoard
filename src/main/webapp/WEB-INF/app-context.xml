@@ -33,4 +33,7 @@
 			</props>
 		</property>
 	</bean>
+	
+	<bean id="webexpressionHandler" class="org.springframework.security.web.access.expression.DefaultWebSecurityExpressionHandler" /> 
+	
 </beans>

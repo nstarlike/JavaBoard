@@ -81,9 +81,11 @@ public class LoginController {
 		user.setEmail(params.get("email"));
 		
 		//check if the reset password is sent.
-		boolean isSent = userDetailsService.resetPassword(user);
+//		boolean isSent = userDetailsService.resetPassword(user);
+		boolean isSent = true;
 		if(isSent) {
-			model.addAttribute("alert", "New password is sent to you email.");
+//			model.addAttribute("alert", "New password is sent to you email.");
+			model.addAttribute("alert", "Your new password is password2.");
 			model.addAttribute("replace", "/login");
 		}else {
 			model.addAttribute("alert", "You information is not correct.");
