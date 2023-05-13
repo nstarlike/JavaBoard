@@ -4,7 +4,7 @@
 
 <h3>Reset Password</h3>
 
-<form id="reset-password-form" method="POST" action="./searchIdProc">
+<form id="reset-password-form" method="POST" action="./resetPasswordProc">
 	<div class="form-group">
 		<label for="id">ID</label>
 		<input type="text" id="id" class="form-control" name="loginId" />

@@ -51,13 +51,13 @@ public class LoginController {
 			logger.debug("userId=" + userId);
 			
 			model.addAttribute("alert", "Your ID is " + userId);
-			model.addAttribute("location", "/login");
+			model.addAttribute("replace", "/login");
 			
 		}catch(Exception e) {
 			e.printStackTrace();
 			
 			model.addAttribute("alert", "Your infomation is not correct.");
-			model.addAttribute("location", "/searchId");
+			model.addAttribute("replace", "/searchId");
 		}
 		
 		return "common/proc";
@@ -84,10 +84,10 @@ public class LoginController {
 		boolean isSent = userDetailsService.resetPassword(user);
 		if(isSent) {
 			model.addAttribute("alert", "New password is sent to you email.");
-			model.addAttribute("location", "/login");
+			model.addAttribute("replace", "/login");
 		}else {
 			model.addAttribute("alert", "You information is not correct.");
-			model.addAttribute("location", "/resetPassword");
+			model.addAttribute("replace", "/resetPassword");
 		}
 		
 		return "common/proc";
