@@ -2,22 +2,23 @@ package nstarlike.jcw.controller;
 
 import java.util.Map;
 
-import jakarta.servlet.http.HttpSession;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.ui.Model;
 
 import nstarlike.jcw.model.User;
-import nstarlike.jcw.security.SessionConstants;
+import nstarlike.jcw.security.UserPrincipal;
 import nstarlike.jcw.service.UserService;
 
 @Controller
@@ -33,27 +34,28 @@ public class UserController {
 	private PasswordEncoder passwordEncoder;
 	
 	@GetMapping("/mypage")
-	public String mypage(HttpSession httpSession, Model model) {
+	public String mypage(Model model) {
 		logger.debug("start UserController.mypage()");
 		
-		long userId = (long)httpSession.getAttribute(SessionConstants.USER_ID);
-		User user = userService.getById(userId);
+		UserPrincipal userPrincipal = getUserPrincipal();
+		User user = userService.getById(userPrincipal.getUser().getId());
 		
-		logger.debug("userId=" + userId + ", user=" + user);
+		logger.debug("user=" + user);
 		
 		model.addAttribute("user", user);
 		return PREFIX + "mypage";
 	}
 	
 	@PostMapping("/updateProc")
-	public String updateProc(@RequestParam Map<String, String> form, HttpSession httpSession, Model model) {
+	public String updateProc(@RequestParam Map<String, String> form, Model model) {
 		logger.debug("start UserController.updateProc()");
 		logger.debug("form=" + form);
 		
+		UserPrincipal userPrincipal = getUserPrincipal();
 		String password = form.get("password");
 		
 		User user = new User();
-		user.setId((long)httpSession.getAttribute(SessionConstants.USER_ID));
+		user.setId(userPrincipal.getUser().getId());
 		if(password != null && !password.isEmpty()) {
 			user.setPassword(passwordEncoder.encode(form.get("password")));
 		}
@@ -99,18 +101,32 @@ public class UserController {
 	}
 	
 	@PostMapping("/unregisterProc")
-	public String unregisterProc(HttpSession httpSession, Model model) {
+	public String unregisterProc(Model model) {
 		logger.debug("start UserController.unregisterProc()");
 		
-		long userId = (long)httpSession.getAttribute(SessionConstants.USER_ID);
-		
-		logger.debug("userId=" + userId);
-		
-		userService.delete(userId);
+		UserPrincipal userPrincipal = getUserPrincipal();
+		userService.delete(userPrincipal.getUser().getId());
 		
 		model.addAttribute("alert", "Unregistered.");
 		model.addAttribute("replace", "/");
 		
 		return "common/proc";
+	}
+	
+	private UserPrincipal getUserPrincipal() {
+		logger.debug("start UserController.getUserPrincipal");
+		
+		UserPrincipal userPrincipal = null;
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		
+		logger.debug("authentication=" + authentication);
+		
+		if(authentication != null) {
+			userPrincipal = (UserPrincipal)authentication.getPrincipal();
+		}
+		
+		logger.debug("userPrincipal=" + userPrincipal);
+		
+		return userPrincipal;
 	}
 }

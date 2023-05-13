@@ -13,13 +13,24 @@
 	
 	<mvc:resources mapping="/resources/**" location="/resources/" />
 	
-	<mvc:interceptors>
-		<bean id="sessionInterceptor" class="nstarlike.jcw.interceptor.SessionInterceptor" />
-	</mvc:interceptors>
-	
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
 		<property name="prefix" value="/WEB-INF/view/" />
 		<property name="suffix" value=".jsp" />
+	</bean>
+	
+	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host" value="smtp.gmail.com" />
+		<property name="port" value="587" />
+		<property name="username" value="username" />
+		<property name="password" value="password" />
+		
+		<property name="javaMailProperties">
+			<props>
+				<prop key="mail.transport.protocol">smtp</prop>
+				<prop key="mail.smtp.auth">true</prop>
+				<prop key="mail.smtp.starttls.enable">true</prop>
+			</props>
+		</property>
 	</bean>
 </beans>
