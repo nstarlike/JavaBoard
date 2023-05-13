@@ -10,16 +10,18 @@
 	">
 	<http auto-config="true" use-expressions="true">
 		<!-- User service -->
-		<intercept-url pattern="/user/mypage" access="isAuthenticated()" />
-		<intercept-url pattern="/user/updateProc" access="isAuthenticated()" />
-		<intercept-url pattern="/user/unregisterProc" access="isAuthenticated()" />
+		<intercept-url pattern="/user/mypage" access="hasRole('ROLE_USER')" />
+		<intercept-url pattern="/user/updateProc" access="hasRole('ROLE_USER')" />
+		<intercept-url pattern="/user/unregisterProc" access="hasRole('ROLE_USER')" />
 		
 		<intercept-url pattern="/**" access="permitAll" />
 		
 		<csrf disabled="true" />
 		
-		<form-login login-page="/login" default-target-url="/" authentication-failure-url="/login" />
+		<form-login login-page="/login" default-target-url="/" authentication-failure-url="/login" username-parameter="loginId" />
 		<logout logout-url="/logout" logout-success-url="/" />
+		
+		<remember-me remember-me-parameter="rememberMe" key="rememberMeKey" />
 	</http>
 	
 	<authentication-manager>
