@@ -159,7 +159,6 @@
       </ownedParameter>
     </ownedOperation>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_qQewwO4ZEe2t5Ypy_7zJfw" name="mypage">
-      <ownedParameter xmi:type="uml:Parameter" xmi:id="_qQewwe4ZEe2t5Ypy_7zJfw" name="httpSession" type="_gm05cO4aEe2t5Ypy_7zJfw"/>
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_XtVwQO4aEe2t5Ypy_7zJfw" name="model" type="_RJ-J4O4aEe2t5Ypy_7zJfw"/>
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_Cm35kO4qEe2t5Ypy_7zJfw" direction="return">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
@@ -169,14 +168,12 @@
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_S4v_4e4aEe2t5Ypy_7zJfw" name="form">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EMap"/>
       </ownedParameter>
-      <ownedParameter xmi:type="uml:Parameter" xmi:id="_S4v_4u4aEe2t5Ypy_7zJfw" name="httpSession" type="_gm05cO4aEe2t5Ypy_7zJfw"/>
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_S4v_4-4aEe2t5Ypy_7zJfw" name="model" type="_RJ-J4O4aEe2t5Ypy_7zJfw"/>
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_OrilUO4qEe2t5Ypy_7zJfw" direction="return">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
       </ownedParameter>
     </ownedOperation>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_KVVtAO4dEe2t5Ypy_7zJfw" name="unregisterProc">
-      <ownedParameter xmi:type="uml:Parameter" xmi:id="_KVVtAe4dEe2t5Ypy_7zJfw" name="httpSession" type="_gm05cO4aEe2t5Ypy_7zJfw"/>
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_KVVtAu4dEe2t5Ypy_7zJfw" name="model" type="_RJ-J4O4aEe2t5Ypy_7zJfw"/>
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_RDU8EO4qEe2t5Ypy_7zJfw" direction="return">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
