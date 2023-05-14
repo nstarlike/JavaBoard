@@ -36,7 +36,7 @@
 	
 	<insert id="create" parameterType="Post">
 	INSERT INTO post(post_id, writer_id, title, content, written)
-	VALUES(#{id}, #{writerId}, #{title}, #{content}, TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'))
+	VALUES(POST_SEQ.NEXTVAL, #{writerId}, #{title}, #{content}, TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'))
 	</insert>
 	
 	<update id="update" parameterType="Post">
