@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Map;
+import java.util.Set;
 import java.util.StringJoiner;
 
 import org.slf4j.Logger;
@@ -82,6 +83,8 @@ public class PostController {
 		logger.debug("start PostController.list");
 		logger.debug("params=" + params);
 		
+		params.put("pageSize", "10");
+		
 		List<Post> list = postService.listAll(params);
 		
 		logger.debug("list=" + list);
@@ -102,6 +105,7 @@ public class PostController {
 		logger.debug("post=" + post);
 		
 		model.addAttribute("post", post);
+		model.addAttribute("listQueryString", makeQueryString(params, false));
 		model.addAttribute("queryString", makeQueryString(params, true));
 		
 		return PREFIX + "view";
@@ -160,6 +164,7 @@ public class PostController {
 			}
 			
 			Post post = new Post();
+			post.setId(retrieved.getId());
 			post.setTitle(params.get("title"));
 			post.setContent(params.get("content"));
 			
@@ -217,6 +222,10 @@ public class PostController {
 	 * make query string from parameters
 	 */
 	private String makeQueryString(Map<String, String> params, boolean includeId) {
+		logger.debug("start PostController.makeQueryString");
+		logger.debug("params=" + params);
+		logger.debug("includeId", includeId);
+		
 		if(params == null || params.size() <= 0) {
 			return "";
 		}
@@ -231,16 +240,23 @@ public class PostController {
 		}
 		
 		StringJoiner sj = new StringJoiner("&");
-		Collection<String> values = params.values();
-		for(String value : values) {
-			if(whiteList.contains(value)) {
-				sj.add(value);
+		Set<String> keys = params.keySet();
+		for(String key : keys) {
+			if(whiteList.contains(key)) {
+				sj.add(key + "=" + params.get(key));
 			}
 		}
 		
 		if(sj.length() > 0) {
-			return "?" + sj.toString();
+			String queryString = "?" + sj.toString();
+			
+			logger.debug("queryString=" + queryString);
+			
+			return queryString;
+			
 		}else {
+			logger.debug("queryString=");
+			
 			return "";
 		}
 	}
