@@ -5,6 +5,7 @@ public class Post {
 	private long writerId;
 	private String title;
 	private String content;
+	private int hits;
 	private String written;
 	private String updated;
 
@@ -38,6 +39,14 @@ public class Post {
 
 	public void setContent(String content) {
 		this.content = content;
+	}
+	
+	public int getHits() {
+		return hits;
+	}
+	
+	public void setHits(int hits) {
+		this.hits = hits;
 	}
 
 	public String getWritten() {
