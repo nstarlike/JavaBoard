@@ -1,4 +1,4 @@
-package nstarlike.jcw.user;
+package nstarlike.jcw.controller;
 
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -133,7 +133,7 @@ class UserControllerTest {
 	void testUnregisterProc() throws Exception {
 		logger.debug("start testUnregisterProc() in UserControllerTest");
 		
-		when(userService.delete(2L)).thenReturn(1);
+		when(userService.delete(1L)).thenReturn(1);
 		
 		mockMvc.perform(post("/user/unregisterProc")).andExpect(status().isOk());
 	}

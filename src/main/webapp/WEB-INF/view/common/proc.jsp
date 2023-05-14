@@ -14,6 +14,10 @@ alert("<c:out value="${alert}" />");
 <c:if test="${replace != null}">
 location.replace("<c:url value="${replace}" />");
 </c:if>
+
+<c:if test="${back != null}">
+history.back();
+</c:if>
 </script>
 </head>
 <body>

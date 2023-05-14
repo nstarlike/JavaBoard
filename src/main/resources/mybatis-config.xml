@@ -7,5 +7,6 @@
 	
 	<typeAliases>
 		<typeAlias alias="User" type="nstarlike.jcw.model.User" />
+		<typeAlias alias="Post" type="nstarlike.jcw.model.Post" />
 	</typeAliases>
 </configuration>

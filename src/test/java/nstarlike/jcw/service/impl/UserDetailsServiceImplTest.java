@@ -1,4 +1,4 @@
-package nstarlike.jcw.security;
+package nstarlike.jcw.service.impl;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -14,6 +14,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import nstarlike.jcw.model.User;
+import nstarlike.jcw.security.UserPrincipal;
 import nstarlike.jcw.service.impl.UserDetailsServiceImpl;
 
 @ExtendWith(SpringExtension.class)
