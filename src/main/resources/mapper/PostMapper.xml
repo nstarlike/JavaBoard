@@ -4,11 +4,11 @@
 	<resultMap id="postResultMap" type="Post">
 		<id property="id" column="post_id" />
 		<result property="writerId" column="writer_id" />
-		<result property="title" />
-		<result property="content" />
-		<result property="hits" />
-		<result property="written" />
-		<result property="updated" />
+		<result property="title" column="title" />
+		<result property="content" column="content" />
+		<result property="hits" column="hits" />
+		<result property="written" column="written" />
+		<result property="updated" column="updated" />
 	</resultMap>
 	
 	<select id="readAll" parameterType="map" resultMap="postResultMap">
@@ -16,14 +16,14 @@
 	FROM (
 		SELECT /*INDEX_DESC(A POST_PK)*/ ROWNUM AS no, A.* 
 		FROM (
-			SELECT COUNT(*) OVER () AS total, * 
+			SELECT COUNT(*) OVER () AS total, post.* 
 			FROM post 
 			<where>
 				<if test="writerId != null">AND writer_id = #{writerId}</if>
 				<if test="title != null">AND title like '%' || #{title} || '%'</if>
 				<if test="content != null">AND content like '%' || #{content} || '%'</if>
 			</where>
-		)
+		) A
 		WHERE ROWNUM <![CDATA[ <= ]]> #{endNo}
 	)
 	WHERE no <![CDATA[ >= ]]> #{startNo}
@@ -50,7 +50,7 @@
 	</update>
 	
 	<update id="hit">
-	UPDATE post SET hits = hits + 1 WHERE id = #{id}
+	UPDATE post SET hits = hits + 1 WHERE post_id = #{id}
 	</update>
 	
 	<delete id="delete">
