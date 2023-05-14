@@ -1,4 +1,4 @@
-package nstarlike.jcw.user;
+package nstarlike.jcw.controller;
 
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;

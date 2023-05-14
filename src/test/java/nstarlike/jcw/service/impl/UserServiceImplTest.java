@@ -1,4 +1,4 @@
-package nstarlike.jcw.user;
+package nstarlike.jcw.service.impl;
 
 import static org.junit.jupiter.api.Assertions.*;
 
