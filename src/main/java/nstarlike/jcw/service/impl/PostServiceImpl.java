@@ -33,8 +33,15 @@ public class PostServiceImpl implements PostService {
 		logger.debug("start PostServiceImpl.listAll");
 		logger.debug("params=" + params);
 		
-		int pageNo = Integer.valueOf(params.get("pageNo"));
-		int pageSize = Integer.valueOf(params.get("pageSize"));
+		int pageNo = 1;
+		try {
+			pageNo = Integer.valueOf(params.get("pageNo"));
+		}catch(Exception e) {}
+		
+		int pageSize = 10;
+		try {
+			pageSize = Integer.valueOf(params.get("pageSize"));
+		}catch(Exception e) {}
 		
 		int startNo = (pageNo - 1) * pageSize + 1;
 		int endNo = startNo + pageSize - 1;
