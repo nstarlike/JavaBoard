@@ -176,7 +176,7 @@ class UserServiceImplTest {
 	void testDelete() {
 		logger.debug("start UserServiceImplTest.testDelete()");
 		
-		long id = 2L;
+		long id = 1L;
 		
 		int ret = userService.delete(id);
 		
