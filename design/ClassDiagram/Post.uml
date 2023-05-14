@@ -147,6 +147,7 @@
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_GG2uAO5XEe2t5Ypy_7zJfw" name="params">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EMap"/>
       </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_RzwG8PJdEe2MxfPyJdQWwg" name="model" type="_q76msO5WEe2t5Ypy_7zJfw"/>
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_AV4qYu5WEe2t5Ypy_7zJfw" direction="return">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
       </ownedParameter>
@@ -155,7 +156,6 @@
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_N36E8e5WEe2t5Ypy_7zJfw" name="form">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EMap"/>
       </ownedParameter>
-      <ownedParameter xmi:type="uml:Parameter" xmi:id="_N36E8u5WEe2t5Ypy_7zJfw" name="httpSession" type="_88TfcO5VEe2t5Ypy_7zJfw"/>
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_1Ow6EO5XEe2t5Ypy_7zJfw" name="model" type="_q76msO5WEe2t5Ypy_7zJfw"/>
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_N36E8-5WEe2t5Ypy_7zJfw" direction="return">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
@@ -165,7 +165,6 @@
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_uMLdke5WEe2t5Ypy_7zJfw" name="params">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EMap"/>
       </ownedParameter>
-      <ownedParameter xmi:type="uml:Parameter" xmi:id="_uMLdku5WEe2t5Ypy_7zJfw" name="httpSession" type="_88TfcO5VEe2t5Ypy_7zJfw"/>
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_uMLdk-5WEe2t5Ypy_7zJfw" name="model" type="_q76msO5WEe2t5Ypy_7zJfw"/>
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_uMLdlO5WEe2t5Ypy_7zJfw" direction="return">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
@@ -175,14 +174,12 @@
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_8re_wu5WEe2t5Ypy_7zJfw" name="params">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EMap"/>
       </ownedParameter>
-      <ownedParameter xmi:type="uml:Parameter" xmi:id="_8re_w-5WEe2t5Ypy_7zJfw" name="httpSession" type="_88TfcO5VEe2t5Ypy_7zJfw"/>
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_8re_xO5WEe2t5Ypy_7zJfw" name="model" type="_q76msO5WEe2t5Ypy_7zJfw"/>
     </ownedOperation>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_hf_CUO5XEe2t5Ypy_7zJfw" name="update">
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_hf_CUe5XEe2t5Ypy_7zJfw" name="params">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EMap"/>
       </ownedParameter>
-      <ownedParameter xmi:type="uml:Parameter" xmi:id="_hf_CUu5XEe2t5Ypy_7zJfw" name="httpSession" type="_88TfcO5VEe2t5Ypy_7zJfw"/>
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_hf_CU-5XEe2t5Ypy_7zJfw" name="model" type="_q76msO5WEe2t5Ypy_7zJfw"/>
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_hf_CVO5XEe2t5Ypy_7zJfw" direction="return">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
@@ -192,7 +189,6 @@
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_v_7dse5XEe2t5Ypy_7zJfw" name="form">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EMap"/>
       </ownedParameter>
-      <ownedParameter xmi:type="uml:Parameter" xmi:id="_v_7dsu5XEe2t5Ypy_7zJfw" name="httpSession" type="_88TfcO5VEe2t5Ypy_7zJfw"/>
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_v_7ds-5XEe2t5Ypy_7zJfw" name="model" type="_q76msO5WEe2t5Ypy_7zJfw"/>
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_v_7dtO5XEe2t5Ypy_7zJfw" direction="return">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
@@ -202,7 +198,6 @@
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_VnLBQe5XEe2t5Ypy_7zJfw" name="form">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EMap"/>
       </ownedParameter>
-      <ownedParameter xmi:type="uml:Parameter" xmi:id="_VnLBQu5XEe2t5Ypy_7zJfw" name="httpSession" type="_88TfcO5VEe2t5Ypy_7zJfw"/>
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_7ZuAcO5XEe2t5Ypy_7zJfw" name="model" type="_q76msO5WEe2t5Ypy_7zJfw"/>
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_VnLBQ-5XEe2t5Ypy_7zJfw" direction="return">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
