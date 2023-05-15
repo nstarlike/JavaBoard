@@ -49,6 +49,14 @@ public class CommentServiceImpl implements CommentService {
 		
 		return commentDao.readAll(params);
 	}
+	
+	@Override
+	public Comment getById(long id) {
+		logger.debug("start CommentServiceImpl.getById");
+		logger.debug("id=" + id);
+		
+		return commentDao.readById(id);
+	}
 
 	@Override
 	public int delete(long id) {

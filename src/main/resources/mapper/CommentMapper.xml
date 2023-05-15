@@ -29,6 +29,10 @@
 	WHERE NO <![CDATA[ >= ]]> #{startNo}
 	</select>
 	
+	<select id="readById" resultMap="commentResultMap">
+	SELECT * FROM "comment" WHERE COMMENT_ID = #{id}
+	</select>
+	
 	<delete id="delete">
 	DELETE FROM "comment" WHERE COMMENT_ID = #{id}
 	</delete>

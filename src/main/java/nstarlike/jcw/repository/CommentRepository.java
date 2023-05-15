@@ -37,6 +37,14 @@ public class CommentRepository implements CommentDao {
 		
 		return sqlSession.selectList(PREFIX + "readAll", params);
 	}
+	
+	@Override
+	public Comment readById(long id) {
+		logger.debug("start CommentRepository.readById");
+		logger.debug("id=" + id);
+		
+		return sqlSession.selectOne(PREFIX + "readById", id);
+	}
 
 	@Override
 	public int delete(long id) {
