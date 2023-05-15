@@ -366,6 +366,10 @@
         <element xmi:type="uml:Operation" href="Post.uml#_tC5tFPNTEe2bSM_y2w-mjg"/>
         <layoutConstraint xmi:type="notation:Location" xmi:id="_Vx2L8_NUEe2bSM_y2w-mjg"/>
       </children>
+      <children xmi:type="notation:Shape" xmi:id="_-ixjoPNbEe2bSM_y2w-mjg" type="Operation_InterfaceOperationLabel">
+        <element xmi:type="uml:Operation" href="Post.uml#_3bfX4PNbEe2bSM_y2w-mjg"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_-ixjofNbEe2bSM_y2w-mjg"/>
+      </children>
       <children xmi:type="notation:Shape" xmi:id="_Vx2zAPNUEe2bSM_y2w-mjg" type="Operation_InterfaceOperationLabel">
         <element xmi:type="uml:Operation" href="Post.uml#_tC5tF_NTEe2bSM_y2w-mjg"/>
         <layoutConstraint xmi:type="notation:Location" xmi:id="_Vx2zAfNUEe2bSM_y2w-mjg"/>
@@ -433,6 +437,10 @@
       <children xmi:type="notation:Shape" xmi:id="_8-cjwvNTEe2bSM_y2w-mjg" type="Operation_InterfaceOperationLabel">
         <element xmi:type="uml:Operation" href="Post.uml#_8TWYVPNTEe2bSM_y2w-mjg"/>
         <layoutConstraint xmi:type="notation:Location" xmi:id="_8-cjw_NTEe2bSM_y2w-mjg"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_TLD2QPNcEe2bSM_y2w-mjg" type="Operation_InterfaceOperationLabel">
+        <element xmi:type="uml:Operation" href="Post.uml#_OD_10PNcEe2bSM_y2w-mjg"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_TLD2QfNcEe2bSM_y2w-mjg"/>
       </children>
       <children xmi:type="notation:Shape" xmi:id="_8-dK0PNTEe2bSM_y2w-mjg" type="Operation_InterfaceOperationLabel">
         <element xmi:type="uml:Operation" href="Post.uml#_8TWYV_NTEe2bSM_y2w-mjg"/>

@@ -259,9 +259,7 @@
   </packagedElement>
   <packagedElement xmi:type="uml:Interface" xmi:id="_tC5tEPNTEe2bSM_y2w-mjg" name="CommentDao">
     <ownedOperation xmi:type="uml:Operation" xmi:id="_tC5tEfNTEe2bSM_y2w-mjg" name="create">
-      <ownedParameter xmi:type="uml:Parameter" xmi:id="_tC5tEvNTEe2bSM_y2w-mjg" name="comment">
-        <type xmi:type="uml:Class" href="Comment.uml#_70V1AO5ZEe2t5Ypy_7zJfw"/>
-      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_tC5tEvNTEe2bSM_y2w-mjg" name="comment" type="_Sq4QcPNTEe2bSM_y2w-mjg"/>
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_tC5tE_NTEe2bSM_y2w-mjg" direction="return">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
       </ownedParameter>
@@ -273,6 +271,12 @@
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_tC5tFvNTEe2bSM_y2w-mjg" direction="return">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEList"/>
       </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_3bfX4PNbEe2bSM_y2w-mjg" name="readById">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_3bfX4fNbEe2bSM_y2w-mjg" name="id">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#ELong"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_3bfX4vNbEe2bSM_y2w-mjg" type="_Sq4QcPNTEe2bSM_y2w-mjg" direction="return"/>
     </ownedOperation>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_tC5tF_NTEe2bSM_y2w-mjg" name="delete">
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_tC5tGPNTEe2bSM_y2w-mjg" name="id">
@@ -291,9 +295,7 @@
   <packagedElement xmi:type="uml:Realization" xmi:id="_0udDgPNTEe2bSM_y2w-mjg" client="_x65WwPNTEe2bSM_y2w-mjg" supplier="_tC5tEPNTEe2bSM_y2w-mjg"/>
   <packagedElement xmi:type="uml:Interface" xmi:id="_8TWYUPNTEe2bSM_y2w-mjg" name="CommentService">
     <ownedOperation xmi:type="uml:Operation" xmi:id="_8TWYUfNTEe2bSM_y2w-mjg" name="write">
-      <ownedParameter xmi:type="uml:Parameter" xmi:id="_8TWYUvNTEe2bSM_y2w-mjg" name="comment">
-        <type xmi:type="uml:Class" href="Comment.uml#_70V1AO5ZEe2t5Ypy_7zJfw"/>
-      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_8TWYUvNTEe2bSM_y2w-mjg" name="comment" type="_Sq4QcPNTEe2bSM_y2w-mjg"/>
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_8TWYU_NTEe2bSM_y2w-mjg" direction="return">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
       </ownedParameter>
@@ -305,6 +307,12 @@
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_8TWYVvNTEe2bSM_y2w-mjg" direction="return">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEList"/>
       </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_OD_10PNcEe2bSM_y2w-mjg" name="getById">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_OD_10fNcEe2bSM_y2w-mjg" name="id">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#ELong"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_OD_10vNcEe2bSM_y2w-mjg" type="_Sq4QcPNTEe2bSM_y2w-mjg" direction="return"/>
     </ownedOperation>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_8TWYV_NTEe2bSM_y2w-mjg" name="delete">
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_8TWYWPNTEe2bSM_y2w-mjg" name="id">
