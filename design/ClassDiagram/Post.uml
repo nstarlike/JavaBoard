@@ -143,7 +143,7 @@
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_a97K4O5UEe2t5Ypy_7zJfw"/>
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_a97K4e5UEe2t5Ypy_7zJfw" value="1"/>
     </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_NjfqcvNUEe2bSM_y2w-mjg" name="commentservice" type="_8TWYUPNTEe2bSM_y2w-mjg" association="_NjfDYPNUEe2bSM_y2w-mjg">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_NjfqcvNUEe2bSM_y2w-mjg" name="commentService" visibility="private" type="_8TWYUPNTEe2bSM_y2w-mjg" association="_NjfDYPNUEe2bSM_y2w-mjg">
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Njfqc_NUEe2bSM_y2w-mjg"/>
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_NjfqdPNUEe2bSM_y2w-mjg" value="1"/>
     </ownedAttribute>
