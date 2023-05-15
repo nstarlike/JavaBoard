@@ -10,16 +10,16 @@
 	</resultMap>
 	
 	<insert id="create" parameterType="Comment">
-	INSERT INTO COMMENT(COMMEND_ID, POST_ID, WRITER_ID, CONTENT, WRITTEN)
-	VALUES(COMMENT_SEQ.NEXTVAL, #{postId}, #{writerId}, #{content}, TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'));
+	INSERT INTO "comment"(COMMENT_ID, POST_ID, WRITER_ID, CONTENT, WRITTEN) 
+	VALUES(COMMENT_SEQ.NEXTVAL, #{postId}, #{writerId}, #{content}, TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'))
 	</insert>
 	
 	<select id="readAll" parameterType="map" resultMap="commentResultMap">
 	SELECT * FROM (
-		SELECT /*INDEX_DESC(A COMMENT_PK)*/ ROWNUM AS NO, *.A 
+		SELECT /*INDEX_DESC(A COMMENT_PK)*/ ROWNUM AS NO, A.* 
 		FROM (
-			SELECT COUNT(*) OVER() AS TOTAL, * 
-			FROM COMMENT 
+			SELECT COUNT(*) OVER() AS TOTAL, "comment".* 
+			FROM "comment" 
 			<where>
 				<if test="content != null">CONTENT LIKE '%' || #{content} || '%'</if>
 			</where>
@@ -30,6 +30,6 @@
 	</select>
 	
 	<delete id="delete">
-	DELETE FROM COMMENT WHERE COMMENT_ID = #{id}
+	DELETE FROM "comment" WHERE COMMENT_ID = #{id}
 	</delete>
 </mapper>
