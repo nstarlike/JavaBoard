@@ -21,7 +21,8 @@
 			SELECT COUNT(*) OVER() AS TOTAL, "comment".* 
 			FROM "comment" 
 			<where>
-				<if test="content != null">CONTENT LIKE '%' || #{content} || '%'</if>
+				POST_ID = #{postId}
+				<if test="content != null">AND CONTENT LIKE '%' || #{content} || '%'</if>
 			</where>
 		) A 
 		WHERE ROWNUM <![CDATA[ <= ]]> #{endNo}

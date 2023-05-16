@@ -109,6 +109,7 @@ public class PostController {
 		
 		logger.debug("post=" + post);
 		
+		params.put("postId", params.get("id"));
 		List<Comment> commentList = commentService.listAll(params);
 		
 		logger.debug("commentList=" + commentList);
