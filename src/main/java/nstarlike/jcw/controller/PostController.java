@@ -21,7 +21,9 @@ import org.springframework.security.core.Authentication;
 import org.springframework.ui.Model;
 
 import nstarlike.jcw.model.Post;
+import nstarlike.jcw.model.Comment;
 import nstarlike.jcw.service.PostService;
+import nstarlike.jcw.service.CommentService;
 import nstarlike.jcw.security.UserPrincipal;
 
 @Controller
@@ -32,6 +34,9 @@ public class PostController {
 	
 	@Autowired
 	private PostService postService;
+	
+	@Autowired
+	private CommentService commentService;
 	
 	@GetMapping("/write")
 	public String write(@RequestParam Map<String, String> params, Model model) {
@@ -104,9 +109,15 @@ public class PostController {
 		
 		logger.debug("post=" + post);
 		
+		params.put("postId", params.get("id"));
+		List<Comment> commentList = commentService.listAll(params);
+		
+		logger.debug("commentList=" + commentList);
+		
 		model.addAttribute("post", post);
 		model.addAttribute("listQueryString", makeQueryString(params, false));
 		model.addAttribute("queryString", makeQueryString(params, true));
+		model.addAttribute("commentList", commentList);
 		
 		return PREFIX + "view";
 	}
@@ -209,6 +220,68 @@ public class PostController {
 				model.addAttribute("alert", "Failed to delete.");
 				model.addAttribute("back", true);
 			}
+			
+		}catch(Exception e) {
+			model.addAttribute("alert", e.getMessage());
+			model.addAttribute("back", true);
+		}
+		
+		return "common/proc";
+	}
+	
+	@PostMapping("/writeCommentProc")
+	public String writeCommentProc(@RequestParam Map<String, String> params, Model model) {
+		logger.debug("start PostController.writeCommentProc");
+		logger.debug("params=" + params);
+		
+		try {
+			Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+			if(auth == null) {
+				throw new Exception("Please login.");
+			}
+			UserPrincipal userPrincipal = (UserPrincipal)auth.getPrincipal();
+			
+			Comment comment = new Comment();
+			comment.setWriterId(userPrincipal.getUser().getId());
+			comment.setPostId(Long.valueOf(params.get("id")));
+			comment.setContent(params.get("content"));
+			
+			int ret = commentService.write(comment);
+			
+			logger.debug("ret=" + ret);
+			
+			model.addAttribute("alert", "Registered.");
+			model.addAttribute("replace", "/post/view" + makeQueryString(params, true));
+			
+		}catch(Exception e) {
+			model.addAttribute("alert", e.getMessage());
+			model.addAttribute("back", true);
+		}
+		
+		return "common/proc";
+	}
+	
+	@PostMapping("/deleteCommentProc")
+	public String deleteCommentProc(@RequestParam Map<String, String> params, Model model) {
+		logger.debug("start PostController.deleteCommentProc");
+		logger.debug("params=" + params);
+		
+		try {
+			Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+			if(auth == null) {
+				throw new Exception("Please login.");
+			}
+			UserPrincipal userPrincipal = (UserPrincipal)auth.getPrincipal();
+			
+			Comment retrieved = commentService.getById(Long.valueOf(params.get("commentId")));
+			if(userPrincipal.getUser().getId() != retrieved.getWriterId()) {
+				throw new Exception("You don't have authority.");
+			}
+			
+			int ret = commentService.delete(retrieved.getId());
+			
+			model.addAttribute("alert", "Deleted.");
+			model.addAttribute("replace", "/post/view" + makeQueryString(params, true));
 			
 		}catch(Exception e) {
 			model.addAttribute("alert", e.getMessage());
