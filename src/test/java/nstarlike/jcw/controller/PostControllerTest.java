@@ -1,6 +1,5 @@
 package nstarlike.jcw.controller;
 
-import static org.junit.jupiter.api.Assertions.fail;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -29,6 +28,7 @@ import org.springframework.transaction.annotation.Transactional;
 import nstarlike.jcw.model.User;
 import nstarlike.jcw.security.UserPrincipal;
 import nstarlike.jcw.service.PostService;
+import nstarlike.jcw.service.CommentService;
 
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(locations= {
@@ -44,6 +44,9 @@ class PostControllerTest {
 	
 	@Mock
 	private PostService postService;
+	
+	@Mock
+	private CommentService commentService;
 	
 	@InjectMocks
 	private PostController postController;
@@ -134,7 +137,30 @@ class PostControllerTest {
 	void testDeleteProc() throws Exception {
 		logger.debug("start PostControllerTest.testDeleteProc");
 		
-		mockMvc.perform(post("/post/deleteProc").queryParam("id", "1")).andExpect(status().isOk());
+		mockMvc.perform(post("/post/deleteProc")
+				.queryParam("id", "1")
+			).andExpect(status().isOk());
+	}
+	
+	@Test
+	void testWriteCommentProc() throws Exception {
+		logger.debug("start PostControllerTest.testWriteCommentProc");
+		
+		MockHttpServletRequestBuilder builder = MockMvcRequestBuilders
+				.post("/post/writeCommentProc")
+				.queryParam("id", "id")
+				.queryParam("content", "comment....");
+		mockMvc.perform(builder).andExpect(status().isOk());
+	}
+	
+	@Test
+	void testDeleteCommentProc() throws Exception {
+		logger.debug("start PostControllerTest.testDeleteProc");
+		
+		mockMvc.perform(post("/post/deleteCommentProc")
+				.queryParam("id", "1")
+				.queryParam("commentId", "1")
+			).andExpect(status().isOk());
 	}
 
 }
