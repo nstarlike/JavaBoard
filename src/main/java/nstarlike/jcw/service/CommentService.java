@@ -4,10 +4,11 @@ import java.util.List;
 import java.util.Map;
 
 import nstarlike.jcw.model.Comment;
+import nstarlike.jcw.model.CommentMap;
 
 public interface CommentService {
 	public int write(Comment comment);
-	public List<Comment> listAll(Map<String, String> params);
+	public List<CommentMap> listAll(Map<String, String> params);
 	public Comment getById(long id);
 	public int delete(long id);
 }
