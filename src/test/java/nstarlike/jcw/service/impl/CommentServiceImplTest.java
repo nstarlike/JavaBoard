@@ -18,6 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import nstarlike.jcw.model.Comment;
+import nstarlike.jcw.model.CommentMap;
 import nstarlike.jcw.service.CommentService;
 
 @ExtendWith(SpringExtension.class)
@@ -55,7 +56,7 @@ class CommentServiceImplTest {
 		params.put("startNo", "0");
 		params.put("endNo", "9");
 		
-		List<Comment> list = commentService.listAll(params);
+		List<CommentMap> list = commentService.listAll(params);
 		
 		assertNotNull(list);
 		
