@@ -6,6 +6,7 @@
 <h3>Write Post</h3>
 
 <form id="write-form" method="POST" action="./writeProc">
+	<input type="hidden" name="queryString" value="<c:out value="${ queryString }" />" />
 	<div class="form-group">
 		<label for="title">Title</label>
 		<input type="text" id="title" class="form-control" name="title" />

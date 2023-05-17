@@ -30,7 +30,7 @@
 	</tbody>
 </table>
 
-<c:if test="${ pagination != null }">
+<c:if test="${ pagination != null && pagination.totalPage > 0 }">
 <nav>
 	<ul class="pagination justify-content-center">
 		<c:if test="${ pagination.startPage > 1 }">
@@ -51,6 +51,7 @@
 </c:if>
 
 <form id="write-comment-form" method="POST" action="./writeCommentProc">
+	<input type="hidden" name="queryString" value="<c:out value="${ queryString }" />" />
 	<input type="hidden" name="id" value="<c:out value="${ post.id }" />" />
 	<div class="form-group">
 		<textarea id="write-comment-content" class="form-control" name="content"></textarea>
@@ -61,6 +62,7 @@
 </form>
 
 <form id="delete-comment-form" class="none" method="POST" action="./deleteCommentProc">
+	<input type="hidden" name="queryString" value="<c:out value="${ queryString }" />" />
 	<input type="hidden" name="id" value="<c:out value="${ post.id }" />" />
 	<input type="hidden" id="delete-comment-id" name="commentId" />
 </form>
