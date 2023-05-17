@@ -18,6 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import nstarlike.jcw.dao.PostDao;
 import nstarlike.jcw.model.Post;
+import nstarlike.jcw.model.PostMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -58,7 +59,7 @@ class PostRepositoryTest {
 		params.put("startNo", "0");
 		params.put("endNo", "10");
 		
-		List<Post> list = postDao.readAll(params);
+		List<PostMap> list = postDao.readAll(params);
 		
 		assertNotNull(list);
 		
