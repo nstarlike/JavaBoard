@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import nstarlike.jcw.model.Comment;
+import nstarlike.jcw.model.CommentMap;
 import nstarlike.jcw.model.Post;
 import nstarlike.jcw.model.PostMap;
 import nstarlike.jcw.security.UserPrincipal;
@@ -122,15 +123,30 @@ public class PostController {
 		
 		logger.debug("post=" + post);
 		
+		int coPageNo = 1;
+		if(params.get("coPageNo") != null) {
+			coPageNo = Integer.valueOf(params.get("coPageNo"));
+		}
+		Pagination pagination = new Pagination(coPageNo);
+		
 		params.put("postId", params.get("id"));
-		List<Comment> commentList = commentService.listAll(params);
+		params.put("startNo", String.valueOf(pagination.getStartNo()));
+		params.put("endNo", String.valueOf(pagination.getEndNo()));
+		List<CommentMap> commentList = commentService.listAll(params);
 		
 		logger.debug("commentList=" + commentList);
+		
+		long total = 0;
+		if(commentList.size() > 0) {
+			total = commentList.get(0).getTotal();
+		}
+		pagination.calculate(total);
 		
 		model.addAttribute("post", post);
 		model.addAttribute("listQueryString", makeQueryString(params, false));
 		model.addAttribute("queryString", makeQueryString(params, true));
 		model.addAttribute("commentList", commentList);
+		model.addAttribute("pagination", pagination);
 		
 		return PREFIX + "view";
 	}
