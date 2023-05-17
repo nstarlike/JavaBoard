@@ -34,17 +34,17 @@
 <nav>
 	<ul class="pagination justify-content-center">
 		<c:if test="${ pagination.startPage > 1 }">
-		<li class="page-item"><a class="page-link" href="./view${ queryString }&cPageNo=1">&laquo;</a></li>
-		<li class="page-item"><a class="page-link" href="./view${ queryString }&cPageNo=${ pagination.prevPage }">Prev</a></li>
+		<li class="page-item"><a class="page-link" href="./view?cPageNo=1<c:out value="${ pageQueryString }" />">&laquo;</a></li>
+		<li class="page-item"><a class="page-link" href="./view?cPageNo=${ pagination.prevPage }<c:out value="${ pageQueryString }" />">Prev</a></li>
 		</c:if>
 		
 		<c:forEach var="pageNo" begin="${ pagination.startPage }" end="${ pagination.endPage }">
-		<li class="page-item"><a class="page-link" href="./view${ queryString }&cPageNo=${ pageNo }">${ pageNo }</a></li>
+		<li class="page-item"><a class="page-link" href="./view?cPageNo=${ pageNo }<c:out value="${ pageQueryString }" />">${ pageNo }</a></li>
 		</c:forEach>
 		
 		<c:if test="${ pagination.endPage < pagination.lastPage }">
-		<li class="page-item"><a class="page-link" href="./view${ queryString }&cPageNo=${ pagination.nextPage }">Next</a></li>
-		<li class="page-item"><a class="page-link" href="./view${ queryString }&cPageNo=${ pagination.lastPage }">&raquo;</a></li>
+		<li class="page-item"><a class="page-link" href="./view?cPageNo=${ pagination.nextPage }<c:out value="${ pageQueryString }" />">Next</a></li>
+		<li class="page-item"><a class="page-link" href="./view?cPageNo=${ pagination.lastPage }<c:out value="${ pageQueryString }" />">&raquo;</a></li>
 		</c:if>
 	</ul>
 </nav>
