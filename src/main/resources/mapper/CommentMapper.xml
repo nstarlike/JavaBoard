@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="nstarlike.jcw.mapper.CommentMapper">
-	<resultMap id="commentResultMap" type="Comment">
+	<resultMap id="commentResultMap" type="CommentMap">
 		<id property="id" column="comment_id" />
 		<result property="postId" column="post_id" />
 		<result property="writerId" column="writer_id" />
 		<result property="content" column="content" />
 		<result property="written" column="written" />
+		<result property="total" column="total" />
 	</resultMap>
 	
 	<insert id="create" parameterType="Comment">
