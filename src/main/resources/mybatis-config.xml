@@ -8,6 +8,8 @@
 	<typeAliases>
 		<typeAlias alias="User" type="nstarlike.jcw.model.User" />
 		<typeAlias alias="Post" type="nstarlike.jcw.model.Post" />
+		<typeAlias alias="PostMap" type="nstarlike.jcw.model.PostMap" />
 		<typeAlias alias="Comment" type="nstarlike.jcw.model.Comment" />
+		<typeAlias alias="CommentMap" type="nstarlike.jcw.model.CommentMap" />
 	</typeAliases>
 </configuration>

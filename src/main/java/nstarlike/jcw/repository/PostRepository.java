@@ -3,16 +3,15 @@ package nstarlike.jcw.repository;
 import java.util.List;
 import java.util.Map;
 
+import org.mybatis.spring.SqlSessionTemplate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import org.springframework.stereotype.Repository;
 import org.springframework.beans.factory.annotation.Autowired;
-
-import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.stereotype.Repository;
 
 import nstarlike.jcw.dao.PostDao;
 import nstarlike.jcw.model.Post;
+import nstarlike.jcw.model.PostMap;
 
 @Repository
 public class PostRepository implements PostDao {
@@ -31,7 +30,7 @@ public class PostRepository implements PostDao {
 	}
 
 	@Override
-	public List<Post> readAll(Map<String, String> params) {
+	public List<PostMap> readAll(Map<String, String> params) {
 		logger.debug("start PostRepository.readAll");
 		logger.debug("params=" + params);
 		

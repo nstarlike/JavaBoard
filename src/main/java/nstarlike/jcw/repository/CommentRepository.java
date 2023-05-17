@@ -13,6 +13,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 
 import nstarlike.jcw.dao.CommentDao;
 import nstarlike.jcw.model.Comment;
+import nstarlike.jcw.model.CommentMap;
 
 @Repository
 public class CommentRepository implements CommentDao {
@@ -31,7 +32,7 @@ public class CommentRepository implements CommentDao {
 	}
 
 	@Override
-	public List<Comment> readAll(Map<String, String> params) {
+	public List<CommentMap> readAll(Map<String, String> params) {
 		logger.debug("start CommentRepository.readAll");
 		logger.debug("params=" + params);
 		

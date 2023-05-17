@@ -1,30 +1,31 @@
 package nstarlike.jcw.controller;
 
-import java.util.Collection;
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.StringJoiner;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.Authentication;
-import org.springframework.ui.Model;
 
-import nstarlike.jcw.model.Post;
 import nstarlike.jcw.model.Comment;
-import nstarlike.jcw.service.PostService;
-import nstarlike.jcw.service.CommentService;
+import nstarlike.jcw.model.CommentMap;
+import nstarlike.jcw.model.Post;
+import nstarlike.jcw.model.PostMap;
 import nstarlike.jcw.security.UserPrincipal;
+import nstarlike.jcw.service.CommentService;
+import nstarlike.jcw.service.PostService;
+import nstarlike.jcw.util.Pagination;
 
 @Controller
 @RequestMapping("/post")
@@ -43,7 +44,7 @@ public class PostController {
 		logger.debug("start PostController.write");
 		logger.debug("params=" + params);
 		
-		model.addAttribute("queryString", makeQueryString(params, false));
+		model.addAttribute("queryString", getQueryString(params));
 		return PREFIX + "write";
 	}
 	
@@ -69,7 +70,7 @@ public class PostController {
 			
 			if(ret > 0) {
 				model.addAttribute("alert", "Registered.");
-				model.addAttribute("replace", "/post/list" + makeQueryString(params, false));
+				model.addAttribute("replace", "/post/list" + params.get("queryString"));
 			}else {
 				model.addAttribute("alert", "Failed to register.");
 				model.addAttribute("back", true);
@@ -88,14 +89,29 @@ public class PostController {
 		logger.debug("start PostController.list");
 		logger.debug("params=" + params);
 		
-		params.put("pageSize", "10");
+		int pageNo = 1;
+		if(params.get("pageNo") != null) {
+			pageNo = Integer.valueOf(params.get("pageNo"));
+		}
+		Pagination pagination = new Pagination(pageNo);
+		params.put("startNo", String.valueOf(pagination.getStartNo()));
+		params.put("endNo", String.valueOf(pagination.getEndNo()));
 		
-		List<Post> list = postService.listAll(params);
+		List<PostMap> list = postService.listAll(params);
 		
 		logger.debug("list=" + list);
 		
+		long total = 0;
+		if(list.size() > 0) {
+			total = list.get(0).getTotal();
+		}
+		pagination.calculate(total);
+		
 		model.addAttribute("list", list);
-		model.addAttribute("queryString", makeQueryString(params, false));
+		model.addAttribute("queryString", getQueryString(params));
+		model.addAttribute("listQueryString", getListQueryString(params));
+		model.addAttribute("pageQueryString", getPageQueryString(params));
+		model.addAttribute("pagination", pagination);
 		
 		return PREFIX + "list";
 	}
@@ -109,15 +125,31 @@ public class PostController {
 		
 		logger.debug("post=" + post);
 		
+		int coPageNo = 1;
+		if(params.get("coPageNo") != null) {
+			coPageNo = Integer.valueOf(params.get("coPageNo"));
+		}
+		Pagination pagination = new Pagination(coPageNo);
+		
 		params.put("postId", params.get("id"));
-		List<Comment> commentList = commentService.listAll(params);
+		params.put("startNo", String.valueOf(pagination.getStartNo()));
+		params.put("endNo", String.valueOf(pagination.getEndNo()));
+		List<CommentMap> commentList = commentService.listAll(params);
 		
 		logger.debug("commentList=" + commentList);
 		
+		long total = 0;
+		if(commentList.size() > 0) {
+			total = commentList.get(0).getTotal();
+		}
+		pagination.calculate(total);
+		
 		model.addAttribute("post", post);
-		model.addAttribute("listQueryString", makeQueryString(params, false));
-		model.addAttribute("queryString", makeQueryString(params, true));
+		model.addAttribute("queryString", getQueryString(params));
+		model.addAttribute("listQueryString", getToListQueryString(params));
+		model.addAttribute("pageQueryString", getCommentPageQueryString(params));
 		model.addAttribute("commentList", commentList);
+		model.addAttribute("pagination", pagination);
 		
 		return PREFIX + "view";
 	}
@@ -144,7 +176,7 @@ public class PostController {
 			logger.debug("post=" + post);
 			
 			model.addAttribute("post", post);
-			model.addAttribute("queryString", makeQueryString(params, true));
+			model.addAttribute("queryString", getQueryString(params));
 			
 			return PREFIX + "/update";
 			
@@ -182,7 +214,7 @@ public class PostController {
 			int ret = postService.update(post);
 			
 			model.addAttribute("alert", "Updated.");
-			model.addAttribute("replace", "/post/view" + makeQueryString(params, true));
+			model.addAttribute("replace", "/post/view" + params.get("queryString"));
 			
 		}catch(Exception e) {
 			model.addAttribute("alert", e.getMessage());
@@ -215,7 +247,7 @@ public class PostController {
 			
 			if(ret > 0) {
 				model.addAttribute("alert", "Deleted.");
-				model.addAttribute("replace", "/post/list" + makeQueryString(params, false));
+				model.addAttribute("replace", "/post/list" + params.get("queryString"));
 			}else {
 				model.addAttribute("alert", "Failed to delete.");
 				model.addAttribute("back", true);
@@ -251,7 +283,7 @@ public class PostController {
 			logger.debug("ret=" + ret);
 			
 			model.addAttribute("alert", "Registered.");
-			model.addAttribute("replace", "/post/view" + makeQueryString(params, true));
+			model.addAttribute("replace", "/post/view" + params.get("queryString"));
 			
 		}catch(Exception e) {
 			model.addAttribute("alert", e.getMessage());
@@ -281,7 +313,7 @@ public class PostController {
 			int ret = commentService.delete(retrieved.getId());
 			
 			model.addAttribute("alert", "Deleted.");
-			model.addAttribute("replace", "/post/view" + makeQueryString(params, true));
+			model.addAttribute("replace", "/post/view" + params.get("queryString"));
 			
 		}catch(Exception e) {
 			model.addAttribute("alert", e.getMessage());
@@ -294,22 +326,14 @@ public class PostController {
 	/*
 	 * make query string from parameters
 	 */
-	private String makeQueryString(Map<String, String> params, boolean includeId) {
+	private String makeQueryString(Map<String, String> params, List<String> whiteList, String prefix) {
 		logger.debug("start PostController.makeQueryString");
 		logger.debug("params=" + params);
-		logger.debug("includeId", includeId);
+		logger.debug("whiteList=" + whiteList);
+		logger.debug("prefix=" + prefix);
 		
 		if(params == null || params.size() <= 0) {
 			return "";
-		}
-		
-		List<String> whiteList = new ArrayList<>();
-		whiteList.add("pageNo");
-		whiteList.add("search");
-		whiteList.add("keyword");
-		whiteList.add("cPageNo");
-		if(includeId) {
-			whiteList.add("id");
 		}
 		
 		StringJoiner sj = new StringJoiner("&");
@@ -321,7 +345,7 @@ public class PostController {
 		}
 		
 		if(sj.length() > 0) {
-			String queryString = "?" + sj.toString();
+			String queryString = prefix + sj.toString();
 			
 			logger.debug("queryString=" + queryString);
 			
@@ -332,5 +356,46 @@ public class PostController {
 			
 			return "";
 		}
+	}
+	
+	private String getQueryString(Map<String, String> params, List<String> excludes, String prefix) {
+		List<String> whiteList = new ArrayList<>();
+		whiteList.add("pageNo");
+		whiteList.add("search");
+		whiteList.add("keyword");
+		whiteList.add("cPageNo");
+		whiteList.add("id");
+		
+		if(excludes != null && excludes.size() > 0) {
+			whiteList.removeAll(excludes);
+		}
+		
+		return makeQueryString(params, whiteList, prefix);
+	}
+	
+	private String getQueryString(Map<String, String> params) {
+		return getQueryString(params, null, "?");
+	}
+	
+	private String getListQueryString(Map<String, String> params) {
+		return getQueryString(params, null, "&");
+	}
+	
+	private String getToListQueryString(Map<String, String> params) {
+		List<String> excludes = new ArrayList<>();
+		excludes.add("id");
+		return getQueryString(params, excludes, "?");
+	}
+	
+	private String getPageQueryString(Map<String, String> params) {
+		List<String> excludes = new ArrayList<>();
+		excludes.add("pageNo");
+		return getQueryString(params, excludes, "&");
+	}
+	
+	private String getCommentPageQueryString(Map<String, String> params) {
+		List<String> excludes = new ArrayList<>();
+		excludes.add("cPageNo");
+		return getQueryString(params, excludes, "&");
 	}
 }

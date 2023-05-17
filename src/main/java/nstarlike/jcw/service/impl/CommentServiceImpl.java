@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import nstarlike.jcw.model.Comment;
+import nstarlike.jcw.model.CommentMap;
 import nstarlike.jcw.service.CommentService;
 import nstarlike.jcw.dao.CommentDao;
 
@@ -30,22 +31,9 @@ public class CommentServiceImpl implements CommentService {
 	}
 
 	@Override
-	public List<Comment> listAll(Map<String, String> params) {
+	public List<CommentMap> listAll(Map<String, String> params) {
 		logger.debug("start CommentServiceImpl.listAll");
 		logger.debug("params=" + params);
-		
-		int pageNo = 1;
-		try {
-			pageNo = Integer.valueOf(params.get("pageNo"));
-		}catch(Exception e) {}
-		
-		int pageSize = 10;
-		try {
-			pageSize = Integer.valueOf(params.get("pageSize"));
-		}catch(Exception e) {}
-		
-		params.put("startNo", String.valueOf((pageNo - 1) * pageSize));
-		params.put("endNo", String.valueOf(pageSize - 1));
 		
 		return commentDao.readAll(params);
 	}

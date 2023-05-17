@@ -6,6 +6,7 @@
 <h3>Update Post</h3>
 
 <form id="update-form" method="POST" action="./updateProc">
+	<input type="hidden" name="queryString" value="<c:out value="${ queryString }" />" />
 	<input type="hidden" name="id" value="<c:out value="${ post.id }" />" />
 	<div class="form-group">
 		<label for="title">Title</label>

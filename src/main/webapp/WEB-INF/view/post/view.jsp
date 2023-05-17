@@ -30,7 +30,28 @@
 	</tbody>
 </table>
 
+<c:if test="${ pagination != null && pagination.totalPage > 0 }">
+<nav>
+	<ul class="pagination justify-content-center">
+		<c:if test="${ pagination.startPage > 1 }">
+		<li class="page-item"><a class="page-link" href="./view?cPageNo=1<c:out value="${ pageQueryString }" />">&laquo;</a></li>
+		<li class="page-item"><a class="page-link" href="./view?cPageNo=${ pagination.prevPage }<c:out value="${ pageQueryString }" />">Prev</a></li>
+		</c:if>
+		
+		<c:forEach var="pageNo" begin="${ pagination.startPage }" end="${ pagination.endPage }">
+		<li class="page-item"><a class="page-link" href="./view?cPageNo=${ pageNo }<c:out value="${ pageQueryString }" />">${ pageNo }</a></li>
+		</c:forEach>
+		
+		<c:if test="${ pagination.endPage < pagination.lastPage }">
+		<li class="page-item"><a class="page-link" href="./view?cPageNo=${ pagination.nextPage }<c:out value="${ pageQueryString }" />">Next</a></li>
+		<li class="page-item"><a class="page-link" href="./view?cPageNo=${ pagination.lastPage }<c:out value="${ pageQueryString }" />">&raquo;</a></li>
+		</c:if>
+	</ul>
+</nav>
+</c:if>
+
 <form id="write-comment-form" method="POST" action="./writeCommentProc">
+	<input type="hidden" name="queryString" value="<c:out value="${ queryString }" />" />
 	<input type="hidden" name="id" value="<c:out value="${ post.id }" />" />
 	<div class="form-group">
 		<textarea id="write-comment-content" class="form-control" name="content"></textarea>
@@ -41,6 +62,7 @@
 </form>
 
 <form id="delete-comment-form" class="none" method="POST" action="./deleteCommentProc">
+	<input type="hidden" name="queryString" value="<c:out value="${ queryString }" />" />
 	<input type="hidden" name="id" value="<c:out value="${ post.id }" />" />
 	<input type="hidden" id="delete-comment-id" name="commentId" />
 </form>

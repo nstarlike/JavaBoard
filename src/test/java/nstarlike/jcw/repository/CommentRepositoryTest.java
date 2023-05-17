@@ -19,6 +19,7 @@ import org.springframework.test.context.ContextConfiguration;
 
 import nstarlike.jcw.dao.CommentDao;
 import nstarlike.jcw.model.Comment;
+import nstarlike.jcw.model.CommentMap;
 
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(locations= {
@@ -54,8 +55,9 @@ class CommentRepositoryTest {
 		Map<String, String> params = new HashMap<>();
 		params.put("startNo", "0");
 		params.put("endNo", "9");
+		params.put("postId", "2");
 		
-		List<Comment> list = commentDao.readAll(params);
+		List<CommentMap> list = commentDao.readAll(params);
 		
 		assertNotNull(list);
 		

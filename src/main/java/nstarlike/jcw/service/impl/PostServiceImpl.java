@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import nstarlike.jcw.model.Post;
+import nstarlike.jcw.model.PostMap;
 import nstarlike.jcw.service.PostService;
 import nstarlike.jcw.dao.PostDao;
 
@@ -29,25 +30,9 @@ public class PostServiceImpl implements PostService {
 	}
 
 	@Override
-	public List<Post> listAll(Map<String, String> params) {
+	public List<PostMap> listAll(Map<String, String> params) {
 		logger.debug("start PostServiceImpl.listAll");
 		logger.debug("params=" + params);
-		
-		int pageNo = 1;
-		try {
-			pageNo = Integer.valueOf(params.get("pageNo"));
-		}catch(Exception e) {}
-		
-		int pageSize = 10;
-		try {
-			pageSize = Integer.valueOf(params.get("pageSize"));
-		}catch(Exception e) {}
-		
-		int startNo = (pageNo - 1) * pageSize + 1;
-		int endNo = startNo + pageSize - 1;
-		
-		params.put("startNo", String.valueOf(startNo));
-		params.put("endNo", String.valueOf(endNo));
 		
 		return postDao.readAll(params);
 	}

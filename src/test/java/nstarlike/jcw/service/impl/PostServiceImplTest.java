@@ -18,6 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
 import nstarlike.jcw.model.Post;
+import nstarlike.jcw.model.PostMap;
 import nstarlike.jcw.service.PostService;
 
 @ExtendWith(SpringExtension.class)
@@ -57,7 +58,7 @@ class PostServiceImplTest {
 		params.put("pageNo", "1");
 		params.put("pageSize", "10");
 		
-		List<Post> list = postService.listAll(params);
+		List<PostMap> list = postService.listAll(params);
 		
 		assertNotNull(list);
 		
@@ -69,7 +70,7 @@ class PostServiceImplTest {
 		params.put("writerId", "2");
 		params.put("title", "title");
 		params.put("content", "content");
-		
+			
 		list = postService.listAll(params);
 		
 		assertNotNull(list);
