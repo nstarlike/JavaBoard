@@ -1,30 +1,30 @@
 package nstarlike.jcw.controller;
 
-import java.util.Collection;
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.StringJoiner;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.Authentication;
-import org.springframework.ui.Model;
 
-import nstarlike.jcw.model.Post;
 import nstarlike.jcw.model.Comment;
-import nstarlike.jcw.service.PostService;
-import nstarlike.jcw.service.CommentService;
+import nstarlike.jcw.model.Post;
+import nstarlike.jcw.model.PostMap;
 import nstarlike.jcw.security.UserPrincipal;
+import nstarlike.jcw.service.CommentService;
+import nstarlike.jcw.service.PostService;
+import nstarlike.jcw.util.Pagination;
 
 @Controller
 @RequestMapping("/post")
@@ -88,14 +88,23 @@ public class PostController {
 		logger.debug("start PostController.list");
 		logger.debug("params=" + params);
 		
-		params.put("pageSize", "10");
+		int pageNo = 1;
+		if(params.get("pageNo") != null) {
+			pageNo = Integer.valueOf(params.get("pageNo"));
+		}
+		Pagination pagination = new Pagination(pageNo);
+		params.put("startNo", String.valueOf(pagination.getStartNo()));
+		params.put("endNo", String.valueOf(pagination.getEndNo()));
 		
-		List<Post> list = postService.listAll(params);
+		List<PostMap> list = postService.listAll(params);
 		
 		logger.debug("list=" + list);
 		
+		pagination.calculate(list.get(0).getTotal());
+		
 		model.addAttribute("list", list);
 		model.addAttribute("queryString", makeQueryString(params, false));
+		model.addAttribute("pagination", pagination);
 		
 		return PREFIX + "list";
 	}
