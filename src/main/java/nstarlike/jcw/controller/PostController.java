@@ -100,7 +100,11 @@ public class PostController {
 		
 		logger.debug("list=" + list);
 		
-		pagination.calculate(list.get(0).getTotal());
+		long total = 0;
+		if(list.size() > 0) {
+			total = list.get(0).getTotal();
+		}
+		pagination.calculate(total);
 		
 		model.addAttribute("list", list);
 		model.addAttribute("queryString", makeQueryString(params, false));
