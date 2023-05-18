@@ -4,7 +4,7 @@ public class Attachment {
 	private long id;
 	private long postId;
 	private String filename;
-	private String path;
+	private String filepath;
 	private String registered;
 
 	public long getId() {
@@ -31,12 +31,12 @@ public class Attachment {
 		this.filename = filename;
 	}
 
-	public String getPath() {
-		return path;
+	public String getFilepath() {
+		return filepath;
 	}
 
-	public void setPath(String path) {
-		this.path = path;
+	public void setFilepath(String filepath) {
+		this.filepath = filepath;
 	}
 
 	public String getRegistered() {
@@ -49,7 +49,7 @@ public class Attachment {
 
 	@Override
 	public String toString() {
-		return "Attachment [id=" + id + ", postId=" + postId + ", filename=" + filename + ", path=" + path
+		return "Attachment [id=" + id + ", postId=" + postId + ", filename=" + filename + ", filepath=" + filepath
 				+ ", registered=" + registered + "]";
 	}
 
