@@ -147,6 +147,10 @@
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Njfqc_NUEe2bSM_y2w-mjg"/>
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_NjfqdPNUEe2bSM_y2w-mjg" value="1"/>
     </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_ap_7kvWiEe25tuvKdLgKNQ" name="attachmentService" visibility="private" type="_K1W-IPWiEe25tuvKdLgKNQ" association="_ap_UgPWiEe25tuvKdLgKNQ">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ap_7k_WiEe25tuvKdLgKNQ"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_aqAioPWiEe25tuvKdLgKNQ" value="1"/>
+    </ownedAttribute>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_AV4qYO5WEe2t5Ypy_7zJfw" name="write">
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_GG2uAO5XEe2t5Ypy_7zJfw" name="params">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EMap"/>
@@ -160,6 +164,7 @@
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_N36E8e5WEe2t5Ypy_7zJfw" name="form">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EMap"/>
       </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_VCWrsPWkEe25tuvKdLgKNQ" name="files" type="_N47x8PWkEe25tuvKdLgKNQ"/>
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_1Ow6EO5XEe2t5Ypy_7zJfw" name="model" type="_q76msO5WEe2t5Ypy_7zJfw"/>
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_N36E8-5WEe2t5Ypy_7zJfw" direction="return">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
@@ -193,6 +198,7 @@
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_v_7dse5XEe2t5Ypy_7zJfw" name="form">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EMap"/>
       </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_iwVeoPWkEe25tuvKdLgKNQ" name="files" type="_N47x8PWkEe25tuvKdLgKNQ"/>
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_v_7ds-5XEe2t5Ypy_7zJfw" name="model" type="_q76msO5WEe2t5Ypy_7zJfw"/>
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_v_7dtO5XEe2t5Ypy_7zJfw" direction="return">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
@@ -342,4 +348,107 @@
     </eAnnotations>
     <ownedEnd xmi:type="uml:Property" xmi:id="_PxuckPNUEe2bSM_y2w-mjg" name="commentserviceimpl" type="__zVtQPNTEe2bSM_y2w-mjg" association="_PxqyMPNUEe2bSM_y2w-mjg"/>
   </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_Zv_m4PWhEe25tuvKdLgKNQ" name="Attachment">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_hPgscPWhEe25tuvKdLgKNQ" name="id" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#ELong"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_lcPyoPWhEe25tuvKdLgKNQ" name="postId" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#ELong"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_omqgMPWhEe25tuvKdLgKNQ" name="fileName" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_1MQHsPWhEe25tuvKdLgKNQ" name="path" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_3t3I0PWhEe25tuvKdLgKNQ" name="GettersSetters"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_6PtagPWhEe25tuvKdLgKNQ" name="toString">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_6PtagfWhEe25tuvKdLgKNQ" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedParameter>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_9KyrkPWhEe25tuvKdLgKNQ" name="AttachmentDao">
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_0NsYQPWiEe25tuvKdLgKNQ" name="create">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_0NsYQfWiEe25tuvKdLgKNQ" name="attachment" type="_Zv_m4PWhEe25tuvKdLgKNQ"/>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_0NsYQvWiEe25tuvKdLgKNQ" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_8DjhQPWiEe25tuvKdLgKNQ" name="readByPostId">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_8DjhQfWiEe25tuvKdLgKNQ" name="postId">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#ELong"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_8DjhQvWiEe25tuvKdLgKNQ" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEList"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_B156YPWjEe25tuvKdLgKNQ" name="readById">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_B156YfWjEe25tuvKdLgKNQ" name="id">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#ELong"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_B156YvWjEe25tuvKdLgKNQ" type="_Zv_m4PWhEe25tuvKdLgKNQ" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_PDdg0PWjEe25tuvKdLgKNQ" name="delete">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_PDdg0fWjEe25tuvKdLgKNQ" name="id">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#ELong"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_PDdg0vWjEe25tuvKdLgKNQ" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+      </ownedParameter>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_DpUOMPWiEe25tuvKdLgKNQ" name="AttachmentRepository">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_aKZZAPWjEe25tuvKdLgKNQ" name="sqlSession" visibility="private" type="_KfiF0O5UEe2t5Ypy_7zJfw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Realization" xmi:id="_H36VkPWiEe25tuvKdLgKNQ" client="_DpUOMPWiEe25tuvKdLgKNQ" supplier="_9KyrkPWhEe25tuvKdLgKNQ"/>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_K1W-IPWiEe25tuvKdLgKNQ" name="AttachmentService">
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_mVxJsPWjEe25tuvKdLgKNQ" name="attach">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_mVxJsfWjEe25tuvKdLgKNQ" name="attachment" type="_Zv_m4PWhEe25tuvKdLgKNQ"/>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_mVxJsvWjEe25tuvKdLgKNQ" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_qbj6YPWjEe25tuvKdLgKNQ" name="getById">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_qbj6YfWjEe25tuvKdLgKNQ" name="id">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#ELong"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_uOLQYPWjEe25tuvKdLgKNQ" name="getByPostId">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_uOLQYfWjEe25tuvKdLgKNQ" name="postId">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#ELong"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_uOLQYvWjEe25tuvKdLgKNQ" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEList"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_ye8iAPWjEe25tuvKdLgKNQ" name="delete">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_ye8iAfWjEe25tuvKdLgKNQ" name="id">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#ELong"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_ye8iAvWjEe25tuvKdLgKNQ" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+      </ownedParameter>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_O0npAPWiEe25tuvKdLgKNQ" name="AttachmentServiceImpl">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_jIlRcvWiEe25tuvKdLgKNQ" name="attachmentDao" visibility="private" type="_9KyrkPWhEe25tuvKdLgKNQ" association="_jIkqYPWiEe25tuvKdLgKNQ">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_jIlRc_WiEe25tuvKdLgKNQ"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_jIlRdPWiEe25tuvKdLgKNQ" value="1"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Realization" xmi:id="_O1WBwPWiEe25tuvKdLgKNQ" client="_O0npAPWiEe25tuvKdLgKNQ" supplier="_K1W-IPWiEe25tuvKdLgKNQ"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_ap_UgPWiEe25tuvKdLgKNQ" memberEnd="_ap_7kvWiEe25tuvKdLgKNQ _aqAiofWiEe25tuvKdLgKNQ">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_ap_7kPWiEe25tuvKdLgKNQ" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_ap_7kfWiEe25tuvKdLgKNQ" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_aqAiofWiEe25tuvKdLgKNQ" name="postcontroller" type="_YUjU4O5UEe2t5Ypy_7zJfw" association="_ap_UgPWiEe25tuvKdLgKNQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_jIkqYPWiEe25tuvKdLgKNQ" memberEnd="_jIlRcvWiEe25tuvKdLgKNQ _jIlRdfWiEe25tuvKdLgKNQ">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_jIlRcPWiEe25tuvKdLgKNQ" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_jIlRcfWiEe25tuvKdLgKNQ" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_jIlRdfWiEe25tuvKdLgKNQ" name="attachmentserviceimpl" type="_O0npAPWiEe25tuvKdLgKNQ" association="_jIkqYPWiEe25tuvKdLgKNQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_N47x8PWkEe25tuvKdLgKNQ" name="MultipartFileArray"/>
 </uml:Model>
