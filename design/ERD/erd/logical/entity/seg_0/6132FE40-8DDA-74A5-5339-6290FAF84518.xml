@@ -1,5 +1,5 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="6132FE40-8DDA-74A5-5339-6290FAF84518" name="사용자권한">
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="6132FE40-8DDA-74A5-5339-6290FAF84518" name="user authority">
 <createdBy>starlight</createdBy>
 <createdTime>2023-04-30 09:11:50 UTC</createdTime>
 <ownerDesignName>erd</ownerDesignName>
@@ -15,7 +15,7 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="사용자ID" id="BC14B464-AC5B-A4FC-0548-5A16CFF86964">
+<Attribute name="user id1" id="BC14B464-AC5B-A4FC-0548-5A16CFF86964">
 <createdBy>starlight</createdBy>
 <createdTime>2023-04-30 09:12:07 UTC</createdTime>
 <ownerDesignName>erd</ownerDesignName>
@@ -23,10 +23,11 @@
 <item key="9996ACFC-1C4A-DBA6-0082-124EBC7272FF" value="true"/>
 </engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
-<use>0</use>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="권한" id="85F683D3-92EA-A284-6B16-032A0FC555AF">
+<Attribute name="authority" id="85F683D3-92EA-A284-6B16-032A0FC555AF">
 <createdBy>starlight</createdBy>
 <createdTime>2023-04-30 09:12:22 UTC</createdTime>
 <ownerDesignName>erd</ownerDesignName>
@@ -34,11 +35,12 @@
 <item key="9996ACFC-1C4A-DBA6-0082-124EBC7272FF" value="true"/>
 </engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
-<use>0</use>
-<dataTypeSize>10</dataTypeSize>
-<ownDataTypeParameters>10,,</ownDataTypeParameters>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="사용자ID1" id="5FE39CC3-BFE1-508B-93C6-FAEEF7554D72">
+<Attribute name="user id" id="5FE39CC3-BFE1-508B-93C6-FAEEF7554D72">
 <createdBy>starlight</createdBy>
 <createdTime>2023-04-30 09:49:40 UTC</createdTime>
 <generatorID>35FCA2C2-FEEB-0D4A-100A-CF57627460A7</generatorID>
@@ -47,12 +49,14 @@
 <item key="9996ACFC-1C4A-DBA6-0082-124EBC7272FF" value="true"/>
 </engineerTo>
 <referedAttribute>A40B5BDC-0915-7AD8-AB87-6CCD5613DEF4</referedAttribute>
-<use>0</use>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
-<identifier id="E8D7DDD5-007C-8C7C-93CC-F3B23BFA924D" name="users_authority PK">
+<identifier id="E8D7DDD5-007C-8C7C-93CC-F3B23BFA924D" name="user_authority_PK">
 <createdBy>starlight</createdBy>
 <createdTime>2023-04-30 09:12:19 UTC</createdTime>
 <ownerDesignName>erd</ownerDesignName>

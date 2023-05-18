@@ -1,0 +1,77 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="69A935BB-B7CF-F8C5-488C-85EC15045E3E" name="attachment">
+<createdBy>starlight</createdBy>
+<createdTime>2023-05-18 18:10:51 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<engineerTo>
+<item key="9996ACFC-1C4A-DBA6-0082-124EBC7272FF" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="attach_id" id="41960A81-6C7C-3297-39BF-22676F2D85E6">
+<createdBy>starlight</createdBy>
+<createdTime>2023-05-18 18:11:00 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<engineerTo>
+<item key="9996ACFC-1C4A-DBA6-0082-124EBC7272FF" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="filename" id="D43037C5-CD20-82EB-C276-D802CC0BAEF8">
+<createdBy>starlight</createdBy>
+<createdTime>2023-05-18 18:11:19 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<engineerTo>
+<item key="9996ACFC-1C4A-DBA6-0082-124EBC7272FF" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="filepath" id="C78ED0D9-1B57-3AFF-48CC-DA11C53A43F5">
+<createdBy>starlight</createdBy>
+<createdTime>2023-05-18 18:11:30 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<engineerTo>
+<item key="9996ACFC-1C4A-DBA6-0082-124EBC7272FF" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="registered" id="B313137E-B80C-BA46-5F76-EC012D8ABDC0">
+<createdBy>starlight</createdBy>
+<createdTime>2023-05-18 18:11:38 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<engineerTo>
+<item key="9996ACFC-1C4A-DBA6-0082-124EBC7272FF" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="post id" id="C1869889-BBEC-6A8A-8FD8-2C66776920BD">
+<createdBy>starlight</createdBy>
+<createdTime>2023-05-18 18:20:13 UTC</createdTime>
+<generatorID>22781C09-00B6-4A7B-C90B-7CC051CAAD5B</generatorID>
+<ownerDesignName>erd</ownerDesignName>
+<engineerTo>
+<item key="9996ACFC-1C4A-DBA6-0082-124EBC7272FF" value="true"/>
+</engineerTo>
+<referedAttribute>56CD39A8-1031-BA68-C7D3-682D14771A4F</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+</Entity>

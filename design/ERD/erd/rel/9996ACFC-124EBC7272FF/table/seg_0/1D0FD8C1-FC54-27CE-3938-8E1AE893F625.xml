@@ -15,25 +15,39 @@
 <ownerDesignName>erd</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT011</logicalDatatype>
+<logicalDatatype>LOGDT019</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="post_id" id="6835C6C6-1745-B240-C4F1-4F2F95E1685D">
+<Column name="post_post_id" id="6835C6C6-1745-B240-C4F1-4F2F95E1685D">
 <createdBy>starlight</createdBy>
 <createdTime>2023-04-30 09:55:40 UTC</createdTime>
 <generatorID>BEF9A671-C800-7A36-5859-0FA6BE8D5461</generatorID>
 <ownerDesignName>erd</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT011</logicalDatatype>
+<logicalDatatype>LOGDT019</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 <associations>
 <colAssociation fkAssociation="CE4CC4F2-DC0A-648A-D9B6-1738CD6090CE" referredColumn="64EEF636-686F-AF4D-F8AD-DB80839AD82B"/>
 </associations>
 </Column>
-<Column name="comment" id="80903D50-2F20-2CC1-7AC5-97CAF1513EA0">
+<Column name="users_user_id" id="39CC9BFD-5CDF-FCC1-AA14-183011058BC5">
+<createdBy>starlight</createdBy>
+<createdTime>2023-05-18 18:00:47 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="C9C8A285-8F4F-88DD-3617-B91F58E956DA" referredColumn="97E5285F-375B-D63C-D0A1-A972A1D2D7DF"/>
+</associations>
+</Column>
+<Column name="content" id="80903D50-2F20-2CC1-7AC5-97CAF1513EA0">
 <createdBy>starlight</createdBy>
 <createdTime>2023-04-30 09:55:40 UTC</createdTime>
 <generatorID>52C9B48C-4C32-21DC-FF49-F338B8AB4533</generatorID>
@@ -80,6 +94,17 @@
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
 <colUsage columnID="6835C6C6-1745-B240-C4F1-4F2F95E1685D"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="0C9ED537-3FD0-41FF-7396-85D16BB69366" name="comment_users_FK">
+<createdBy>starlight</createdBy>
+<createdTime>2023-05-18 18:00:47 UTC</createdTime>
+<generatorID>C4C1419E-911B-2622-DDE9-3C4E0D35ED86</generatorID>
+<ownerDesignName>erd</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="39CC9BFD-5CDF-FCC1-AA14-183011058BC5"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>
