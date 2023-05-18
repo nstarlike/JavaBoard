@@ -10,13 +10,15 @@ public class QueryStringBuilder {
 	private List<String> whiteList = new ArrayList<>();
 	private String idParamName;
 	private String pageParamName;
+	private String cPageParamName;
 	
 	public QueryStringBuilder() {}
 	
-	public QueryStringBuilder(List<String> whiteList, String idParamName, String pageParamName) {
+	public QueryStringBuilder(List<String> whiteList, String idParamName, String pageParamName, String cPageParamName) {
 		this.whiteList = whiteList;
 		this.idParamName = idParamName;
 		this.pageParamName = pageParamName;
+		this.cPageParamName = cPageParamName;
 	}
 
 	public List<String> getWhiteList() {
@@ -43,11 +45,19 @@ public class QueryStringBuilder {
 		this.pageParamName = pageParamName;
 	}
 	
+	public String getCPageParamName() {
+		return cPageParamName;
+	}
+	
+	public void setCPageParamName(String cPageParamName) {
+		this.cPageParamName = cPageParamName;
+	}
+	
 	public void add(String whiteEntry) {
 		this.whiteList.add(whiteEntry);
 	}
 
-	public String buildQueryString(Map<String, String> params, List<String> excludes, String prefix) {
+	public String build(Map<String, String> params, List<String> excludes, String prefix) {
 		StringJoiner sj = new StringJoiner("&");
 		
 		if(params != null) {
@@ -68,35 +78,48 @@ public class QueryStringBuilder {
 		return queryString;
 	}
 	
-	public String buildQueryString(Map<String, String> params) {
-		return buildQueryString(params, null, null);
+	public String build(Map<String, String> params) {
+		return build(params, null, null);
 	}
 	
-	public String attachQueryString(Map<String, String> params) {
-		return buildQueryString(params, null, "?");
+	public String attach(Map<String, String> params) {
+		return build(params, null, "?");
 	}
 	
-	public String addQueryString(Map<String, String> params) {
-		return buildQueryString(params, null, "&");
+	public String add(Map<String, String> params) {
+		return build(params, null, "&");
 	}
 	
-	public String attachListQueryString(Map<String, String> params) {
+	public String attachToGoList(Map<String, String> params) {
 		if(this.idParamName == null || this.idParamName.isEmpty()) {
 			throw new QueryStringParamNameException("The parameter name for an id is not valid, " + this.idParamName);
+		}
+		if(this.cPageParamName == null || this.cPageParamName.isEmpty()) {
+			throw new QueryStringParamNameException("The parameter name for an comment page number is not valid, " + this.cPageParamName);
 		}
 		
 		List<String> excludes = new ArrayList<>();
 		excludes.add(this.idParamName);
-		return buildQueryString(params, excludes, "?");
+		excludes.add(this.cPageParamName);
+		return build(params, excludes, "?");
 	}
 	
-	public String addPageQueryString(Map<String, String> params) {
-		if(this.pageParamName == null || this.pageParamName.isEmpty()) {
-			throw new QueryStringParamNameException("The parameter name for a page number is not valid, " + this.pageParamName);
+	public String addToPage(Map<String, String> params, String pageParamName) {
+		if(pageParamName == null || pageParamName.isEmpty()) {
+			throw new QueryStringParamNameException("The parameter name for a page number is not valid, " + pageParamName);
 		}
+		
 		List<String> excludes = new ArrayList<>();
-		excludes.add(this.pageParamName);
-		return buildQueryString(params, excludes, "&");
+		excludes.add(pageParamName);
+		return build(params, excludes, "&");
+	}
+	
+	public String addToPage(Map<String, String> params) {
+		return addToPage(params, this.pageParamName);
+	}
+	
+	public String addToCommentPage(Map<String, String> params) {
+		return addToPage(params, this.cPageParamName);
 	}
 
 	@Override
