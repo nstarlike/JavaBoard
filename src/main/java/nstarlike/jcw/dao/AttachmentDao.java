@@ -9,4 +9,5 @@ public interface AttachmentDao {
 	public Attachment readById(long id);
 	public List<Attachment> readByPostId(long postId);
 	public int delete(long id);
+	public int deleteByPostId(long postId);
 }

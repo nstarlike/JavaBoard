@@ -9,4 +9,5 @@ public interface AttachmentService {
 	public Attachment getById(long id);
 	public List<Attachment> getByPostId(long postId);
 	public int delete(long id);
+	public int deleteByPostId(long postId);
 }

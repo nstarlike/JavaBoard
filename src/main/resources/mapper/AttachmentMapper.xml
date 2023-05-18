@@ -25,4 +25,8 @@
 	<delete id="delete" parameterType="long">
 	DELETE FROM attachment WHERE attach_id = #{id}
 	</delete>
+	
+	<delete id="deleteByPostId" parameterType="long">
+	DELETE FROM attachment WHERE post_id = #{postId}
+	</delete>
 </mapper>

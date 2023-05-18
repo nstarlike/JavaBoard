@@ -51,4 +51,11 @@ public class AttachmentServiceImpl implements AttachmentService {
 		return attachmentDao.delete(id);
 	}
 
+	@Override
+	public int deleteByPostId(long postId) {
+		logger.debug("start AttachmentServiceImpl.deleteByPostId");
+		logger.debug("postId=" + postId);
+		
+		return attachmentDao.deleteByPostId(postId);
+	}
 }

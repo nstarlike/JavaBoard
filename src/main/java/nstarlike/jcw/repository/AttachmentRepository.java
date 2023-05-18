@@ -53,4 +53,13 @@ public class AttachmentRepository implements AttachmentDao {
 		return sqlSession.delete(PREFIX + "delete", id);
 	}
 
+	@Override
+	public int deleteByPostId(long postId) {
+		logger.debug("start AttachmentRepository.deleteByPostId");
+		logger.debug("postId=" + postId);
+		
+		return sqlSession.delete(PREFIX + ".deleteByPostId", postId);
+	}
+
+	
 }
