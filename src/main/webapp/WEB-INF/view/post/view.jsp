@@ -39,7 +39,11 @@
 		</c:if>
 		
 		<c:forEach var="pageNo" begin="${ pagination.startPage }" end="${ pagination.endPage }">
-		<li class="page-item"><a class="page-link" href="./view?cPageNo=${ pageNo }<c:out value="${ pageQueryString }" />">${ pageNo }</a></li>
+			<c:set var="active" value="" />
+			<c:if test="${ pageNo == param.cPageNo || (pageNo == 1 && empty param.cPageNo) }">
+				<c:set var="active" value="active" />
+			</c:if>
+		<li class="page-item ${ active }"><a class="page-link" href="./view?cPageNo=${ pageNo }<c:out value="${ pageQueryString }" />">${ pageNo }</a></li>
 		</c:forEach>
 		
 		<c:if test="${ pagination.endPage < pagination.lastPage }">

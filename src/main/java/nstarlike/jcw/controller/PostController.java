@@ -3,8 +3,6 @@ package nstarlike.jcw.controller;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
-import java.util.StringJoiner;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,6 +24,7 @@ import nstarlike.jcw.security.UserPrincipal;
 import nstarlike.jcw.service.CommentService;
 import nstarlike.jcw.service.PostService;
 import nstarlike.jcw.util.Pagination;
+import nstarlike.jcw.util.QueryStringBuilder;
 
 @Controller
 @RequestMapping("/post")
@@ -39,12 +38,29 @@ public class PostController {
 	@Autowired
 	private CommentService commentService;
 	
+	private QueryStringBuilder queryStringBuilder;
+	
+	public PostController() {
+		logger.debug("start PostController constructor");
+		
+		List<String> whiteList = new ArrayList<>();
+		whiteList.add("id");
+		whiteList.add("pageNo");
+		whiteList.add("search");
+		whiteList.add("keyword");
+		whiteList.add("cPageNo");
+		
+		queryStringBuilder = new QueryStringBuilder(whiteList, "id", "pageNo", "cPageNo");
+		
+		logger.debug("queryStringBuilder=" + queryStringBuilder);
+	}
+	
 	@GetMapping("/write")
 	public String write(@RequestParam Map<String, String> params, Model model) {
 		logger.debug("start PostController.write");
 		logger.debug("params=" + params);
 		
-		model.addAttribute("queryString", getQueryString(params));
+		model.addAttribute("queryString", queryStringBuilder.attach(params));
 		return PREFIX + "write";
 	}
 	
@@ -108,9 +124,9 @@ public class PostController {
 		pagination.calculate(total);
 		
 		model.addAttribute("list", list);
-		model.addAttribute("queryString", getQueryString(params));
-		model.addAttribute("listQueryString", getListQueryString(params));
-		model.addAttribute("pageQueryString", getPageQueryString(params));
+		model.addAttribute("queryString", queryStringBuilder.attach(params));
+		model.addAttribute("listQueryString", queryStringBuilder.add(params));
+		model.addAttribute("pageQueryString", queryStringBuilder.addToPage(params));
 		model.addAttribute("pagination", pagination);
 		
 		return PREFIX + "list";
@@ -126,8 +142,8 @@ public class PostController {
 		logger.debug("post=" + post);
 		
 		int coPageNo = 1;
-		if(params.get("coPageNo") != null) {
-			coPageNo = Integer.valueOf(params.get("coPageNo"));
+		if(params.get("cPageNo") != null) {
+			coPageNo = Integer.valueOf(params.get("cPageNo"));
 		}
 		Pagination pagination = new Pagination(coPageNo);
 		
@@ -145,9 +161,9 @@ public class PostController {
 		pagination.calculate(total);
 		
 		model.addAttribute("post", post);
-		model.addAttribute("queryString", getQueryString(params));
-		model.addAttribute("listQueryString", getToListQueryString(params));
-		model.addAttribute("pageQueryString", getCommentPageQueryString(params));
+		model.addAttribute("queryString", queryStringBuilder.attach(params));
+		model.addAttribute("listQueryString", queryStringBuilder.attachToGoList(params));
+		model.addAttribute("pageQueryString", queryStringBuilder.addToCommentPage(params));
 		model.addAttribute("commentList", commentList);
 		model.addAttribute("pagination", pagination);
 		
@@ -176,7 +192,7 @@ public class PostController {
 			logger.debug("post=" + post);
 			
 			model.addAttribute("post", post);
-			model.addAttribute("queryString", getQueryString(params));
+			model.addAttribute("queryString", queryStringBuilder.attach(params));
 			
 			return PREFIX + "/update";
 			
@@ -321,81 +337,5 @@ public class PostController {
 		}
 		
 		return "common/proc";
-	}
-	
-	/*
-	 * make query string from parameters
-	 */
-	private String makeQueryString(Map<String, String> params, List<String> whiteList, String prefix) {
-		logger.debug("start PostController.makeQueryString");
-		logger.debug("params=" + params);
-		logger.debug("whiteList=" + whiteList);
-		logger.debug("prefix=" + prefix);
-		
-		if(params == null || params.size() <= 0) {
-			return "";
-		}
-		
-		StringJoiner sj = new StringJoiner("&");
-		Set<String> keys = params.keySet();
-		for(String key : keys) {
-			if(whiteList.contains(key)) {
-				sj.add(key + "=" + params.get(key));
-			}
-		}
-		
-		if(sj.length() > 0) {
-			String queryString = prefix + sj.toString();
-			
-			logger.debug("queryString=" + queryString);
-			
-			return queryString;
-			
-		}else {
-			logger.debug("queryString=");
-			
-			return "";
-		}
-	}
-	
-	private String getQueryString(Map<String, String> params, List<String> excludes, String prefix) {
-		List<String> whiteList = new ArrayList<>();
-		whiteList.add("pageNo");
-		whiteList.add("search");
-		whiteList.add("keyword");
-		whiteList.add("cPageNo");
-		whiteList.add("id");
-		
-		if(excludes != null && excludes.size() > 0) {
-			whiteList.removeAll(excludes);
-		}
-		
-		return makeQueryString(params, whiteList, prefix);
-	}
-	
-	private String getQueryString(Map<String, String> params) {
-		return getQueryString(params, null, "?");
-	}
-	
-	private String getListQueryString(Map<String, String> params) {
-		return getQueryString(params, null, "&");
-	}
-	
-	private String getToListQueryString(Map<String, String> params) {
-		List<String> excludes = new ArrayList<>();
-		excludes.add("id");
-		return getQueryString(params, excludes, "?");
-	}
-	
-	private String getPageQueryString(Map<String, String> params) {
-		List<String> excludes = new ArrayList<>();
-		excludes.add("pageNo");
-		return getQueryString(params, excludes, "&");
-	}
-	
-	private String getCommentPageQueryString(Map<String, String> params) {
-		List<String> excludes = new ArrayList<>();
-		excludes.add("cPageNo");
-		return getQueryString(params, excludes, "&");
 	}
 }
