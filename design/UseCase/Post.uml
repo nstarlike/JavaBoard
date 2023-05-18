@@ -97,6 +97,7 @@
     <ownedEnd xmi:type="uml:Property" xmi:id="_dRX3dO2UEe2fAM1-AEqhLw" name="admin" type="_r8s44O2TEe2fAM1-AEqhLw" association="_dRX3cO2UEe2fAM1-AEqhLw"/>
   </packagedElement>
   <packagedElement xmi:type="uml:UseCase" xmi:id="_YCIV8O2VEe2fAM1-AEqhLw" name="Write post">
+    <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_FdrZsPWgEe25tuvKdLgKNQ" name="ExtensionPoint2"/>
     <include xmi:type="uml:Include" xmi:id="_bX9pUO2VEe2fAM1-AEqhLw" addition="_DHCRgO2UEe2fAM1-AEqhLw"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Association" xmi:id="_eQtYEO2VEe2fAM1-AEqhLw" memberEnd="_eQt_Ie2VEe2fAM1-AEqhLw _eQt_Iu2VEe2fAM1-AEqhLw">
@@ -113,4 +114,8 @@
     <ownedEnd xmi:type="uml:Property" xmi:id="_fqo_ce2VEe2fAM1-AEqhLw" name="write post" type="_YCIV8O2VEe2fAM1-AEqhLw" association="_fqoYYO2VEe2fAM1-AEqhLw"/>
     <ownedEnd xmi:type="uml:Property" xmi:id="_fqo_cu2VEe2fAM1-AEqhLw" name="admin" type="_r8s44O2TEe2fAM1-AEqhLw" association="_fqoYYO2VEe2fAM1-AEqhLw"/>
   </packagedElement>
+  <packagedElement xmi:type="uml:UseCase" xmi:id="_Cex_oPWgEe25tuvKdLgKNQ" name="Attach files">
+    <extend xmi:type="uml:Extend" xmi:id="_FdqLkPWgEe25tuvKdLgKNQ" extendedCase="_YCIV8O2VEe2fAM1-AEqhLw" extensionLocation="_FdrZsPWgEe25tuvKdLgKNQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Actor" xmi:id="_H8AdUPWgEe25tuvKdLgKNQ" name="Attachment Service"/>
 </uml:Model>
