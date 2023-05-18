@@ -14,15 +14,15 @@
 	VALUES(attachment_seq.nextval, #{postId}, #{filename}, #{filepath}, TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'))
 	</insert>
 	
-	<select id="readById" parameterType="long">
+	<select id="readById" parameterType="long" resultMap="attachmentResultMap">
 	SELECT * FROM attachment WHERE attach_id = #{id}
 	</select>
 	
-	<select id="readByPostId" parameterType="long">
+	<select id="readByPostId" parameterType="long" resultMap="attachmentResultMap">
 	SELECT * FROM attachment WHERE post_id = #{postId}
 	</select>
 	
 	<delete id="delete" parameterType="long">
-	DELETE FROM attachment WHERE id = #{id}
+	DELETE FROM attachment WHERE attach_id = #{id}
 	</delete>
 </mapper>
