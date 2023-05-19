@@ -14,6 +14,8 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.MediaType;
+import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -27,8 +29,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import nstarlike.jcw.model.User;
 import nstarlike.jcw.security.UserPrincipal;
-import nstarlike.jcw.service.PostService;
+import nstarlike.jcw.service.AttachmentService;
 import nstarlike.jcw.service.CommentService;
+import nstarlike.jcw.service.PostService;
 
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(locations= {
@@ -47,6 +50,9 @@ class PostControllerTest {
 	
 	@Mock
 	private CommentService commentService;
+	
+	@Mock
+	private AttachmentService attachmentService;
 	
 	@InjectMocks
 	private PostController postController;
@@ -89,11 +95,14 @@ class PostControllerTest {
 	void testWriteProc() throws Exception {
 		logger.debug("start PostControllerTest.testWriteProc");
 		
+		MockMultipartFile file = new MockMultipartFile("files", "hello.txt", MediaType.TEXT_PLAIN_VALUE, "Hello world".getBytes());
+		
 		MockHttpServletRequestBuilder builder = MockMvcRequestBuilders
-			.post("/post/writeProc")
-			.queryParam("writerId", "2")
-			.queryParam("title", "test title")
-			.queryParam("content", "test content");
+			.multipart("/post/writeProc")
+			.file(file)
+			.param("writerId", "2")
+			.param("title", "test title")
+			.param("content", "test content");
 		mockMvc.perform(builder).andExpect(status().isOk());
 	}
 
@@ -125,11 +134,16 @@ class PostControllerTest {
 	void testUpdateProc() throws Exception {
 		logger.debug("start PostControllerTest.testUpdateProc");
 		
+		MockMultipartFile file1 = new MockMultipartFile("files", "hello1.txt", MediaType.TEXT_PLAIN_VALUE, "Hello world 11".getBytes());
+		MockMultipartFile file2 = new MockMultipartFile("files", "hello2.txt", MediaType.TEXT_PLAIN_VALUE, "Hello world 22".getBytes());
+		
 		MockHttpServletRequestBuilder builder = MockMvcRequestBuilders
-				.post("/post/updateProc")
-				.queryParam("id", "1")
-				.queryParam("title", "updated title")
-				.queryParam("content", "updated content");
+				.multipart("/post/updateProc")
+				.file(file1)
+				.file(file2)
+				.param("id", "1")
+				.param("title", "updated title")
+				.param("content", "updated content");
 		mockMvc.perform(builder).andExpect(status().isOk());
 	}
 
