@@ -36,6 +36,15 @@
 	
 	<bean id="webexpressionHandler" class="org.springframework.security.web.access.expression.DefaultWebSecurityExpressionHandler" />
 	
-	<bean id="multipartResolver" class="org.springframework.web.multipart.support.StandardServletMultipartResolver" /> 
+	<bean id="multipartResolver" class="org.springframework.web.multipart.support.StandardServletMultipartResolver" />
+	
+	<bean id="exceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+		<property name="exceptionMappings">
+			<map>
+				<entry key="Exception" value="common/error" />
+			</map>
+		</property>
+		<property name="defaultErrorView" value="common/error" />
+	</bean> 
 	
 </beans>
