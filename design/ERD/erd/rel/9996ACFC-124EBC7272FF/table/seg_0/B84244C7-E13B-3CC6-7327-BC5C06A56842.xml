@@ -4,6 +4,7 @@
 <createdTime>2023-04-30 09:55:40 UTC</createdTime>
 <generatorID>6E7C70A3-C867-7662-E925-73EB6D91EFA3</generatorID>
 <ownerDesignName>erd</ownerDesignName>
+<deprecated>true</deprecated>
 <allowColumnReorder>false</allowColumnReorder>
 <existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
 <parsed>true</parsed>
@@ -15,18 +16,18 @@
 <ownerDesignName>erd</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT011</logicalDatatype>
+<logicalDatatype>LOGDT019</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="writer_id" id="73DB4797-E8B5-2039-216C-F302EE7D37F8">
+<Column name="users_user_id" id="73DB4797-E8B5-2039-216C-F302EE7D37F8">
 <createdBy>starlight</createdBy>
 <createdTime>2023-04-30 09:55:40 UTC</createdTime>
 <generatorID>3103E5DB-16C4-BE9A-110B-D6B8B233E1D0</generatorID>
 <ownerDesignName>erd</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT011</logicalDatatype>
+<logicalDatatype>LOGDT019</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 <associations>
@@ -57,11 +58,34 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
+<Column name="hits" id="65118F61-B99F-B824-4405-40CCCA980477">
+<createdBy>starlight</createdBy>
+<createdTime>2023-05-18 17:54:56 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<defaultValue>0</defaultValue>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
 <Column name="written" id="0B6CB3A5-EC1A-4F6D-E193-03068F2361AB">
 <createdBy>starlight</createdBy>
 <createdTime>2023-04-30 09:55:40 UTC</createdTime>
 <generatorID>7ED262D5-9059-2750-8091-C469E1FAF302</generatorID>
 <ownerDesignName>erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<dataTypeSize>19</dataTypeSize>
+<ownDataTypeParameters>19,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="updated" id="124250CC-E006-19BF-E7D8-B2D560F368D3">
+<createdBy>starlight</createdBy>
+<createdTime>2023-05-18 17:54:37 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT025</logicalDatatype>

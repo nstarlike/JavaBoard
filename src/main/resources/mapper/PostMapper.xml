@@ -36,8 +36,11 @@
 	</select>
 	
 	<insert id="create" parameterType="Post">
+		<selectKey keyProperty="id" resultType="int" order="BEFORE" >
+		SELECT POST_SEQ.NEXTVAL AS id FROM DUAL
+		</selectKey>
 	INSERT INTO post(post_id, writer_id, title, content, written)
-	VALUES(POST_SEQ.NEXTVAL, #{writerId}, #{title}, #{content}, TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'))
+	VALUES(#{id}, #{writerId}, #{title}, #{content}, TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'))
 	</insert>
 	
 	<update id="update" parameterType="Post">

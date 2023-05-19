@@ -8,14 +8,14 @@
 <existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
 <parsed>true</parsed>
 <columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
-<Column name="user_id" id="47955CF7-4D0F-9DA4-068F-57E177BA129D">
+<Column name="users_user_id" id="47955CF7-4D0F-9DA4-068F-57E177BA129D">
 <createdBy>starlight</createdBy>
 <createdTime>2023-04-30 09:55:40 UTC</createdTime>
 <generatorID>BC14B464-AC5B-A4FC-0548-5A16CFF86964</generatorID>
 <ownerDesignName>erd</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT011</logicalDatatype>
+<logicalDatatype>LOGDT019</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 <associations>

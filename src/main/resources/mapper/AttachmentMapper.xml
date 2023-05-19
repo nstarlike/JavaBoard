@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="nstarlike.jcw.mapper.AttachmentMapper">
+	<resultMap id="attachmentResultMap" type="Attachment">
+		<id property="id" column="attach_id" />
+		<result property="postId" column="post_id" />
+		<result property="filename" column="filename" />
+		<result property="filepath" column="filepath" />
+		<result property="registered" column="registered" />
+	</resultMap>
+	
+	<insert id="create" parameterType="Attachment">
+	INSERT INTO attachment(attach_id, post_id, filename, filepath, registered)
+	VALUES(attachment_seq.nextval, #{postId}, #{filename}, #{filepath}, TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'))
+	</insert>
+	
+	<select id="readById" parameterType="long" resultMap="attachmentResultMap">
+	SELECT * FROM attachment WHERE attach_id = #{id}
+	</select>
+	
+	<select id="readByPostId" parameterType="long" resultMap="attachmentResultMap">
+	SELECT * FROM attachment WHERE post_id = #{postId}
+	</select>
+	
+	<delete id="delete" parameterType="long">
+	DELETE FROM attachment WHERE attach_id = #{id}
+	</delete>
+	
+	<delete id="deleteByPostId" parameterType="long">
+	DELETE FROM attachment WHERE post_id = #{postId}
+	</delete>
+</mapper>

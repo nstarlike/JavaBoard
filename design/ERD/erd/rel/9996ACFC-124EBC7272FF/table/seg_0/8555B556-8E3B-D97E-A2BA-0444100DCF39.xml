@@ -1,0 +1,99 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="8555B556-8E3B-D97E-A2BA-0444100DCF39" name="attachment">
+<createdBy>starlight</createdBy>
+<createdTime>2023-05-18 18:21:15 UTC</createdTime>
+<generatorID>69A935BB-B7CF-F8C5-488C-85EC15045E3E</generatorID>
+<ownerDesignName>erd</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="attach_id" id="F04DB358-A6BF-1BFC-8EC0-A3E87C4E396E">
+<createdBy>starlight</createdBy>
+<createdTime>2023-05-18 18:21:15 UTC</createdTime>
+<generatorID>41960A81-6C7C-3297-39BF-22676F2D85E6</generatorID>
+<ownerDesignName>erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="post_id" id="0392B8A7-CFC2-DF6F-051D-2B939F5BDED3">
+<createdBy>starlight</createdBy>
+<createdTime>2023-05-18 18:21:15 UTC</createdTime>
+<generatorID>C1869889-BBEC-6A8A-8FD8-2C66776920BD</generatorID>
+<ownerDesignName>erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="EDB30EC1-0793-C0CA-EF95-77E36CAD0A9B" referredColumn="64EEF636-686F-AF4D-F8AD-DB80839AD82B"/>
+</associations>
+</Column>
+<Column name="filename" id="CF9A27C5-AFFA-5E32-DEAE-164AEFCEB28C">
+<createdBy>starlight</createdBy>
+<createdTime>2023-05-18 18:21:15 UTC</createdTime>
+<generatorID>D43037C5-CD20-82EB-C276-D802CC0BAEF8</generatorID>
+<ownerDesignName>erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="filepath" id="12160627-5D3E-6350-385E-E0BC6644D375">
+<createdBy>starlight</createdBy>
+<createdTime>2023-05-18 18:21:15 UTC</createdTime>
+<generatorID>C78ED0D9-1B57-3AFF-48CC-DA11C53A43F5</generatorID>
+<ownerDesignName>erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="registered" id="AB397BC7-0F79-C482-97B8-A3FACB56A051">
+<createdBy>starlight</createdBy>
+<createdTime>2023-05-18 18:21:15 UTC</createdTime>
+<generatorID>B313137E-B80C-BA46-5F76-EC012D8ABDC0</generatorID>
+<ownerDesignName>erd</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<dataTypeSize>19</dataTypeSize>
+<ownDataTypeParameters>19,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="6D488282-7E53-3A0C-E2AF-E0E6AC85A4C8" name="attachment_PK">
+<createdBy>starlight</createdBy>
+<createdTime>2023-05-18 18:23:00 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="F04DB358-A6BF-1BFC-8EC0-A3E87C4E396E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="F7473AE2-979B-AED9-6580-4FCD03767FFC" name="attachment_post_FK">
+<createdBy>starlight</createdBy>
+<createdTime>2023-05-18 18:21:15 UTC</createdTime>
+<generatorID>22781C09-00B6-4A7B-C90B-7CC051CAAD5B</generatorID>
+<ownerDesignName>erd</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="0392B8A7-CFC2-DF6F-051D-2B939F5BDED3"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

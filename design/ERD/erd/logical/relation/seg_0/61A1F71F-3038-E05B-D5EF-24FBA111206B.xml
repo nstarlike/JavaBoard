@@ -1,17 +1,18 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="comment post FK" directorySegmentName="seg_0" id="4B5F0723-27B4-ECEC-C1B8-45E37CDDC7F5">
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="comment_users_FK" directorySegmentName="seg_0" id="61A1F71F-3038-E05B-D5EF-24FBA111206B">
 <createdBy>starlight</createdBy>
-<createdTime>2023-04-30 09:51:13 UTC</createdTime>
+<createdTime>2023-05-18 18:14:35 UTC</createdTime>
+<generatorID>C9C8A285-8F4F-88DD-3617-B91F58E956DA</generatorID>
 <ownerDesignName>erd</ownerDesignName>
 <engineerTo>
 <item key="9996ACFC-1C4A-DBA6-0082-124EBC7272FF" value="true"/>
 </engineerTo>
-<sourcePk>D52ACD76-AACB-C43C-4E86-162926D772F7</sourcePk>
+<sourcePk>C4C1419E-911B-2622-DDE9-3C4E0D35ED86</sourcePk>
 <identifying>false</identifying>
 <optionalSource>true</optionalSource>
 <optionalTarget>false</optionalTarget>
 <sourceCardinality>1</sourceCardinality>
-<sourceEntity>6E7C70A3-C867-7662-E925-73EB6D91EFA3</sourceEntity>
+<sourceEntity>582AB969-8D95-0E4A-C7C5-5E6198092E7E</sourceEntity>
 <targetCardinalityString>*</targetCardinalityString>
 <targetEntity>204AD041-B85B-14A3-4732-31DEB23F8DB0</targetEntity>
 <transferable>true</transferable>
