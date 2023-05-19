@@ -6,6 +6,9 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -17,6 +20,7 @@ import java.util.UUID;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -27,6 +31,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import nstarlike.jcw.model.Attachment;
 import nstarlike.jcw.model.Comment;
 import nstarlike.jcw.model.CommentMap;
@@ -408,6 +414,41 @@ public class PostController {
 		}
 		
 		return "common/proc";
+	}
+	
+	@GetMapping("/downloadAttachment")
+	public void downloadAttachment(@RequestParam String id, HttpServletRequest request, HttpServletResponse response, Model model) {
+		logger.debug("start PostController.downloadAttachment");
+		logger.debug("id=" + id);
+		
+		try {
+			Attachment attachment = attachmentService.getById(Long.valueOf(id));
+			if(attachment == null) {
+				throw new Exception("The attachment data does not exist.");
+			}
+			
+			String filename = attachment.getFilename();
+			String filepath = attachment.getFilepath();
+			if(!File.separator.equals("/")) {
+				filepath = filepath.replaceAll("/", "\\\\");
+			}
+			
+			Path file = Paths.get(ATTACHMENT_ROOT + File.separator + filepath);
+			
+			logger.debug("file path=" + file);
+			
+			if(!Files.exists(file)) {
+				throw new Exception("The attachment file does not exists.");
+			}
+			
+			response.setContentType("application/octet-stream");
+			response.setHeader(HttpHeaders.CONTENT_DISPOSITION, "attachment;filename=" + filename);
+			Files.copy(file, response.getOutputStream());
+			response.getOutputStream().flush();
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 	private String getFilepath(String filename) {
