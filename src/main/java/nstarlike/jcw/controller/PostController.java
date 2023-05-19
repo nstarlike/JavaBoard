@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -427,7 +428,7 @@ public class PostController {
 				throw new Exception("The attachment data does not exist.");
 			}
 			
-			String filename = attachment.getFilename();
+			String filename = new String(attachment.getFilename().getBytes("UTF-8"), "ISO-8859-1");
 			String filepath = attachment.getFilepath();
 			if(!File.separator.equals("/")) {
 				filepath = filepath.replaceAll("/", "\\\\");
@@ -469,9 +470,14 @@ public class PostController {
 				filepath = filepath.replaceAll("/", "\\\\");
 			}
 			String path = ATTACHMENT_ROOT + File.separator + filepath;
-			String dir = path.substring(0, path.lastIndexOf(File.separator));
+			String dirPath = path.substring(0, path.lastIndexOf(File.separator));
 			logger.debug("path=" + path);
-			logger.debug("dir=" + dir);
+			logger.debug("dirPath=" + dirPath);
+			
+			File dir = new File(dirPath);
+			if(!dir.exists()) {
+				dir.mkdirs();
+			}
 			
 			File file = new File(path);
 			OutputStream os = new FileOutputStream(file);
