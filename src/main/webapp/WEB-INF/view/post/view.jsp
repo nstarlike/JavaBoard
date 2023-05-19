@@ -15,6 +15,18 @@
 		<th>Content</th>
 		<td><c:out value="${ post.content }" /></td>
 	</tr>
+	
+	<c:if test="${ attachmentList != null }">
+	<tr>
+		<td colspan="3">
+		<ul>
+		<c:forEach var="attachment" items="${ attachmentList }">
+		<li><a href="./downloadAttachment?id=${ attachment.id }">${ attachment.filename }</a></li>
+		</c:forEach>
+		</ul>
+		</td>
+	</tr>
+	</c:if>
 	</tbody>
 </table>
 
@@ -27,18 +39,6 @@
 			<td><button type="button" class="delete-comment-btn btn btn-danger" data-id="${ comment.id }">Delete</button></td>
 		</tr>
 		</c:forEach>
-		
-		<c:if test="${ attachmentList != null }">
-		<tr>
-			<td colspan="3">
-			<ul>
-			<c:forEach var="attachment" items="${ attachmentList }">
-			<li>${ attachment.filename }</li>
-			</c:forEach>
-			</ul>
-			</td>
-		</tr>
-		</c:if>
 	</tbody>
 </table>
 
