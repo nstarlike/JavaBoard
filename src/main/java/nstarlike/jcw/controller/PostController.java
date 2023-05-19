@@ -44,7 +44,7 @@ import nstarlike.jcw.util.QueryStringBuilder;
 public class PostController {
 	private static final Logger logger = LoggerFactory.getLogger(PostController.class);
 	private static final String PREFIX = "post/";
-	private static final String ATTACHMENT_ROOT = File.separator + "attachments";
+	private static final String ATTACHMENT_ROOT =  "c:" + File.separator + "attachments";
 	
 	@Autowired
 	private PostService postService;
@@ -82,7 +82,7 @@ public class PostController {
 	}
 	
 	@PostMapping("/writeProc")
-	public String writeProc(@RequestParam Map<String, String> params, @RequestParam MultipartFile[] files, Model model) {
+	public String writeProc(@RequestParam Map<String, String> params, @RequestParam(required=false) MultipartFile[] files, Model model) {
 		logger.debug("start PostController.writeProc");
 		logger.debug("params=" + params);
 		
@@ -102,15 +102,11 @@ public class PostController {
 			int ret = postService.write(post);
 			
 			if(ret > 0) {
-				Calendar cal = Calendar.getInstance();
-				DateFormat format = new SimpleDateFormat("yyyy/MM/dd");
-				String dir = format.format(cal);
-				
 				for(MultipartFile file : files) {
 					Attachment attachment = new Attachment();
 					attachment.setPostId(post.getId());
 					attachment.setFilename(file.getOriginalFilename());
-					attachment.setFilepath(dir + "/" + UUID.randomUUID().toString());
+					attachment.setFilepath(getFilepath(file.getOriginalFilename()));
 					
 					int retAttach = attachmentService.attach(attachment);
 					
@@ -173,33 +169,39 @@ public class PostController {
 		
 		logger.debug("post=" + post);
 		
-		List<Attachment> attachmentList = attachmentService.getByPostId(post.getId());
-		
-		int cPageNo = 1;
-		if(params.get("cPageNo") != null) {
-			cPageNo = Integer.valueOf(params.get("cPageNo"));
+		List<Attachment> attachmentList = null;
+		List<CommentMap> commentList = null;
+		Pagination pagination = null;
+		if(post != null) {
+			attachmentList = attachmentService.getByPostId(post.getId());
+			
+			int cPageNo = 1;
+			if(params.get("cPageNo") != null) {
+				cPageNo = Integer.valueOf(params.get("cPageNo"));
+			}
+			pagination = new Pagination(cPageNo);
+			
+			params.put("postId", params.get("id"));
+			params.put("startNo", String.valueOf(pagination.getStartNo()));
+			params.put("endNo", String.valueOf(pagination.getEndNo()));
+			commentList = commentService.listAll(params);
+			
+			logger.debug("commentList=" + commentList);
+			
+			long total = 0;
+			if(commentList.size() > 0) {
+				total = commentList.get(0).getTotal();
+			}
+			pagination.calculate(total);
 		}
-		Pagination pagination = new Pagination(cPageNo);
 		
-		params.put("postId", params.get("id"));
-		params.put("startNo", String.valueOf(pagination.getStartNo()));
-		params.put("endNo", String.valueOf(pagination.getEndNo()));
-		List<CommentMap> commentList = commentService.listAll(params);
-		
-		logger.debug("commentList=" + commentList);
-		
-		long total = 0;
-		if(commentList.size() > 0) {
-			total = commentList.get(0).getTotal();
-		}
-		pagination.calculate(total);
 		
 		model.addAttribute("post", post);
 		model.addAttribute("attachmentList", attachmentList);
+		model.addAttribute("commentList", commentList);
 		model.addAttribute("queryString", queryStringBuilder.attach(params));
 		model.addAttribute("listQueryString", queryStringBuilder.attachToGoList(params));
 		model.addAttribute("pageQueryString", queryStringBuilder.addToCommentPage(params));
-		model.addAttribute("commentList", commentList);
 		model.addAttribute("pagination", pagination);
 		
 		return PREFIX + "view";
@@ -243,7 +245,8 @@ public class PostController {
 	}
 	
 	@PostMapping("/updateProc")
-	public String updateProc(@RequestParam Map<String, String> params, @RequestParam MultipartFile[] files, Model model) {
+	public String updateProc(@RequestParam Map<String, String> params, @RequestParam(value="files", required=false) MultipartFile[] files, 
+							Model model) {
 		logger.debug("start PostController.updateProc");
 		logger.debug("params=" + params);
 		
@@ -274,15 +277,19 @@ public class PostController {
 					attachment.setFilename(file.getOriginalFilename());
 					attachment.setFilepath(getFilepath(file.getOriginalFilename()));
 					
+					int retAttach = attachmentService.attach(attachment);
+					
 					uploadAttachment(attachment, file);
 				}
 			}
 			
-			if(params.get("deletedAttachmentIds") != null) {
+			if(params.get("deletedAttachmentIds") != null && !params.get("deletedAttachmentIds").isEmpty()) {
 				String[] deletedIds = params.get("deletedAttachmentIds").split(",");
 				for(String deletedId : deletedIds) {
-					Attachment attachment = attachmentService.getById(Long.valueOf(deletedId.trim()));
+					long attachId = Long.valueOf(deletedId.trim());
+					Attachment attachment = attachmentService.getById(attachId);
 					deleteAttachment(attachment);
+					int retAttach = attachmentService.delete(attachId);
 				}
 			}
 			
@@ -404,10 +411,10 @@ public class PostController {
 	}
 	
 	private String getFilepath(String filename) {
-		String extension = filename.substring(filename.lastIndexOf("."));
+		String extension = filename.substring(filename.lastIndexOf(".") + 1);
 		Calendar calendar = Calendar.getInstance();
-		DateFormat format = new SimpleDateFormat("yyyy" + File.separator + "MM" + File.separator + "dd");
-		String uploadFilename = format.format(calendar.getTime()) + File.separator + UUID.randomUUID().toString() + "." + extension;
+		DateFormat format = new SimpleDateFormat("yyyy/MM/dd");
+		String uploadFilename = format.format(calendar.getTime()) + "/" + UUID.randomUUID().toString() + "." + extension;
 		return uploadFilename;
 	}
 	
@@ -415,23 +422,28 @@ public class PostController {
 		logger.debug("start PostController.uploadAttachment");
 		logger.debug("attachment=" + attachment);
 		
-		BufferedOutputStream bos = null;
 		try {
-			File file = new File(ATTACHMENT_ROOT + attachment.getFilepath().replaceAll("/", File.separator));
+			String filepath = attachment.getFilepath();
+			if(!File.separator.equals("/")) {
+				filepath = filepath.replaceAll("/", "\\\\");
+			}
+			String path = ATTACHMENT_ROOT + File.separator + filepath;
+			String dir = path.substring(0, path.lastIndexOf(File.separator));
+			logger.debug("path=" + path);
+			logger.debug("dir=" + dir);
+			
+			File file = new File(path);
 			OutputStream os = new FileOutputStream(file);
-			bos = new BufferedOutputStream(os);
+			BufferedOutputStream bos = new BufferedOutputStream(os);
 			bos.write(multipartFile.getBytes());
+			bos.close();
+			
+			logger.debug("absolutepath=" + file.getAbsolutePath());
 			
 		}catch(FileNotFoundException e) {
 			logger.debug(e.getMessage());
 		}catch(IOException e) {
 			logger.debug(e.getMessage());
-		}finally {
-			try {
-				bos.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
 		}
 	}
 	
@@ -445,14 +457,11 @@ public class PostController {
 		logger.debug("start PostController.deleteAttachment");
 		logger.debug("attachment=" + attachment);
 		
-		File dir = new File(ATTACHMENT_ROOT);
-		if(!dir.exists()) {
-			logger.debug("create directory");
-			
-			dir.mkdirs();
+		String filepath = attachment.getFilepath();
+		if(!File.separator.equals("/")) {
+			filepath = filepath.replaceAll("/", "\\\\");
 		}
-		
-		File file = new File(dir.getAbsolutePath() + File.separator + attachment.getFilepath().replaceAll("/", File.separator));
+		File file = new File(ATTACHMENT_ROOT + File.separator + filepath);
 		if(file.exists()) {
 			boolean deleted = file.delete();
 			
