@@ -163,4 +163,12 @@ public class Validator {
 	public static String chineseCharacter(String value, String msg) throws ValidatorInvalidException {
 		return regex(value, CHINESE_CHARACTER_REGEX, msg);
 	}
+	
+	public static String empty(String value, String msg) throws ValidatorInvalidException {
+		if(value == null || value.isEmpty()) {
+			throw new ValidatorInvalidException("You must enter a value.");
+		}
+		
+		return value;
+	}
 }
