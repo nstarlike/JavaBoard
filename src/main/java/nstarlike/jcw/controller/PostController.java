@@ -44,6 +44,8 @@ import nstarlike.jcw.service.CommentService;
 import nstarlike.jcw.service.PostService;
 import nstarlike.jcw.util.Pagination;
 import nstarlike.jcw.util.QueryStringBuilder;
+import nstarlike.jcw.util.Validator;
+import nstarlike.jcw.util.ValidatorInvalidException;
 
 @Controller
 @RequestMapping("/post")
@@ -100,31 +102,39 @@ public class PostController {
 			}
 			userPrincipal = (UserPrincipal)auth.getPrincipal();
 			
+			String title = Validator.empty(params.get("title"), "You must enter a title.");
+			String content = Validator.empty(params.get("content"), "You must enter a content.");
+			
 			Post post = new Post();
 			post.setWriterId(userPrincipal.getUser().getId());
-			post.setTitle(params.get("title"));
-			post.setContent(params.get("content"));
+			post.setTitle(title);
+			post.setContent(content);
 			
 			int ret = postService.write(post);
 			
-			if(ret > 0) {
-				for(MultipartFile file : files) {
-					Attachment attachment = new Attachment();
-					attachment.setPostId(post.getId());
-					attachment.setFilename(file.getOriginalFilename());
-					attachment.setFilepath(getFilepath(file.getOriginalFilename()));
-					
-					int retAttach = attachmentService.attach(attachment);
-					
-					uploadAttachment(attachment, file);
-				}
-				
-				model.addAttribute("alert", "Registered.");
-				model.addAttribute("replace", "/post/list" + params.get("queryString"));
-			}else {
-				model.addAttribute("alert", "Failed to register.");
-				model.addAttribute("back", true);
+			if(ret <= 0) {
+				throw new RuntimeException("Failed to register");
 			}
+			
+			for(MultipartFile file : files) {
+				Attachment attachment = new Attachment();
+				attachment.setPostId(post.getId());
+				attachment.setFilename(file.getOriginalFilename());
+				attachment.setFilepath(getFilepath(file.getOriginalFilename()));
+				
+				int retAttach = attachmentService.attach(attachment);
+				
+				uploadAttachment(attachment, file);
+			}
+			
+			model.addAttribute("alert", "Registered.");
+			model.addAttribute("replace", "/post/list" + params.get("queryString"));
+			
+		}catch(ValidatorInvalidException e) {
+			e.printStackTrace();
+			
+			model.addAttribute("alert", e.getMessage());
+			model.addAttribute("back", true);
 			
 		}catch(Exception e) {
 			model.addAttribute("alert", e.getMessage());
@@ -263,7 +273,11 @@ public class PostController {
 			}
 			UserPrincipal userPrincipal = (UserPrincipal)auth.getPrincipal();
 			
-			Post retrieved = postService.getById(Long.valueOf(params.get("id")));
+			String id = Validator.number(params.get("id"), "The post id is invalid.");
+			String title = Validator.empty(params.get("title"), "You must enter a title.");
+			String content = Validator.empty(params.get("content"), "You must enter a content.");
+			
+			Post retrieved = postService.getById(Long.valueOf(id));
 			
 			if(userPrincipal.getUser().getId() != retrieved.getWriterId()) {
 				throw new Exception("You don't have authority.");
@@ -271,8 +285,8 @@ public class PostController {
 			
 			Post post = new Post();
 			post.setId(retrieved.getId());
-			post.setTitle(params.get("title"));
-			post.setContent(params.get("content"));
+			post.setTitle(title);
+			post.setContent(content);
 			
 			int ret = postService.update(post);
 			
@@ -301,6 +315,12 @@ public class PostController {
 			
 			model.addAttribute("alert", "Updated.");
 			model.addAttribute("replace", "/post/view" + params.get("queryString"));
+			
+		}catch(ValidatorInvalidException e) {
+			e.printStackTrace();
+			
+			model.addAttribute("alert", e.getMessage());
+			model.addAttribute("back", true);
 			
 		}catch(Exception e) {
 			model.addAttribute("alert", e.getMessage());
@@ -366,10 +386,13 @@ public class PostController {
 			}
 			UserPrincipal userPrincipal = (UserPrincipal)auth.getPrincipal();
 			
+			String id = Validator.number(params.get("id"), "The post id is invalid.");
+			String content = Validator.empty(params.get("content"), "You must enter a comment.");
+			
 			Comment comment = new Comment();
 			comment.setWriterId(userPrincipal.getUser().getId());
-			comment.setPostId(Long.valueOf(params.get("id")));
-			comment.setContent(params.get("content"));
+			comment.setPostId(Long.valueOf(id));
+			comment.setContent(content);
 			
 			int ret = commentService.write(comment);
 			
@@ -377,6 +400,12 @@ public class PostController {
 			
 			model.addAttribute("alert", "Registered.");
 			model.addAttribute("replace", "/post/view" + params.get("queryString"));
+			
+		}catch(ValidatorInvalidException e) {
+			e.printStackTrace();
+			
+			model.addAttribute("alert", e.getMessage());
+			model.addAttribute("back", true);
 			
 		}catch(Exception e) {
 			model.addAttribute("alert", e.getMessage());
