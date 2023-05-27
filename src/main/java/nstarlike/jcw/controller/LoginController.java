@@ -14,6 +14,8 @@ import org.springframework.ui.Model;
 
 import nstarlike.jcw.model.User;
 import nstarlike.jcw.service.impl.UserDetailsServiceImpl;
+import nstarlike.jcw.util.Validator;
+import nstarlike.jcw.util.ValidatorInvalidException;
 
 @Controller
 public class LoginController {
@@ -41,23 +43,32 @@ public class LoginController {
 		logger.debug("start LoginController.searchIdProc");
 		logger.debug("params = " + params);
 		
-		User user = new User();
-		user.setName(params.get("name"));
-		user.setEmail(params.get("email"));
-		
 		try {
+			Validator.koreanName(params.get("name"));
+			Validator.email(params.get("email"));
+			
+			User user = new User();
+			user.setName(params.get("name"));
+			user.setEmail(params.get("email"));
+			
 			String userId = userDetailsService.searchLoginId(user);
 			
 			logger.debug("userId=" + userId);
 			
 			model.addAttribute("alert", "Your ID is " + userId);
 			model.addAttribute("replace", "/login");
+		
+		}catch(ValidatorInvalidException e) {
+			e.printStackTrace();
+			
+			model.addAttribute("alert", e.getMessage());
+			model.addAttribute("back", true);
 			
 		}catch(Exception e) {
 			e.printStackTrace();
 			
-			model.addAttribute("alert", "Your infomation is not correct.");
-			model.addAttribute("replace", "/searchId");
+			model.addAttribute("alert", "Something is wrong.");
+			model.addAttribute("back", true);
 		}
 		
 		return "common/proc";
@@ -75,21 +86,38 @@ public class LoginController {
 		logger.debug("start LoginController resetPasswordProc");
 		logger.debug("params=" + params);
 		
-		User user = new User();
-		user.setLoginId(params.get("loginId"));
-		user.setName(params.get("name"));
-		user.setEmail(params.get("email"));
+		try {
+			String loginId = Validator.loginId(params.get("loginId"));
+			String name = Validator.koreanName(params.get("name"));
+			String email = Validator.email(params.get("email"));
+			
+			User user = new User();
+			user.setLoginId(loginId);
+			user.setName(name);
+			user.setEmail(email);
+			
+			//check if the reset password is sent.
+	//		boolean isSent = userDetailsService.resetPassword(user);
+			boolean isSent = true;
+			if(!isSent) {
+				throw new Exception ("Failed to send an email.");
+			}
 		
-		//check if the reset password is sent.
-//		boolean isSent = userDetailsService.resetPassword(user);
-		boolean isSent = true;
-		if(isSent) {
 //			model.addAttribute("alert", "New password is sent to you email.");
 			model.addAttribute("alert", "Your new password is password2.");
 			model.addAttribute("replace", "/login");
-		}else {
-			model.addAttribute("alert", "You information is not correct.");
-			model.addAttribute("replace", "/resetPassword");
+		
+		}catch(ValidatorInvalidException e) {
+			e.printStackTrace();
+			
+			model.addAttribute("alert", e.getMessage());
+			model.addAttribute("back", true);
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+			
+			model.addAttribute("alert", "Something is wrong.");
+			model.addAttribute("back", true);
 		}
 		
 		return "common/proc";
