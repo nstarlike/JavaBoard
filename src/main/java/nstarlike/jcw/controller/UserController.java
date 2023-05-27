@@ -6,9 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import nstarlike.jcw.model.User;
 import nstarlike.jcw.security.UserPrincipal;
 import nstarlike.jcw.service.UserService;
+import nstarlike.jcw.util.Validator;
+import nstarlike.jcw.util.ValidatorInvalidException;
 
 @Controller
 @RequestMapping("/user")
@@ -51,23 +51,37 @@ public class UserController {
 		logger.debug("start UserController.updateProc()");
 		logger.debug("form=" + form);
 		
-		UserPrincipal userPrincipal = getUserPrincipal();
-		String password = form.get("password");
-		
-		User user = new User();
-		user.setId(userPrincipal.getUser().getId());
-		if(password != null && !password.isEmpty()) {
-			user.setPassword(passwordEncoder.encode(form.get("password")));
+		try {
+			UserPrincipal userPrincipal = getUserPrincipal();
+			
+			String password = form.get("password");
+			if(password != null) {
+				password = Validator.password(password);
+			}
+			String name = Validator.koreanName(form.get("name"));
+			String email = Validator.email(form.get("email"));
+			
+			User user = new User();
+			user.setId(userPrincipal.getUser().getId());
+			if(password != null && !password.isEmpty()) {
+				user.setPassword(passwordEncoder.encode(password));
+			}
+			user.setName(name);
+			user.setEmail(email);
+			
+			logger.debug("user=" + user);
+			
+			userService.update(user);
+			
+			model.addAttribute("alert", "Updated.");
+			model.addAttribute("replace", "mypage");
+			
+		}catch(ValidatorInvalidException e) {
+			e.printStackTrace();
+			
+			model.addAttribute("alert", e.getMessage());
+			model.addAttribute("back", true);
 		}
-		user.setName(form.get("name"));
-		user.setEmail(form.get("email"));
-		
-		logger.debug("user=" + user);
-		
-		userService.update(user);
-		
-		model.addAttribute("alert", "Updated.");
-		model.addAttribute("replace", "mypage");
 		
 		return "common/proc";
 	}
@@ -84,19 +98,31 @@ public class UserController {
 		logger.debug("start UserController.registerProc()");
 		logger.debug("form=" + form);
 		
-		User user = new User();
-		user.setLoginId(form.get("loginId"));
-		user.setPassword(passwordEncoder.encode(form.get("password")));
-		user.setName(form.get("name"));
-		user.setEmail(form.get("email"));
-		
-		logger.debug("user=" + user);
-		
-		userService.create(user);
-		
-		model.addAttribute("alert", "Registered.");
-		model.addAttribute("replace", "/login");
-		
+		try {
+			String loginId = Validator.loginId(form.get("loginId"));
+			String password = Validator.password(form.get("password"));
+			String name = Validator.koreanName(form.get("name"));
+			String email = Validator.email(form.get("email"));
+			
+			User user = new User();
+			user.setLoginId(loginId);
+			user.setPassword(passwordEncoder.encode(password));
+			user.setName(name);
+			user.setEmail(email);
+			
+			logger.debug("user=" + user);
+			
+			userService.create(user);
+			
+			model.addAttribute("alert", "Registered.");
+			model.addAttribute("replace", "/login");
+			
+		}catch(ValidatorInvalidException e) {
+			e.printStackTrace();
+			
+			model.addAttribute("alert", e.getMessage());
+			model.addAttribute("back", true);
+		}
 		return "common/proc";
 	}
 	
