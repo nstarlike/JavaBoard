@@ -1,10 +1,12 @@
 package nstarlike.jcw.util;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFCellStyle;
 import org.apache.poi.xssf.usermodel.XSSFFont;
@@ -12,10 +14,12 @@ import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+import nstarlike.jcw.model.Post;
 import nstarlike.jcw.model.PostMap;
 
 public class ExcelHelper {
 	private List<PostMap> list;
+	private File file;
 	private XSSFWorkbook workbook;
 	private XSSFSheet sheet;
 	
@@ -23,6 +27,30 @@ public class ExcelHelper {
 		this.list = list;
 		workbook = new XSSFWorkbook();
 		sheet = workbook.createSheet("Posts");
+	}
+	
+	public ExcelHelper(File file) throws InvalidFormatException, IOException {
+		this.file = file;
+		workbook = new XSSFWorkbook(file);
+	}
+	
+	public List<Post> read() {
+		List<Post> posts = new ArrayList<>();
+		
+		sheet = workbook.getSheetAt(0);
+		int firstNo = sheet.getFirstRowNum();
+		int lastNo = sheet.getLastRowNum();
+		for(int i=firstNo; i<lastNo; i++) {
+			XSSFRow row = sheet.getRow(i);
+			
+			Post post = new Post();
+			post.setWriterId(Long.valueOf(row.getCell(0).getRawValue()));
+			post.setTitle(row.getCell(1).getRawValue());
+			post.setContent(row.getCell(2).getRawValue());
+			posts.add(post);
+		}
+		
+		return posts;
 	}
 	
 	public void export(OutputStream os) {
