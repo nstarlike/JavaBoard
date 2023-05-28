@@ -1,7 +1,16 @@
 package nstarlike.jcw.model;
 
 public class PostMap extends Post {
+	private String writerName;
 	private long total;
+
+	public String getWriterName() {
+		return writerName;
+	}
+
+	public void setWriterName(String writerName) {
+		this.writerName = writerName;
+	}
 
 	public long getTotal() {
 		return total;
@@ -13,7 +22,7 @@ public class PostMap extends Post {
 
 	@Override
 	public String toString() {
-		return "PostMap [total=" + total + "post=" + super.toString() + "]";
+		return "PostMap [writerName=" + writerName + ", total=" + total + ", post=" + super.toString() + "]";
 	}
 
 }
