@@ -24,6 +24,7 @@
 				<if test="title != null">AND title like '%' || #{title} || '%'</if>
 				<if test="content != null">AND content like '%' || #{content} || '%'</if>
 			</where>
+			ORDER BY POST_ID DESC
 		) A
 		WHERE ROWNUM <![CDATA[ <= ]]> #{endNo}
 	)
