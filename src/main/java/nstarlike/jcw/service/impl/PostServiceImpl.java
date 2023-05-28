@@ -1,18 +1,21 @@
 package nstarlike.jcw.service.impl;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import nstarlike.jcw.dao.PostDao;
 import nstarlike.jcw.model.Post;
 import nstarlike.jcw.model.PostMap;
 import nstarlike.jcw.service.PostService;
-import nstarlike.jcw.dao.PostDao;
+import nstarlike.jcw.util.ExcelHelper;
 
 @Service
 public class PostServiceImpl implements PostService {
@@ -24,6 +27,30 @@ public class PostServiceImpl implements PostService {
 	@Override
 	public int write(Post post) {
 		return postDao.create(post);
+	}
+	
+	@Override
+	public int importExcel(File file) {
+		int insertCnt = 0;
+		
+		try {
+			ExcelHelper excel = new ExcelHelper(file);
+			List<Post> list = excel.read();
+			if(list != null) {
+				for(Post post : list) {
+					insertCnt += postDao.create(post);
+				}
+			}
+			
+		} catch (InvalidFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return insertCnt;
 	}
 
 	@Override
