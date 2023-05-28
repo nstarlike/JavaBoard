@@ -48,6 +48,7 @@
 
 <div>
 	<a href="./write<c:out value="${ queryString }" />" class="btn">Write</a>
+	<a href="./export<c:out value="${ queryString }" />" class="btn">Export</a>
 </div>
 
 <%@ include file="../common/footer.jsp" %>
