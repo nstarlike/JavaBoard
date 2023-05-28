@@ -35,6 +35,11 @@ public class PostRepository implements PostDao {
 	public Post readById(long id) {
 		return sqlSession.selectOne(PREFIX + "readById", id);
 	}
+	
+	@Override
+	public List<PostMap> readEntire(Map<String, String> params){
+		return sqlSession.selectList(PREFIX + "readEntire", params);
+	}
 
 	@Override
 	public int update(Post post) {
