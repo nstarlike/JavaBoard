@@ -4,6 +4,7 @@
 	<resultMap id="postResultMap" type="PostMap">
 		<id property="id" column="post_id" />
 		<result property="writerId" column="WRITER_ID" />
+		<result property="writerName" column="WRITER_NAME" />
 		<result property="title" column="TITLE" />
 		<result property="content" column="CONTENT" />
 		<result property="hits" column="HITS" />
@@ -34,6 +35,18 @@
 	<select id="readById" resultMap="postResultMap">
 	SELECT * FROM POST 
 	WHERE POST_ID = #{id}
+	</select>
+	
+	<select id="readEntire" parameterType="map" resultMap="postResultMap">
+	SELECT POST_ID, NAME AS WRITER_NAME, TITLE, CONTENT, WRITTEN
+	FROM POST, USERS 
+	<where>
+		WRITER_ID = USER_ID
+		<if test="writerId != null">AND WRITER_ID = #{writerId}</if>
+		<if test="title != null">AND TITLE like '%' || #{title} || '%'</if>
+		<if test="content != null">AND CONTENT like '%' || #{content} || '%'</if>
+	</where>
+	ORDER BY POST_ID DESC
 	</select>
 	
 	<insert id="create" parameterType="Post">

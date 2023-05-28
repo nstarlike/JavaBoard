@@ -3,6 +3,7 @@ package nstarlike.jcw.controller;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.multipart;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -115,6 +116,22 @@ class PostControllerTest {
 				.get("/post/list")
 				.queryParam("pageNo", "1");
 		mockMvc.perform(builder).andExpect(status().isOk());
+	}
+	
+	@Test
+	void testExport() throws Exception {
+		logger.debug("start PostControllerTest.testExport");
+		
+		mockMvc.perform(get("/post/export")).andExpect(status().isOk());
+	}
+	
+	@Test
+	void testImport() throws Exception {
+		logger.debug("start PostControllerTest.testImport");
+		
+		MockMultipartFile file = new MockMultipartFile("file", "hello.xslx", MediaType.APPLICATION_RSS_XML_VALUE, "Hello world".getBytes());
+		
+		mockMvc.perform(multipart("/post/import").file(file)).andExpect(status().isOk());
 	}
 
 	@Test

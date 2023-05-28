@@ -13,6 +13,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -42,6 +43,7 @@ import nstarlike.jcw.security.UserPrincipal;
 import nstarlike.jcw.service.AttachmentService;
 import nstarlike.jcw.service.CommentService;
 import nstarlike.jcw.service.PostService;
+import nstarlike.jcw.util.ExcelHelper;
 import nstarlike.jcw.util.Pagination;
 import nstarlike.jcw.util.QueryStringBuilder;
 import nstarlike.jcw.util.Validator;
@@ -53,6 +55,7 @@ public class PostController {
 	private static final Logger logger = LoggerFactory.getLogger(PostController.class);
 	private static final String PREFIX = "post/";
 	private static final String ATTACHMENT_ROOT =  "c:" + File.separator + "attachments";
+	private static final String ATTACHMENT_TEMP_ROOT =  "c:" + File.separator + "attachments" + File.separator + "temp";
 	
 	@Autowired
 	private PostService postService;
@@ -163,6 +166,40 @@ public class PostController {
 		model.addAttribute("pagination", pagination);
 		
 		return PREFIX + "list";
+	}
+	
+	@GetMapping("/export")
+	public void export(@RequestParam Map<String, String> params, HttpServletResponse response) throws IOException {
+		List<PostMap> list = postService.listEntire(params);
+		
+		if(list != null) {
+			logger.debug("list size=" + list.size());
+		}
+		
+		SimpleDateFormat format = new SimpleDateFormat("yyyyMMddhhmmss");
+		String filename = "post_list_" + format.format(new Date()) + ".xlsx";
+		response.setHeader("Content-Disposition", "attachment;filename=" + filename);
+		
+		ExcelHelper excel = new ExcelHelper(list);
+		excel.export(response.getOutputStream());
+	}
+	
+	@PostMapping("/import")
+	public String importExcel(@RequestParam MultipartFile file, Model model) {
+		String filename = file.getOriginalFilename();
+		String extension = filename.substring(filename.lastIndexOf(".") + 1);
+		Calendar calendar = Calendar.getInstance();
+		DateFormat format = new SimpleDateFormat("yyyyMMddhhmmss");
+		String uploadFilename = format.format(calendar.getTime()) + "_" + UUID.randomUUID().toString() + "." + extension;
+		
+		uploadTemp(uploadFilename, file);
+		
+		int insertCnt = postService.importExcel(new File(ATTACHMENT_TEMP_ROOT + File.separator + uploadFilename));
+		logger.debug("insertCnt=" + insertCnt);
+		
+		model.addAttribute("alert", insertCnt + " row(s) inserted");
+		model.addAttribute("back", true);
+		return "common/proc";
 	}
 	
 	@GetMapping("/view")
@@ -454,6 +491,29 @@ public class PostController {
 		DateFormat format = new SimpleDateFormat("yyyy/MM/dd");
 		String uploadFilename = format.format(calendar.getTime()) + "/" + UUID.randomUUID().toString() + "." + extension;
 		return uploadFilename;
+	}
+	
+	private void uploadTemp(String filename, MultipartFile multipartFile) {
+		try {
+			String path = ATTACHMENT_TEMP_ROOT + File.separator + filename;
+			File dir = new File(ATTACHMENT_TEMP_ROOT);
+			if(!dir.exists()) {
+				dir.mkdirs();
+			}
+			
+			File file = new File(path);
+			OutputStream os = new FileOutputStream(file);
+			BufferedOutputStream bos = new BufferedOutputStream(os);
+			bos.write(multipartFile.getBytes());
+			bos.close();
+			
+			logger.debug("absolutepath=" + file.getAbsolutePath());
+			
+		}catch(FileNotFoundException e) {
+			logger.debug(e.getMessage());
+		}catch(IOException e) {
+			logger.debug(e.getMessage());
+		}
 	}
 	
 	private void uploadAttachment(Attachment attachment, MultipartFile multipartFile) {

@@ -90,6 +90,16 @@ class PostRepositoryTest {
 		
 		logger.debug("post=" + post);
 	}
+	
+	@Test
+	void testReadEntrie() {
+		logger.debug("start PostRepositoryTest.tsetReadEntire");
+		
+		Map<String, String> params = new HashMap<>();
+		List<PostMap> list = postDao.readEntire(params);
+		
+		assertNotNull(list);
+	}
 
 	@Test
 	void testUpdate() {
