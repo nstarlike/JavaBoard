@@ -185,7 +185,7 @@ public class PostController {
 	}
 	
 	@PostMapping("/import")
-	public void importExcel(@RequestParam MultipartFile file) {
+	public String importExcel(@RequestParam MultipartFile file, Model model) {
 		String filename = file.getOriginalFilename();
 		String extension = filename.substring(filename.lastIndexOf(".") + 1);
 		Calendar calendar = Calendar.getInstance();
@@ -196,6 +196,10 @@ public class PostController {
 		
 		int insertCnt = postService.importExcel(new File(ATTACHMENT_TEMP_ROOT + File.separator + uploadFilename));
 		logger.debug("insertCnt=" + insertCnt);
+		
+		model.addAttribute("alert", insertCnt + " row(s) inserted");
+		model.addAttribute("back", true);
+		return "common/proc";
 	}
 	
 	@GetMapping("/view")
