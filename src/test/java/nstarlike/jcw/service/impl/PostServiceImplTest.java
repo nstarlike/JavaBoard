@@ -25,6 +25,7 @@ import nstarlike.jcw.service.PostService;
 @ContextConfiguration(locations= {
 		"classpath:datasource-context.xml", 
 		"classpath:security-context.xml", 
+		"classpath:aop-context.xml", 
 		"file:src/main/webapp/WEB-INF/app-context.xml"
 })
 @Transactional
@@ -55,8 +56,8 @@ class PostServiceImplTest {
 		logger.debug("start PostServiceImplTest.testListAll");
 		
 		Map<String, String> params = new HashMap<>();
-		params.put("pageNo", "1");
-		params.put("pageSize", "10");
+		params.put("startNo", "1");
+		params.put("endNo", "10");
 		
 		List<PostMap> list = postService.listAll(params);
 		
@@ -65,8 +66,8 @@ class PostServiceImplTest {
 		logger.debug("list=" + list);
 		
 		params = new HashMap<>();
-		params.put("pageNo", "1");
-		params.put("pageSize", "10");
+		params.put("startNo", "1");
+		params.put("endNo", "10");
 		params.put("writerId", "2");
 		params.put("title", "title");
 		params.put("content", "content");

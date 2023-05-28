@@ -4,16 +4,15 @@ import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
 
 import nstarlike.jcw.model.User;
-import nstarlike.jcw.service.impl.UserDetailsServiceImpl;
+import nstarlike.jcw.service.LoginService;
 import nstarlike.jcw.util.Validator;
 import nstarlike.jcw.util.ValidatorInvalidException;
 
@@ -21,11 +20,9 @@ import nstarlike.jcw.util.ValidatorInvalidException;
 public class LoginController {
 	private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
 	
-	private UserDetailsServiceImpl userDetailsService;
+	@Autowired
+	private LoginService loginService;
 	
-	public LoginController() {
-		userDetailsService = new UserDetailsServiceImpl();
-	}
 	
 	@GetMapping("/login")
 	public String login() {
@@ -47,7 +44,7 @@ public class LoginController {
 			user.setName(params.get("name"));
 			user.setEmail(params.get("email"));
 			
-			String userId = userDetailsService.searchLoginId(user);
+			String userId = loginService.searchLoginId(user);
 			
 			logger.debug("userId=" + userId);
 			

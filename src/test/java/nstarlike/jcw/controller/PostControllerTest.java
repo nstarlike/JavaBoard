@@ -37,6 +37,7 @@ import nstarlike.jcw.service.PostService;
 @ContextConfiguration(locations= {
 		"classpath:datasource-context.xml", 
 		"classpath:security-context.xml", 
+		"classpath:aop-context.xml", 
 		"file:src/main/webapp/WEB-INF/app-context.xml"
 })
 @Transactional

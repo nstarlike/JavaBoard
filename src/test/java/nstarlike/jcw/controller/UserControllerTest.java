@@ -24,7 +24,6 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
 
-import nstarlike.jcw.controller.UserController;
 import nstarlike.jcw.model.User;
 import nstarlike.jcw.security.UserPrincipal;
 import nstarlike.jcw.service.UserService;
@@ -33,6 +32,7 @@ import nstarlike.jcw.service.UserService;
 @ContextConfiguration(locations= {
 	"classpath:datasource-context.xml", 
 	"classpath:security-context.xml", 
+	"classpath:aop-context.xml", 
 	"file:src/main/webapp/WEB-INF/app-context.xml"
 })
 @Transactional

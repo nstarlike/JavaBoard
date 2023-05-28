@@ -3,7 +3,6 @@ package nstarlike.jcw.repository;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.List;
-import java.util.Random;
 import java.util.UUID;
 
 import org.slf4j.Logger;
@@ -24,6 +23,7 @@ import nstarlike.jcw.model.Attachment;
 @ContextConfiguration(locations= {
 		"classpath:datasource-context.xml", 
 		"classpath:security-context.xml", 
+		"classpath:aop-context.xml", 
 		"file:src/main/webapp/WEB-INF/app-context.xml"
 })
 @Transactional
