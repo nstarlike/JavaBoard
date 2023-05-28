@@ -13,10 +13,12 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+import org.apache.poi.ss.usermodel.Workbook;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +33,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import jakarta.servlet.ServletOutputStream;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import nstarlike.jcw.model.Attachment;
@@ -42,6 +45,7 @@ import nstarlike.jcw.security.UserPrincipal;
 import nstarlike.jcw.service.AttachmentService;
 import nstarlike.jcw.service.CommentService;
 import nstarlike.jcw.service.PostService;
+import nstarlike.jcw.util.ExcelHelper;
 import nstarlike.jcw.util.Pagination;
 import nstarlike.jcw.util.QueryStringBuilder;
 import nstarlike.jcw.util.Validator;
@@ -163,6 +167,22 @@ public class PostController {
 		model.addAttribute("pagination", pagination);
 		
 		return PREFIX + "list";
+	}
+	
+	@GetMapping("/export")
+	public void export(@RequestParam Map<String, String> params, HttpServletResponse response) throws IOException {
+		List<PostMap> list = postService.listEntire(params);
+		
+		if(list != null) {
+			logger.debug("list size=" + list.size());
+		}
+		
+		SimpleDateFormat format = new SimpleDateFormat("yyyyMMddhhmmss");
+		String filename = "post_list_" + format.format(new Date()) + ".xlsx";
+		response.setHeader("Content-Disposition", "attachment;filename=" + filename);
+		
+		ExcelHelper excel = new ExcelHelper(list);
+		excel.export(response.getOutputStream());
 	}
 	
 	@GetMapping("/view")
