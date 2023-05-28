@@ -35,6 +35,11 @@ public class PostServiceImpl implements PostService {
 	public Post getById(long id) {
 		return postDao.readById(id);
 	}
+	
+	@Override
+	public List<PostMap> listEntire(Map<String, String> params){
+		return postDao.readEntire(params);
+	}
 
 	@Override
 	public int update(Post post) {
