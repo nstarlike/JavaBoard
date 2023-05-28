@@ -49,6 +49,13 @@
 <div>
 	<a href="./write<c:out value="${ queryString }" />" class="btn">Write</a>
 	<a href="./export<c:out value="${ queryString }" />" class="btn">Export</a>
+	
+</div>
+<div>
+<form action="./import" method="POST" enctype="multipart/form-data">
+	<input type="file" name="file" />
+	<button type="submit">Upload</button>
+</form>
 </div>
 
 <%@ include file="../common/footer.jsp" %>
