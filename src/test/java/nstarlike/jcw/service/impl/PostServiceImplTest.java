@@ -91,6 +91,16 @@ class PostServiceImplTest {
 		
 		logger.debug("post=" + post);
 	}
+	
+	@Test
+	void testListEntire() {
+		logger.debug("start PostServiceImplTest.listEntire");
+		
+		Map<String, String> params = new HashMap<>();
+		List<PostMap> list = postService.listEntire(params);
+		
+		assertNotNull(list);
+	}
 
 	@Test
 	void testUpdate() {
