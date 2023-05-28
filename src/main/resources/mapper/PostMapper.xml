@@ -17,7 +17,7 @@
 	FROM (
 		SELECT /*INDEX_DESC(A POST_PK)*/ ROWNUM AS NO, A.* 
 		FROM (
-			SELECT COUNT(*) OVER () AS TOTAL, * 
+			SELECT COUNT(*) OVER () AS TOTAL, POST.* 
 			FROM POST 
 			<where>
 				<if test="writerId != null">AND WRITER_ID = #{writerId}</if>
@@ -28,7 +28,7 @@
 		) A
 		WHERE ROWNUM <![CDATA[ <= ]]> #{endNo}
 	)
-	WHERE no <![CDATA[ >= ]]> #{startNo}
+	WHERE NO <![CDATA[ >= ]]> #{startNo}
 	</select>
 	
 	<select id="readById" resultMap="postResultMap">
@@ -55,7 +55,7 @@
 	</update>
 	
 	<update id="hit">
-	UPDATE POST SET HISTS = HITS + 1 WHERE POST_ID = #{id}
+	UPDATE POST SET HITS = HITS + 1 WHERE POST_ID = #{id}
 	</update>
 	
 	<delete id="delete">

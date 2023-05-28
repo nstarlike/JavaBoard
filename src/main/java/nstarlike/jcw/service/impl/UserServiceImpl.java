@@ -22,57 +22,36 @@ public class UserServiceImpl implements UserService {
 	
 	@Override
 	public List<User> getAll(Map<String, String> params) {
-		logger.debug("start UserServiceImpl.getAll()");
-		logger.debug("params=" + params);
-		
 		return userDao.readAll(params);
 	}
 
 	@Override
 	public User getById(Long id) {
-		logger.debug("start UserServiceImpl.getById()");
-		logger.debug("id=" + id);
-		
 		return userDao.readById(id);
 	}
 
 	@Override
 	public User getByLoginId(String loginId) {
-		logger.debug("start UserServiceImpl.getByLoginId()");
-		logger.debug("loginId=" + loginId);
-		
 		return userDao.readByLoginId(loginId);
 	}
 
 	@Override
 	public User getByEmail(String email) {
-		logger.debug("start UserServiceImpl.getByEmail()");
-		logger.debug("email=" + email);
-		
 		return userDao.readByEmail(email);
 	}
 
 	@Override
 	public int create(User user) {
-		logger.debug("start UserServiceImpl.create()");
-		logger.debug("user=" + user);
-		
 		return userDao.create(user);
 	}
 
 	@Override
 	public int update(User user) {
-		logger.debug("start UserServiceImpl.update()");
-		logger.debug("user=" + user);
-		
 		return userDao.update(user);
 	}
 
 	@Override
 	public int delete(Long id) {
-		logger.debug("start UserServiceImpl.delete()");
-		logger.debug("id=" + id);
-		
 		return userDao.delete(id);
 	}
 

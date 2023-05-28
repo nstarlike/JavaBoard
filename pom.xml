@@ -17,6 +17,7 @@
 	<maven.compiler.target>17</maven.compiler.target>
 	<org.springframework.version>6.0.9</org.springframework.version>
 	<security.version>6.0.3</security.version>
+	<org.aspectj.version>1.9.19</org.aspectj.version>
 </properties>
 
 <dependencies>
@@ -39,6 +40,22 @@
 		<groupId>org.springframework</groupId>
 		<artifactId>spring-context-support</artifactId>
 		<version>${org.springframework.version}</version>
+	</dependency>
+	
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-aop</artifactId>
+		<version>${org.springframework.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>org.aspectj</groupId>
+		<artifactId>aspectjrt</artifactId>
+		<version>${org.aspectj.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>org.aspectj</groupId>
+		<artifactId>aspectjweaver</artifactId>
+		<version>${org.aspectj.version}</version>
 	</dependency>
 	
 	<dependency>

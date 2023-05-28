@@ -25,7 +25,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(locations= {
 	"classpath:datasource-context.xml", 
-	"classpath:security-context.xml", 
+	"classpath:security-context.xml",
+	"classpath:aop-context.xml", 
 	"file:src/main/webapp/WEB-INF/app-context.xml"
 })
 @Transactional

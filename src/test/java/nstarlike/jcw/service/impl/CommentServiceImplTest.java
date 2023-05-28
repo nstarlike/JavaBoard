@@ -25,6 +25,7 @@ import nstarlike.jcw.service.CommentService;
 @ContextConfiguration(locations= {
 		"classpath:datasource-context.xml", 
 		"classpath:security-context.xml", 
+		"classpath:aop-context.xml", 
 		"file:src/main/webapp/WEB-INF/app-context.xml"
 })
 @Transactional
@@ -53,8 +54,9 @@ class CommentServiceImplTest {
 		logger.debug("start CommentServiceImplTest.testListAll");
 		
 		Map<String, String> params = new HashMap<>();
-		params.put("startNo", "0");
-		params.put("endNo", "9");
+		params.put("postId", "2");
+		params.put("startNo", "1");
+		params.put("endNo", "10");
 		
 		List<CommentMap> list = commentService.listAll(params);
 		
