@@ -25,33 +25,21 @@ public class CommentRepository implements CommentDao {
 	
 	@Override
 	public int create(Comment comment) {
-		logger.debug("start CommentRepository.create");
-		logger.debug("comment=" + comment);
-		
 		return sqlSession.insert(PREFIX + "create", comment);
 	}
 
 	@Override
 	public List<CommentMap> readAll(Map<String, String> params) {
-		logger.debug("start CommentRepository.readAll");
-		logger.debug("params=" + params);
-		
 		return sqlSession.selectList(PREFIX + "readAll", params);
 	}
 	
 	@Override
 	public Comment readById(long id) {
-		logger.debug("start CommentRepository.readById");
-		logger.debug("id=" + id);
-		
 		return sqlSession.selectOne(PREFIX + "readById", id);
 	}
 
 	@Override
 	public int delete(long id) {
-		logger.debug("start CommentRepository.delete");
-		logger.debug("id=" + id);
-		
 		return sqlSession.delete(PREFIX + "delete", id);
 	}
 	

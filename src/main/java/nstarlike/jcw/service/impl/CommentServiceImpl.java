@@ -24,33 +24,21 @@ public class CommentServiceImpl implements CommentService {
 	
 	@Override
 	public int write(Comment comment) {
-		logger.debug("start CommentServiceImpl.write");
-		logger.debug("comment=" + comment);
-		
 		return commentDao.create(comment);
 	}
 
 	@Override
 	public List<CommentMap> listAll(Map<String, String> params) {
-		logger.debug("start CommentServiceImpl.listAll");
-		logger.debug("params=" + params);
-		
 		return commentDao.readAll(params);
 	}
 	
 	@Override
 	public Comment getById(long id) {
-		logger.debug("start CommentServiceImpl.getById");
-		logger.debug("id=" + id);
-		
 		return commentDao.readById(id);
 	}
 
 	@Override
 	public int delete(long id) {
-		logger.debug("start CommentServiceImpl.delete");
-		logger.debug("id=" + id);
-		
 		return commentDao.delete(id);
 	}
 

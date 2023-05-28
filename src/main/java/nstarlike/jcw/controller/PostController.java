@@ -66,8 +66,6 @@ public class PostController {
 	private QueryStringBuilder queryStringBuilder;
 	
 	public PostController() {
-		logger.debug("start PostController constructor");
-		
 		List<String> whiteList = new ArrayList<>();
 		whiteList.add("id");
 		whiteList.add("pageNo");
@@ -82,18 +80,12 @@ public class PostController {
 	
 	@GetMapping("/write")
 	public String write(@RequestParam Map<String, String> params, Model model) {
-		logger.debug("start PostController.write");
-		logger.debug("params=" + params);
-		
 		model.addAttribute("queryString", queryStringBuilder.attach(params));
 		return PREFIX + "write";
 	}
 	
 	@PostMapping("/writeProc")
 	public String writeProc(@RequestParam Map<String, String> params, @RequestParam(required=false) MultipartFile[] files, Model model) {
-		logger.debug("start PostController.writeProc");
-		logger.debug("params=" + params);
-		
 		try {
 			UserPrincipal userPrincipal;
 			Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -146,9 +138,6 @@ public class PostController {
 	
 	@GetMapping("/list")
 	public String list(@RequestParam Map<String, String> params, Model model) {
-		logger.debug("start PostController.list");
-		logger.debug("params=" + params);
-		
 		int pageNo = 1;
 		if(params.get("pageNo") != null) {
 			pageNo = Integer.valueOf(params.get("pageNo"));
@@ -178,9 +167,6 @@ public class PostController {
 	
 	@GetMapping("/view")
 	public String view(@RequestParam Map<String, String> params, Model model) {
-		logger.debug("start PostController.view");
-		logger.debug("params=" + params);
-		
 		Post post = postService.getById(Long.valueOf(params.get("id")));
 		
 		logger.debug("post=" + post);
@@ -225,9 +211,6 @@ public class PostController {
 	
 	@GetMapping("/update")
 	public String update(@RequestParam Map<String, String> params, Model model) {
-		logger.debug("start PostController.update");
-		logger.debug("params=" + params);
-		
 		try {
 			UserPrincipal userPrincipal;
 			Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -263,9 +246,6 @@ public class PostController {
 	@PostMapping("/updateProc")
 	public String updateProc(@RequestParam Map<String, String> params, @RequestParam(value="files", required=false) MultipartFile[] files, 
 							Model model) {
-		logger.debug("start PostController.updateProc");
-		logger.debug("params=" + params);
-		
 		try {
 			Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 			if(auth == null) {
@@ -332,9 +312,6 @@ public class PostController {
 	
 	@PostMapping("/deleteProc")
 	public String deleteProc(@RequestParam Map<String, String> params, Model model) {
-		logger.debug("start PostController.deleteProc");
-		logger.debug("params=" + params);
-		
 		try {
 			Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 			if(auth == null) {
@@ -376,9 +353,6 @@ public class PostController {
 	
 	@PostMapping("/writeCommentProc")
 	public String writeCommentProc(@RequestParam Map<String, String> params, Model model) {
-		logger.debug("start PostController.writeCommentProc");
-		logger.debug("params=" + params);
-		
 		try {
 			Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 			if(auth == null) {
@@ -417,9 +391,6 @@ public class PostController {
 	
 	@PostMapping("/deleteCommentProc")
 	public String deleteCommentProc(@RequestParam Map<String, String> params, Model model) {
-		logger.debug("start PostController.deleteCommentProc");
-		logger.debug("params=" + params);
-		
 		try {
 			Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 			if(auth == null) {
@@ -447,9 +418,6 @@ public class PostController {
 	
 	@GetMapping("/downloadAttachment")
 	public void downloadAttachment(@RequestParam String id, HttpServletRequest request, HttpServletResponse response, Model model) {
-		logger.debug("start PostController.downloadAttachment");
-		logger.debug("id=" + id);
-		
 		try {
 			Attachment attachment = attachmentService.getById(Long.valueOf(id));
 			if(attachment == null) {
@@ -489,9 +457,6 @@ public class PostController {
 	}
 	
 	private void uploadAttachment(Attachment attachment, MultipartFile multipartFile) {
-		logger.debug("start PostController.uploadAttachment");
-		logger.debug("attachment=" + attachment);
-		
 		try {
 			String filepath = attachment.getFilepath();
 			if(!File.separator.equals("/")) {
@@ -529,9 +494,6 @@ public class PostController {
 	}
 	
 	private void deleteAttachment(Attachment attachment) {
-		logger.debug("start PostController.deleteAttachment");
-		logger.debug("attachment=" + attachment);
-		
 		String filepath = attachment.getFilepath();
 		if(!File.separator.equals("/")) {
 			filepath = filepath.replaceAll("/", "\\\\");

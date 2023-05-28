@@ -35,8 +35,6 @@ public class UserController {
 	
 	@GetMapping("/mypage")
 	public String mypage(Model model) {
-		logger.debug("start UserController.mypage()");
-		
 		UserPrincipal userPrincipal = getUserPrincipal();
 		User user = userService.getById(userPrincipal.getUser().getId());
 		
@@ -48,9 +46,6 @@ public class UserController {
 	
 	@PostMapping("/updateProc")
 	public String updateProc(@RequestParam Map<String, String> form, Model model) {
-		logger.debug("start UserController.updateProc()");
-		logger.debug("form=" + form);
-		
 		try {
 			UserPrincipal userPrincipal = getUserPrincipal();
 			
@@ -88,16 +83,11 @@ public class UserController {
 	
 	@GetMapping("/register")
 	public String register() {
-		logger.debug("start UserController.register()");
-		
 		return PREFIX + "register";
 	}
 	
 	@PostMapping("/registerProc")
 	public String registerProc(@RequestParam Map<String, String> form, Model model) {
-		logger.debug("start UserController.registerProc()");
-		logger.debug("form=" + form);
-		
 		try {
 			String loginId = Validator.loginId(form.get("loginId"));
 			String password = Validator.password(form.get("password"));
@@ -128,8 +118,6 @@ public class UserController {
 	
 	@PostMapping("/unregisterProc")
 	public String unregisterProc(Model model) {
-		logger.debug("start UserController.unregisterProc()");
-		
 		UserPrincipal userPrincipal = getUserPrincipal();
 		userService.delete(userPrincipal.getUser().getId());
 		
@@ -140,8 +128,6 @@ public class UserController {
 	}
 	
 	private UserPrincipal getUserPrincipal() {
-		logger.debug("start UserController.getUserPrincipal");
-		
 		UserPrincipal userPrincipal = null;
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		

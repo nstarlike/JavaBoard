@@ -23,41 +23,26 @@ public class AttachmentRepository implements AttachmentDao {
 	
 	@Override
 	public int create(Attachment attachment) {
-		logger.debug("start AttachmentRepository.create");
-		logger.debug("attachment=" + attachment);
-		
 		return sqlSession.insert(PREFIX + "create", attachment);
 	}
 
 	@Override
 	public Attachment readById(long id) {
-		logger.debug("start AttachmentRepository.readById");
-		logger.debug("id=" + id);
-		
 		return sqlSession.selectOne(PREFIX + "readById", id);
 	}
 
 	@Override
 	public List<Attachment> readByPostId(long postId) {
-		logger.debug("start AttachmentRepository.readByPostId");
-		logger.debug("postId=" + postId);
-		
 		return sqlSession.selectList(PREFIX + "readByPostId", postId);
 	}
 
 	@Override
 	public int delete(long id) {
-		logger.debug("start AttachmentRepositry.delete");
-		logger.debug("id=" + id);
-		
 		return sqlSession.delete(PREFIX + "delete", id);
 	}
 
 	@Override
 	public int deleteByPostId(long postId) {
-		logger.debug("start AttachmentRepository.deleteByPostId");
-		logger.debug("postId=" + postId);
-		
 		return sqlSession.delete(PREFIX + ".deleteByPostId", postId);
 	}
 

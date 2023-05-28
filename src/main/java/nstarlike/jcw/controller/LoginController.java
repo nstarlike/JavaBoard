@@ -21,28 +21,24 @@ import nstarlike.jcw.util.ValidatorInvalidException;
 public class LoginController {
 	private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
 	
-	@Autowired
 	private UserDetailsServiceImpl userDetailsService;
+	
+	public LoginController() {
+		userDetailsService = new UserDetailsServiceImpl();
+	}
 	
 	@GetMapping("/login")
 	public String login() {
-		logger.debug("start LoginController.login()");
-		
 		return "login";
 	}
 	
 	@GetMapping("/searchId")
 	public String searchId() {
-		logger.debug("start LoginController.searchId");
-		
 		return "searchId";
 	}
 	
 	@PostMapping("/searchIdProc")
 	public String searchIdProc(@RequestParam Map<String, String> params, Model model) {
-		logger.debug("start LoginController.searchIdProc");
-		logger.debug("params = " + params);
-		
 		try {
 			Validator.koreanName(params.get("name"));
 			Validator.email(params.get("email"));
@@ -76,16 +72,11 @@ public class LoginController {
 	
 	@GetMapping("/resetPassword")
 	public String resetPassword() {
-		logger.debug("start LoginController.resetPassword");
-		
 		return "resetPassword";
 	}
 	
 	@PostMapping("/resetPasswordProc")
 	public String resetPasswordProc(@RequestParam Map<String, String> params, Model model) {
-		logger.debug("start LoginController resetPasswordProc");
-		logger.debug("params=" + params);
-		
 		try {
 			String loginId = Validator.loginId(params.get("loginId"));
 			String name = Validator.koreanName(params.get("name"));

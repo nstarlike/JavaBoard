@@ -30,9 +30,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		logger.debug("start UserDetailsServiceImpl.loadUserByUsername()");
-		logger.debug("username=" + username);
-		
 		User user = userDao.readByLoginId(username);
 		
 		logger.debug("user=" + user);
@@ -41,9 +38,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 	}
 	
 	public String searchLoginId(User user) throws Exception {
-		logger.debug("start UserDetailsServiceImpl.searchLoginId");
-		logger.debug("user=" + user);
-		
 		User retrieved = userDao.readByEmail(user.getEmail());
 		if(retrieved == null || !retrieved.getName().equals(user.getName())){
 			throw new Exception("Infomation is not correct.");
@@ -53,9 +47,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 	}
 	
 	public boolean resetPassword(User user) {
-		logger.debug("start UserDetailsServiceImpl.resetPassword");
-		logger.debug("user=" + user);
-		
 		User retrieved = userDao.readByLoginId(user.getLoginId());
 		if(retrieved != null && retrieved.getEmail().equals(user.getEmail()) && retrieved.getName().equals(user.getName())) {
 			String newPassword = "password2";
