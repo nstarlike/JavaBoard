@@ -18,7 +18,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
-import org.apache.poi.ss.usermodel.Workbook;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +32,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import jakarta.servlet.ServletOutputStream;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import nstarlike.jcw.model.Attachment;
@@ -57,6 +55,7 @@ public class PostController {
 	private static final Logger logger = LoggerFactory.getLogger(PostController.class);
 	private static final String PREFIX = "post/";
 	private static final String ATTACHMENT_ROOT =  "c:" + File.separator + "attachments";
+	private static final String ATTACHMENT_TEMP_ROOT =  "c:" + File.separator + "attachments" + File.separator + "temp";
 	
 	@Autowired
 	private PostService postService;
@@ -183,6 +182,20 @@ public class PostController {
 		
 		ExcelHelper excel = new ExcelHelper(list);
 		excel.export(response.getOutputStream());
+	}
+	
+	@PostMapping("/import")
+	public void importExcel(@RequestParam MultipartFile file) {
+		String filename = file.getOriginalFilename();
+		String extension = filename.substring(filename.lastIndexOf(".") + 1);
+		Calendar calendar = Calendar.getInstance();
+		DateFormat format = new SimpleDateFormat("yyyyMMddhhmmss");
+		String uploadFilename = format.format(calendar.getTime()) + "_" + UUID.randomUUID().toString() + "." + extension;
+		
+		uploadTemp(uploadFilename, file);
+		
+		int insertCnt = postService.importExcel(new File(ATTACHMENT_TEMP_ROOT + File.separator + uploadFilename));
+		logger.debug("insertCnt=" + insertCnt);
 	}
 	
 	@GetMapping("/view")
@@ -474,6 +487,29 @@ public class PostController {
 		DateFormat format = new SimpleDateFormat("yyyy/MM/dd");
 		String uploadFilename = format.format(calendar.getTime()) + "/" + UUID.randomUUID().toString() + "." + extension;
 		return uploadFilename;
+	}
+	
+	private void uploadTemp(String filename, MultipartFile multipartFile) {
+		try {
+			String path = ATTACHMENT_TEMP_ROOT + File.separator + filename;
+			File dir = new File(ATTACHMENT_TEMP_ROOT);
+			if(!dir.exists()) {
+				dir.mkdirs();
+			}
+			
+			File file = new File(path);
+			OutputStream os = new FileOutputStream(file);
+			BufferedOutputStream bos = new BufferedOutputStream(os);
+			bos.write(multipartFile.getBytes());
+			bos.close();
+			
+			logger.debug("absolutepath=" + file.getAbsolutePath());
+			
+		}catch(FileNotFoundException e) {
+			logger.debug(e.getMessage());
+		}catch(IOException e) {
+			logger.debug(e.getMessage());
+		}
 	}
 	
 	private void uploadAttachment(Attachment attachment, MultipartFile multipartFile) {
