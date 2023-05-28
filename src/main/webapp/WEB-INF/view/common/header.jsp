@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+
+<c:set var="requestURI" value="${ pageContext.request.requestURI }" />
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,7 +15,7 @@
 <link rel="stylesheet" href="<c:url value="/resources/css/blog.css" />" />
 <script src="<c:url value="/resources/js/jquery-3.6.4.min.js" />"></script>
 <script src="<c:url value="/resources/js/jquery-ui-1.13.2.min.js" />"></script>
-<script src="<c:url value="/resources/js/bootstrap-5.3.0.min.js" />"></script>
+<script src="<c:url value="/resources/js/bootstrap-5.3.0.bundle.min.js" />"></script>
 </head>
 <body>
 <div class="container">
@@ -42,23 +46,49 @@
 			</div>
 		</div>
 	</header>
+	
+	<nav class="navbar navbar-expand-lg bg-body-tertiary">
+		<div class="container-fluid">
+			<button class="navbar-toggler" type="button"
+				data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+				aria-controls="navbarNavDropdown" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNavDropdown">
+				<ul class="navbar-nav">
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Posts</a>
+						<ul class="dropdown-menu">
+							<li><a class="dropdown-item" href="<c:url value="/post/list" />">list</a></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
 </div>
 
 <main class="container">
+	<c:if test="${ fn:contains(requestURI, 'home.jsp') }">
 	<div class="p-4 p-md-5 mb-4 rounded text-bg-dark">
 		<div class="col-md-6 px-0">
-			<h1 class="display-4 fst-italic">Title of a longer featured blog
-				post</h1>
-			<p class="lead my-3">Multiple lines of text that form the lede,
-				informing new readers quickly and efficiently about what’s most
-				interesting in this post’s contents.</p>
+			<h1 class="display-4 fst-italic">Title of a latest post</h1>
+			<p class="lead my-3">The post’s contents.</p>
 			<p class="lead mb-0">
-				<a href="#" class="text-white fw-bold">Continue reading...</a>
+				<a href="<c:url value="post/list" />" class="text-white fw-bold">Continue reading...</a>
 			</p>
 		</div>
 	</div>
+	</c:if>
 	
-	<div class="row g-5">
-		<%@ include file="aside.jsp" %>
-	
-		<div class="col-md-8">
+	<div class="row mt-3 mb-3">
+		<c:if test="${ fn:contains(requestURI, '/home.jsp') }">
+			<div>
+		</c:if>
+		
+		<c:if test="${ not fn:contains(requestURI, '/home.jsp') }">
+			<%@ include file="aside.jsp" %>
+			
+			<div class="col-md-8">
+		</c:if>
