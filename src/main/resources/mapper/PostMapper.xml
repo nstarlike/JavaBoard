@@ -3,27 +3,28 @@
 <mapper namespace="nstarlike.jcw.mapper.PostMapper">
 	<resultMap id="postResultMap" type="PostMap">
 		<id property="id" column="post_id" />
-		<result property="writerId" column="writer_id" />
-		<result property="title" column="title" />
-		<result property="content" column="content" />
-		<result property="hits" column="hits" />
-		<result property="written" column="written" />
-		<result property="updated" column="updated" />
-		<result property="total" column="total" />
+		<result property="writerId" column="WRITER_ID" />
+		<result property="title" column="TITLE" />
+		<result property="content" column="CONTENT" />
+		<result property="hits" column="HITS" />
+		<result property="written" column="WRITTEN" />
+		<result property="updated" column="UPDATED" />
+		<result property="total" column="TOTAL" />
 	</resultMap>
 	
 	<select id="readAll" parameterType="map" resultMap="postResultMap">
 	SELECT * 
 	FROM (
-		SELECT /*INDEX_DESC(A POST_PK)*/ ROWNUM AS no, A.* 
+		SELECT /*INDEX_DESC(A POST_PK)*/ ROWNUM AS NO, A.* 
 		FROM (
-			SELECT COUNT(*) OVER () AS total, post.* 
-			FROM post 
+			SELECT COUNT(*) OVER () AS TOTAL, * 
+			FROM POST 
 			<where>
-				<if test="writerId != null">AND writer_id = #{writerId}</if>
-				<if test="title != null">AND title like '%' || #{title} || '%'</if>
-				<if test="content != null">AND content like '%' || #{content} || '%'</if>
+				<if test="writerId != null">AND WRITER_ID = #{writerId}</if>
+				<if test="title != null">AND TITLE like '%' || #{title} || '%'</if>
+				<if test="content != null">AND CONTENT like '%' || #{content} || '%'</if>
 			</where>
+			ORDER BY POST_ID DESC
 		) A
 		WHERE ROWNUM <![CDATA[ <= ]]> #{endNo}
 	)
@@ -31,33 +32,33 @@
 	</select>
 	
 	<select id="readById" resultMap="postResultMap">
-	SELECT * FROM post 
-	WHERE post_id = #{id}
+	SELECT * FROM POST 
+	WHERE POST_ID = #{id}
 	</select>
 	
 	<insert id="create" parameterType="Post">
 		<selectKey keyProperty="id" resultType="int" order="BEFORE" >
-		SELECT POST_SEQ.NEXTVAL AS id FROM DUAL
+		SELECT POST_SEQ.NEXTVAL AS ID FROM DUAL
 		</selectKey>
-	INSERT INTO post(post_id, writer_id, title, content, written)
+	INSERT INTO POST(POST_ID, WRITER_ID, TITLE, CONTENT, WRITTEN)
 	VALUES(#{id}, #{writerId}, #{title}, #{content}, TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'))
 	</insert>
 	
 	<update id="update" parameterType="Post">
-	UPDATE post 
+	UPDATE POST 
 	<set>
-		<if test="title != null">title = #{title}, </if>
-		<if test="content != null">content = #{content}, </if>
-		<if test="title != null or content != null">updated = TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS')</if>
+		<if test="title != null">TITLE = #{title}, </if>
+		<if test="content != null">CONTENT = #{content}, </if>
+		<if test="title != null or content != null">UPDATED = TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS')</if>
 	</set>
-	WHERE post_id = #{id}
+	WHERE POST_ID = #{id}
 	</update>
 	
 	<update id="hit">
-	UPDATE post SET hits = hits + 1 WHERE post_id = #{id}
+	UPDATE POST SET HISTS = HITS + 1 WHERE POST_ID = #{id}
 	</update>
 	
 	<delete id="delete">
-	DELETE FROM post WHERE post_id = #{id}
+	DELETE FROM POST WHERE POST_ID = #{id}
 	</delete>
 </mapper>
