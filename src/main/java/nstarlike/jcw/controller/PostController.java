@@ -111,15 +111,17 @@ public class PostController {
 				throw new RuntimeException("Failed to register");
 			}
 			
-			for(MultipartFile file : files) {
-				Attachment attachment = new Attachment();
-				attachment.setPostId(post.getId());
-				attachment.setFilename(file.getOriginalFilename());
-				attachment.setFilepath(getFilepath(file.getOriginalFilename()));
-				
-				int retAttach = attachmentService.attach(attachment);
-				
-				uploadAttachment(attachment, file);
+			if(files != null) {
+				for(MultipartFile file : files) {
+					Attachment attachment = new Attachment();
+					attachment.setPostId(post.getId());
+					attachment.setFilename(file.getOriginalFilename());
+					attachment.setFilepath(getFilepath(file.getOriginalFilename()));
+					
+					int retAttach = attachmentService.attach(attachment);
+					
+					uploadAttachment(attachment, file);
+				}
 			}
 			
 			model.addAttribute("alert", "Registered.");
