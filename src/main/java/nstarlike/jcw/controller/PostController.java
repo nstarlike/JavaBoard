@@ -90,12 +90,7 @@ public class PostController {
 	@PostMapping("/writeProc")
 	public String writeProc(@RequestParam Map<String, String> params, @RequestParam(required=false) MultipartFile[] files, Model model) {
 		try {
-			UserPrincipal userPrincipal;
-			Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-			if(auth == null) {
-				throw new Exception("Please login.");
-			}
-			userPrincipal = (UserPrincipal)auth.getPrincipal();
+			UserPrincipal userPrincipal = getUserPrincipal();
 			
 			String title = Validator.empty(params.get("title"), "You must enter a title.");
 			String content = Validator.empty(params.get("content"), "You must enter a content.");
@@ -128,13 +123,13 @@ public class PostController {
 			model.addAttribute("replace", "/post/list" + params.get("queryString"));
 			
 		}catch(ValidatorInvalidException e) {
-			e.printStackTrace();
-			
 			model.addAttribute("alert", e.getMessage());
 			model.addAttribute("back", true);
 			
 		}catch(Exception e) {
-			model.addAttribute("alert", e.getMessage());
+			e.printStackTrace();
+			
+			model.addAttribute("alert", "Error is occurred.");
 			model.addAttribute("back", true);
 		}
 		
@@ -236,7 +231,6 @@ public class PostController {
 			pagination.calculate(total);
 		}
 		
-		
 		model.addAttribute("post", post);
 		model.addAttribute("attachmentList", attachmentList);
 		model.addAttribute("commentList", commentList);
@@ -251,12 +245,7 @@ public class PostController {
 	@GetMapping("/update")
 	public String update(@RequestParam Map<String, String> params, Model model) {
 		try {
-			UserPrincipal userPrincipal;
-			Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-			if(auth == null) {
-				throw new Exception("Please login.");
-			}
-			userPrincipal = (UserPrincipal)auth.getPrincipal();
+			UserPrincipal userPrincipal = getUserPrincipal();
 			
 			Post post = postService.getById(Long.valueOf(params.get("id")));
 			
@@ -275,7 +264,9 @@ public class PostController {
 			return PREFIX + "/update";
 			
 		}catch(Exception e) {
-			model.addAttribute("alert", e.getMessage());
+			e.printStackTrace();
+			
+			model.addAttribute("alert", "Error is occurred.");
 			model.addAttribute("back", true);
 			
 			return "common/proc";
@@ -286,11 +277,7 @@ public class PostController {
 	public String updateProc(@RequestParam Map<String, String> params, @RequestParam(value="files", required=false) MultipartFile[] files, 
 							Model model) {
 		try {
-			Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-			if(auth == null) {
-				throw new Exception("Please login.");
-			}
-			UserPrincipal userPrincipal = (UserPrincipal)auth.getPrincipal();
+			UserPrincipal userPrincipal = getUserPrincipal();
 			
 			String id = Validator.number(params.get("id"), "The post id is invalid.");
 			String title = Validator.empty(params.get("title"), "You must enter a title.");
@@ -336,13 +323,13 @@ public class PostController {
 			model.addAttribute("replace", "/post/view" + params.get("queryString"));
 			
 		}catch(ValidatorInvalidException e) {
-			e.printStackTrace();
-			
 			model.addAttribute("alert", e.getMessage());
 			model.addAttribute("back", true);
 			
 		}catch(Exception e) {
-			model.addAttribute("alert", e.getMessage());
+			e.printStackTrace();
+			
+			model.addAttribute("alert", "Error is occurred.");
 			model.addAttribute("back", true);
 		}
 		
@@ -352,11 +339,7 @@ public class PostController {
 	@PostMapping("/deleteProc")
 	public String deleteProc(@RequestParam Map<String, String> params, Model model) {
 		try {
-			Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-			if(auth == null) {
-				throw new Exception ("Please login.");
-			}
-			UserPrincipal userPrincipal = (UserPrincipal)auth.getPrincipal();
+			UserPrincipal userPrincipal = getUserPrincipal();
 			
 			long id = Long.valueOf(params.get("id"));
 			
@@ -383,7 +366,9 @@ public class PostController {
 			}
 			
 		}catch(Exception e) {
-			model.addAttribute("alert", e.getMessage());
+			e.printStackTrace();
+			
+			model.addAttribute("alert", "Error is occurred.");
 			model.addAttribute("back", true);
 		}
 		
@@ -393,11 +378,7 @@ public class PostController {
 	@PostMapping("/writeCommentProc")
 	public String writeCommentProc(@RequestParam Map<String, String> params, Model model) {
 		try {
-			Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-			if(auth == null) {
-				throw new Exception("Please login.");
-			}
-			UserPrincipal userPrincipal = (UserPrincipal)auth.getPrincipal();
+			UserPrincipal userPrincipal = getUserPrincipal();
 			
 			String id = Validator.number(params.get("id"), "The post id is invalid.");
 			String content = Validator.empty(params.get("content"), "You must enter a comment.");
@@ -415,13 +396,13 @@ public class PostController {
 			model.addAttribute("replace", "/post/view" + params.get("queryString"));
 			
 		}catch(ValidatorInvalidException e) {
-			e.printStackTrace();
-			
 			model.addAttribute("alert", e.getMessage());
 			model.addAttribute("back", true);
 			
 		}catch(Exception e) {
-			model.addAttribute("alert", e.getMessage());
+			e.printStackTrace();
+			
+			model.addAttribute("alert", "Error is occurred.");
 			model.addAttribute("back", true);
 		}
 		
@@ -431,11 +412,7 @@ public class PostController {
 	@PostMapping("/deleteCommentProc")
 	public String deleteCommentProc(@RequestParam Map<String, String> params, Model model) {
 		try {
-			Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-			if(auth == null) {
-				throw new Exception("Please login.");
-			}
-			UserPrincipal userPrincipal = (UserPrincipal)auth.getPrincipal();
+			UserPrincipal userPrincipal = getUserPrincipal();
 			
 			Comment retrieved = commentService.getById(Long.valueOf(params.get("commentId")));
 			if(userPrincipal.getUser().getId() != retrieved.getWriterId()) {
@@ -448,7 +425,9 @@ public class PostController {
 			model.addAttribute("replace", "/post/view" + params.get("queryString"));
 			
 		}catch(Exception e) {
-			model.addAttribute("alert", e.getMessage());
+			e.printStackTrace();
+			
+			model.addAttribute("alert", "Error is occurred.");
 			model.addAttribute("back", true);
 		}
 		
@@ -568,5 +547,14 @@ public class PostController {
 		}
 		
 		logger.debug("path=" + file.getAbsolutePath());
+	}
+	
+	private UserPrincipal getUserPrincipal() {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		if(auth != null) {
+			return (UserPrincipal)auth.getPrincipal();
+		}else {
+			return null;
+		}
 	}
 }
