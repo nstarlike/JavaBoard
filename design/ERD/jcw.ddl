@@ -1,5 +1,5 @@
 -- 생성자 Oracle SQL Developer Data Modeler 22.2.0.165.1149
---   위치:        2023-05-19 03:25:17 KST
+--   위치:        2023-06-01 02:15:03 KST
 --   사이트:      Oracle Database 11g
 --   유형:      Oracle Database 11g
 
@@ -88,6 +88,50 @@ ALTER TABLE user_authority
     ADD CONSTRAINT user_authority_users_fk FOREIGN KEY ( users_user_id )
         REFERENCES users ( user_id );
 
+CREATE SEQUENCE attachment_seq START WITH 1 NOCACHE ORDER;
+
+CREATE OR REPLACE TRIGGER attachment_attach_id_trg BEFORE
+    INSERT ON attachment
+    FOR EACH ROW
+    WHEN ( new.attach_id IS NULL )
+BEGIN
+    :new.attach_id := attachment_seq.nextval;
+END;
+/
+
+CREATE SEQUENCE comment_seq START WITH 1 NOCACHE ORDER;
+
+CREATE OR REPLACE TRIGGER comment_comment_id_trg BEFORE
+    INSERT ON "comment"
+    FOR EACH ROW
+    WHEN ( new.comment_id IS NULL )
+BEGIN
+    :new.comment_id := comment_seq.nextval;
+END;
+/
+
+CREATE SEQUENCE post_seq START WITH 1 NOCACHE ORDER;
+
+CREATE OR REPLACE TRIGGER post_post_id_trg BEFORE
+    INSERT ON post
+    FOR EACH ROW
+    WHEN ( new.post_id IS NULL )
+BEGIN
+    :new.post_id := post_seq.nextval;
+END;
+/
+
+CREATE SEQUENCE users_seq START WITH 1 NOCACHE ORDER;
+
+CREATE OR REPLACE TRIGGER users_user_id_trg BEFORE
+    INSERT ON users
+    FOR EACH ROW
+    WHEN ( new.user_id IS NULL )
+BEGIN
+    :new.user_id := users_seq.nextval;
+END;
+/
+
 
 
 -- Oracle SQL Developer Data Modeler 요약 보고서: 
@@ -101,7 +145,7 @@ ALTER TABLE user_authority
 -- CREATE PACKAGE BODY                      0
 -- CREATE PROCEDURE                         0
 -- CREATE FUNCTION                          0
--- CREATE TRIGGER                           0
+-- CREATE TRIGGER                           4
 -- ALTER TRIGGER                            0
 -- CREATE COLLECTION TYPE                   0
 -- CREATE STRUCTURED TYPE                   0
@@ -114,7 +158,7 @@ ALTER TABLE user_authority
 -- CREATE DISK GROUP                        0
 -- CREATE ROLE                              0
 -- CREATE ROLLBACK SEGMENT                  0
--- CREATE SEQUENCE                          0
+-- CREATE SEQUENCE                          4
 -- CREATE MATERIALIZED VIEW                 0
 -- CREATE MATERIALIZED VIEW LOG             0
 -- CREATE SYNONYM                           0
