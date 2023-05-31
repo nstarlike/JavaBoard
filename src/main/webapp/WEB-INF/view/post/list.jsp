@@ -5,6 +5,16 @@
 
 <h3>Post List</h3>
 
+<form class="d-flex">
+	<select name="search" class="form-control me-2" style="max-width:100px;">
+		<option value="">All</option>
+		<option value="title" <c:if test="${ search == 'title' }">selected</c:if>>Title</option>
+		<option value="content" <c:if test="${ search == 'content' }">selected</c:if>>Content</option>
+	</select>
+	<input name="keyword" class="form-control me-2" type="search" placeholder="Search" value="<c:out value="${ param.keyword }" />" style="max-width:150px;">
+	<button class="btn btn-outline-success" type="submit">Search</button>
+</form>
+
 <table class="table">
 	<thead>
 		<th>No.</th>
