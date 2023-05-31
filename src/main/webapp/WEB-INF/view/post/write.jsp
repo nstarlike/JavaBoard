@@ -26,6 +26,16 @@
 	</div>
 </form>
 
+<style>
+.ck.ck-content {
+	font-size: 1em;
+	line-height: 1.6em;
+	margin-bottom: 0.8em;
+	min-height: 200px;
+	padding: 1.5em 2em;
+}
+</style>
+<script src="<c:url value="../resources/js/ckeditor5.js" />"></script>
 <script>
 $(document).ready(function(){
 	$("#add-file-btn").click(function(){
@@ -38,6 +48,10 @@ $(document).ready(function(){
 		$("#file-div").append($file);
 		
 	});
+	
+	ClassicEditor
+	.create(document.querySelector("#content"))
+	.catch(error => {console.log(error);});
 });
 
 function deleteEvent(elem){

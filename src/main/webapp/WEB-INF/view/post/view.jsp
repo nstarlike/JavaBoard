@@ -13,7 +13,7 @@
 	</tr>
 	<tr>
 		<th>Content</th>
-		<td><c:out value="${ post.content }" /></td>
+		<td>${ post.content }</td>
 	</tr>
 	
 	<c:if test="${ attachmentList != null }">
