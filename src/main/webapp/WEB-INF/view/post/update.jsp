@@ -15,7 +15,7 @@
 	</div>
 	<div class="form-group">
 		<label for="content">Content</label>
-		<textarea id="content" class="form-control" name="content"><c:out value="${ post.content }" /></textarea>
+		<textarea id="content" class="form-control" name="content">${ post.content }</textarea>
 	</div>
 	<div class="form-group">
 		<label for="attachment">Attachment</label>
@@ -37,8 +37,22 @@
 	</div>
 </form>
 
+<style>
+.ck.ck-content {
+	font-size: 1em;
+	line-height: 1.6em;
+	margin-bottom: 0.8em;
+	min-height: 200px;
+	padding: 1.5em 2em;
+}
+</style>
+<script src="<c:url value="../resources/js/ckeditor5.js" />"></script>
 <script>
 $(document).ready(function(){
+	ClassicEditor
+	.create(document.querySelector("#content"))
+	.catch(error => {console.log(error);});
+	
 	$(".delete-file-btn").parent().each(function(){
 		deleteEvent($(this));
 	});
