@@ -1,7 +1,6 @@
 package nstarlike.jcw.aop;
 
 import java.lang.reflect.Parameter;
-import java.util.Arrays;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.reflect.MethodSignature;
@@ -21,7 +20,7 @@ public class LoggingAspect {
 		
 		int size = names.length;
 		for(int i=0; i<size; i++) {
-			logger.debug(names[i] + " => " + args[i].toString());
+			logger.debug(names[i] + " => " + args[i]);
 		}
 	}
 }
