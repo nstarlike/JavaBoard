@@ -21,9 +21,10 @@
 			SELECT COUNT(*) OVER () AS TOTAL, POST.* 
 			FROM POST 
 			<where>
-				<if test="writerId != null">AND WRITER_ID = #{writerId}</if>
-				<if test="title != null">AND TITLE like '%' || #{title} || '%'</if>
-				<if test="content != null">AND CONTENT like '%' || #{content} || '%'</if>
+				<if test="search == 'title'">AND TITLE like '%' || #{keyword} || '%'</if>
+				<if test="search == 'content'">AND CONTENT like '%' || #{keyword} || '%'</if>
+				<if test="keyword != null and keyword != ''">AND (TITLE LIKE '%' || #{keyword} || '%'
+					OR CONTENT LIKE '%' || #{keyword} || '%')</if>
 			</where>
 			ORDER BY POST_ID DESC
 		) A
