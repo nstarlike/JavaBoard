@@ -41,7 +41,11 @@ public class SecurityConfig {
 		}
 		
 		if(client.equals("google")) {
-			return CommonOAuth2Provider.GOOGLE.getBuilder(client).clientId(clientId).clientSecret(clientSecret).build();
+			return CommonOAuth2Provider.GOOGLE.getBuilder(client)
+					.clientId(clientId)
+					.clientSecret(clientSecret)
+					.redirectUri("http://localhost:8080/JavaCommunityWebsite/googleLogin")
+					.build();
 		}
 		
 		return null;
