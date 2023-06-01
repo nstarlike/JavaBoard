@@ -26,6 +26,10 @@
 		<logout logout-url="/logout" logout-success-url="/" />
 		
 		<remember-me remember-me-parameter="rememberMe" key="rememberMeKey" />
+		
+		<oauth2-login login-page="/login" 
+					client-registration-repository-ref="clientRegistrationRepository"
+					authorized-client-service-ref="authorizedClientService" />
 	</http>
 	
 	<authentication-manager>
@@ -35,4 +39,8 @@
 	</authentication-manager>
 	
 	<beans:bean id="passwordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
+	
+	<beans:bean id="authorizedClientService" class="org.springframework.security.oauth2.client.InMemoryOAuth2AuthorizedClientService">
+		<beans:constructor-arg ref="clientRegistrationRepository" />
+	</beans:bean>
 </beans:beans>
