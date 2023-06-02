@@ -53,6 +53,4 @@
 	<beans:bean id="authorizedClientRepository" class="org.springframework.security.oauth2.client.web.AuthenticatedPrincipalOAuth2AuthorizedClientRepository">
 		<beans:constructor-arg ref="authorizedClientService" />
 	</beans:bean>
-	
-	<beans:bean id="userAuthoritiesMapper" class="nstarlike.jcw.security.UserAuthoritiesMapper" />
 </beans:beans>
