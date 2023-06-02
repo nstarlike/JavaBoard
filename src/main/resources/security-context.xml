@@ -38,6 +38,12 @@
 							client-secret="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"
 							provider-id="google"
 							scope="openid,email" />
+							
+		<client-registration registration-id="facebook"
+							client-id="931646974805957"
+							client-secret="bc71368e9baa101816c9f2cb115e6680"
+							provider-id="facebook"
+							scope="public_profile,email" />
 	</client-registrations>
 	
 	<authentication-manager>

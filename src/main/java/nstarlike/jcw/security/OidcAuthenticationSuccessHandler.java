@@ -11,6 +11,7 @@ import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.oauth2.core.oidc.user.DefaultOidcUser;
+import org.springframework.security.oauth2.core.user.DefaultOAuth2User;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
 import jakarta.servlet.ServletException;
@@ -31,19 +32,32 @@ public class OidcAuthenticationSuccessHandler implements AuthenticationSuccessHa
 	@Override
 	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
 			Authentication authentication) throws IOException, ServletException {
-		DefaultOidcUser oidcUser = (DefaultOidcUser)authentication.getPrincipal();
-		String email = (String)oidcUser.getAttribute("email");
+		logger.debug("principal=" + authentication.getPrincipal().getClass().getSimpleName());
 		
-		User user = userDao.readByEmail(email);
-		if(user != null) {
-			Authentication auth = new UsernamePasswordAuthenticationToken(
-					userDetailsService.loadUserByUsername(user.getLoginId()), 
-					null, 
-					AuthorityUtils.createAuthorityList("ROLE_USER")
-			);
-			SecurityContextHolder.getContext().setAuthentication(auth);
-			response.sendRedirect(request.getContextPath() + "/");
+		String email = null;
+		if(authentication.getPrincipal().getClass().isAssignableFrom(DefaultOidcUser.class)) {
+			DefaultOidcUser oidcUser = (DefaultOidcUser)authentication.getPrincipal();
+			email = (String)oidcUser.getAttribute("email");
+		}else if(authentication.getPrincipal().getClass().isAssignableFrom(DefaultOAuth2User.class)) {
+			DefaultOAuth2User oAuth2User = (DefaultOAuth2User)authentication.getPrincipal();
+			email = (String)oAuth2User.getAttribute("email");
 		}
+		
+		if(email != null && !email.isEmpty()) {
+			User user = userDao.readByEmail(email);
+			if(user != null) {
+				Authentication auth = new UsernamePasswordAuthenticationToken(
+						userDetailsService.loadUserByUsername(user.getLoginId()), 
+						null, 
+						AuthorityUtils.createAuthorityList("ROLE_USER")
+				);
+				SecurityContextHolder.getContext().setAuthentication(auth);
+				response.sendRedirect(request.getContextPath() + "/");
+				return;
+			}
+		}
+		
+		response.sendRedirect(request.getContextPath() + "/login");
 	}
 
 }
