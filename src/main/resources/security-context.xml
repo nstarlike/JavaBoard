@@ -29,7 +29,7 @@
 		
 		<oauth2-login login-page="/login" 
 					authorized-client-repository-ref="authorizedClientRepository"
-					user-authorities-mapper-ref="userAuthoritiesMapper" />
+					authentication-success-handler-ref="authenticationSuccessHandler" />
 	</http>
 	
 	<client-registrations>
@@ -53,4 +53,6 @@
 	<beans:bean id="authorizedClientRepository" class="org.springframework.security.oauth2.client.web.AuthenticatedPrincipalOAuth2AuthorizedClientRepository">
 		<beans:constructor-arg ref="authorizedClientService" />
 	</beans:bean>
+	
+	<beans:bean id="authenticationSuccessHandler" class="nstarlike.jcw.security.OidcAuthenticationSuccessHandler" />
 </beans:beans>
