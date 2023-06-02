@@ -20,6 +20,11 @@
 		<button type="submit" class="btn btn-primary">Login</button>
 	</div>
 	<div class="form-group mt-3">
+		<c:forEach var="oAuth2Url" items="${ oAuth2Urls }">
+			<a href="${ oAuth2Url.value }" class="btn">${ oAuth2Url.key }</a>
+		</c:forEach>
+	</div>
+	<div class="form-group mt-3">
 		<a href="<c:url value="/searchId" />" class="btn">Search ID</a>
 		<a href="<c:url value="/resetPassword" />" class="btn">Reset Password</a>
 	</div>

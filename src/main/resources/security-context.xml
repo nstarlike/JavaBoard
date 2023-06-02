@@ -26,7 +26,25 @@
 		<logout logout-url="/logout" logout-success-url="/" />
 		
 		<remember-me remember-me-parameter="rememberMe" key="rememberMeKey" />
+		
+		<oauth2-login login-page="/login" 
+					authorized-client-repository-ref="authorizedClientRepository"
+					authentication-success-handler-ref="authenticationSuccessHandler" />
 	</http>
+	
+	<client-registrations>
+		<client-registration registration-id="google"
+							client-id="194711420475-itjgra075kefk0kd06sftjmtehrek5t8.apps.googleusercontent.com"
+							client-secret="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"
+							provider-id="google"
+							scope="openid,email" />
+							
+		<client-registration registration-id="facebook"
+							client-id="931646974805957"
+							client-secret="bc71368e9baa101816c9f2cb115e6680"
+							provider-id="facebook"
+							scope="public_profile,email" />
+	</client-registrations>
 	
 	<authentication-manager>
 		<authentication-provider user-service-ref="userDetailsServiceImpl">
@@ -35,4 +53,12 @@
 	</authentication-manager>
 	
 	<beans:bean id="passwordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
+	
+	<beans:bean id="authorizedClientService" class="org.springframework.security.oauth2.client.InMemoryOAuth2AuthorizedClientService" autowire="constructor" />
+	
+	<beans:bean id="authorizedClientRepository" class="org.springframework.security.oauth2.client.web.AuthenticatedPrincipalOAuth2AuthorizedClientRepository">
+		<beans:constructor-arg ref="authorizedClientService" />
+	</beans:bean>
+	
+	<beans:bean id="authenticationSuccessHandler" class="nstarlike.jcw.security.OidcAuthenticationSuccessHandler" />
 </beans:beans>

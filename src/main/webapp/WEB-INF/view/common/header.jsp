@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Community Website</title>
+<title>Community</title>
 <link rel="stylesheet" href="<c:url value="/resources/css/bootstrap-5.3.0.min.css" />" />
 <link rel="stylesheet" href="<c:url value="/resources/css/jquery-ui-1.13.2.min.css" />" />
 <link rel="stylesheet" href="<c:url value="/resources/css/blog.css" />" />
@@ -24,7 +24,7 @@
 			class="row flex-nowrap justify-content-between align-items-center">
 			<div class="col-4"></div>
 			<div class="col-4 text-center">
-				<a class="blog-header-logo text-body-emphasis" href="<c:url value="/" />">Large</a>
+				<a class="blog-header-logo text-body-emphasis" href="<c:url value="/" />">Community</a>
 			</div>
 			<div class="col-4 d-flex justify-content-end align-items-center">
 				<a class="link-secondary" href="<c:url value="/post/list" />" aria-label="Search"> <svg 
