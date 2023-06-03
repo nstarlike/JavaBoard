@@ -1,6 +1,7 @@
 package nstarlike.jcw.security;
 
 import java.io.IOException;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -35,12 +36,25 @@ public class OidcAuthenticationSuccessHandler implements AuthenticationSuccessHa
 		logger.debug("principal=" + authentication.getPrincipal().getClass().getSimpleName());
 		
 		String email = null;
-		if(authentication.getPrincipal().getClass().isAssignableFrom(DefaultOidcUser.class)) {
+		if(authentication.getPrincipal() instanceof DefaultOidcUser) {
 			DefaultOidcUser oidcUser = (DefaultOidcUser)authentication.getPrincipal();
+			logger.debug("DefaultOidcUser attributes=" + oidcUser.getAttributes());
 			email = (String)oidcUser.getAttribute("email");
-		}else if(authentication.getPrincipal().getClass().isAssignableFrom(DefaultOAuth2User.class)) {
+			
+		}else if(authentication.getPrincipal() instanceof DefaultOAuth2User) {
 			DefaultOAuth2User oAuth2User = (DefaultOAuth2User)authentication.getPrincipal();
+			logger.debug("DefaultOAuth2User attributes=" + oAuth2User.getAttributes());
 			email = (String)oAuth2User.getAttribute("email");
+			
+			if(email == null && oAuth2User.getAttribute("response") != null) {
+				Map<String, Object> responseAttr = (Map<String, Object>)oAuth2User.getAttribute("response");
+				email = (String)responseAttr.get("email");
+			}
+			
+			if(email == null && oAuth2User.getAttribute("kakao_account") != null) {
+				Map<String, Object> accountAttr = (Map<String, Object>)oAuth2User.getAttribute("kakao_account");
+				email = (String)accountAttr.get("email");
+			}
 		}
 		
 		if(email != null && !email.isEmpty()) {
